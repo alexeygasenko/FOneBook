@@ -26,22 +26,34 @@ export default class Main extends Component {
   }
   render() {
     return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="#">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">GitHub</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">FOneBook</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink className="nav-section" href="/">
+                Новости
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/">
+                История
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/">
+                Техника
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/">
+                Статистика
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
     );
   }
 }
