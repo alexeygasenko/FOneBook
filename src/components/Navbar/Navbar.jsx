@@ -30,7 +30,7 @@ export default class CustomNavbar extends Component {
   render() {
     return (
       <Navbar light expand="md" className="navbar-width">
-        <NavbarBrand className="nav-logo-mobile" href="/">
+        <NavbarBrand className="nav-logo nav-logo-mobile" href="/">
           <img className="logo" src={navbarLogo} alt="FOneBook logo" />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
@@ -47,7 +47,7 @@ export default class CustomNavbar extends Component {
               </NavLink>
             </NavItem>
           </Nav>
-          <NavbarBrand className="nav-logo-desktop" href="/">
+          <NavbarBrand className="nav-logo nav-logo-desktop" href="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
