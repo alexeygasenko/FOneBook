@@ -1,6 +1,7 @@
 .navbar-width {
   margin: 0 auto;
   width: 80%;
+  transition: 0.3s;
 }
 
 .nav-section {
@@ -35,7 +36,7 @@
   }
 
   .nav-logo-mobile {
-    max-width: 70%;
+    max-width: 60%;
   }
 
   .logo {
@@ -64,5 +65,11 @@
 @media all and (max-width: 1680px) {
   .navbar-width {
     width: 100%;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .navbar-width {
+    width: 60%;
   }
 }
