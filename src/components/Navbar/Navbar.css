@@ -22,7 +22,7 @@
 }
 
 .nav-logo {
-  transition: 1s;
+  transition: 0.5s;
 }
 .nav-logo:hover {
   transform: scale(1.05);
