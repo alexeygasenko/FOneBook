@@ -8,10 +8,10 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import './Main.css';
-import navbarLogo from '../../logo/F1Book_Logo_2.png';
+import './Navbar.css';
+import navbarLogo from '../../logo/F1Book_Logo_3.png';
 
-export default class Main extends Component {
+export default class CustomNavbar extends Component {
   constructor(props) {
     super(props);
 
