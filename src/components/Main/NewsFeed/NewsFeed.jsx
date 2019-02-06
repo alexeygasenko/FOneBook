@@ -19,14 +19,13 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
                 <CardTitle className="news-title">Card title</CardTitle>
                 <CardText className="news-description">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Some quick example text to build on the card title
                 </CardText>
               </CardBody>
               <Button className="read-more">Button</Button>
@@ -37,14 +36,13 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
                 <CardTitle className="news-title">Card title</CardTitle>
                 <CardText className="news-description">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Some quick example text to build on the card title
                 </CardText>
               </CardBody>
               <Button className="read-more">Button</Button>
@@ -55,14 +53,13 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
                 <CardTitle className="news-title">Card title</CardTitle>
                 <CardText className="news-description">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Some quick example text to build on the card title
                 </CardText>
               </CardBody>
               <Button className="read-more">Button</Button>
@@ -73,14 +70,13 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
                 <CardTitle className="news-title">Card title</CardTitle>
                 <CardText className="news-description">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Some quick example text to build on the card title
                 </CardText>
               </CardBody>
               <Button className="read-more">Button</Button>

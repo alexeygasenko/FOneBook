@@ -68,6 +68,14 @@
   .news-card {
     margin-bottom: 1rem;
   }
+  
+  .news {
+    width: 90%;
+  }
+
+  .news-card:hover {
+    transform: none;
+  }
 }
 
 @media all and (max-width: 1680px) {
