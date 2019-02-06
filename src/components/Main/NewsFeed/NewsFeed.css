@@ -1,10 +1,6 @@
 .news {
   width: 80%;
   margin: 0 auto;
-  /* background-color: white;
-  -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.5); */
   transition: 0.2s;
 }
 
@@ -66,6 +62,12 @@
 
 .read-more:hover {
   background-color: rgb(220, 42, 42);
+}
+
+@media all and (max-width: 767px) {
+  .news-card {
+    margin-bottom: 1rem;
+  }
 }
 
 @media all and (max-width: 1680px) {

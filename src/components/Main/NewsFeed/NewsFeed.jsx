@@ -19,8 +19,7 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                width="20%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
@@ -38,8 +37,7 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                width="20%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
@@ -57,8 +55,7 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                width="20%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
@@ -76,8 +73,7 @@ export default class NewsFeed extends React.Component {
               <CardImg
                 className="news-img"
                 top
-                width="20%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97180&w=318&h=180"
                 alt="Card image cap"
               />
               <CardBody className="news-card-body">
