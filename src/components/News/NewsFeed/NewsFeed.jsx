@@ -20,11 +20,9 @@ export default class NewsFeed extends React.Component {
       });
 
     return (
-      <React.Fragment>
-        <div className="news">
-          <div className="row">{newsComponent}</div>
-        </div>
-      </React.Fragment>
+      <div className="news">
+        <div className="row">{newsComponent}</div>
+      </div>
     );
   }
 }

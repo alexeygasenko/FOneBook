@@ -56,14 +56,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'История') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/">
+        <NavLink className="nav-section section-active" href="/history/">
           История
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/">
+        <NavLink className="nav-section" href="/history/">
           История
         </NavLink>
       );
@@ -78,14 +78,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Техника') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/">
+        <NavLink className="nav-section section-active" href="/cars/">
           Техника
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/">
+        <NavLink className="nav-section" href="/cars/">
           Техника
         </NavLink>
       );
@@ -100,14 +100,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Статистика') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/">
+        <NavLink className="nav-section section-active" href="/stats/">
           Статистика
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/">
+        <NavLink className="nav-section" href="/stats/">
           Статистика
         </NavLink>
       );
