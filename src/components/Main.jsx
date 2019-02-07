@@ -1,8 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
 import CustomNavbar from './Navbar/Navbar';
-import NewsFeed from './News/NewsFeed/NewsFeed';
 import History from './History/History';
+import Loading from './Loading/Loading';
+import delay from './Loading/Delay';
+
+let LoadableNews = Loadable({
+  loader: () => delay(1500).then(() => import('./News/NewsFeed/NewsFeed')),
+  loading: Loading,
+});
 
 export default class Main extends React.Component {
   render() {
@@ -12,7 +19,7 @@ export default class Main extends React.Component {
           <Route exact path="/">
             <React.Fragment>
               <CustomNavbar active="Новости" />
-              <NewsFeed />
+              <LoadableNews />
             </React.Fragment>
           </Route>
 
