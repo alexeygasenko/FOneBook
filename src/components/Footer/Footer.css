@@ -1,0 +1,28 @@
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
+  line-height: 4rem;
+}
+
+.text-footer {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.text-footer > a {
+  font-weight: 700;
+  color: black;
+  transition: 0.2s;
+}
+
+.text-footer > a:hover {
+  font-weight: 700;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  text-decoration: none;
+}

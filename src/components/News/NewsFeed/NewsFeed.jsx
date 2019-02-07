@@ -1,5 +1,6 @@
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
+import Footer from '../../Footer/Footer';
 import './NewsFeed.css';
 
 import newsJSON from '../../../data/news.json';
@@ -20,9 +21,12 @@ export default class NewsFeed extends React.Component {
       });
 
     return (
-      <div className="news">
-        <div className="row">{newsComponent}</div>
-      </div>
+      <React.Fragment>
+        <div className="news">
+          <div className="row">{newsComponent}</div>
+        </div>
+        <Footer />
+      </React.Fragment>
     );
   }
 }
