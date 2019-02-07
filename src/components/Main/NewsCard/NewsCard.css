@@ -62,24 +62,14 @@
   .news-card {
     margin-bottom: 1rem;
   }
-  
-  .news {
-    width: 90%;
-  }
 
   .news-card:hover {
     transform: none;
   }
 }
 
-@media all and (max-width: 1680px) {
-  .news {
-    width: 95%;
-  }
-}
-
-@media all and (min-width: 2200px) {
-  .news {
-    width: 60%;
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .news-description {
+    display: none;
   }
 }

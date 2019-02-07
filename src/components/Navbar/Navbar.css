@@ -21,6 +21,12 @@
   transform: scale(1.05);
 }
 
+.section-active {
+  color:white !important;
+  background-color: rgb(255, 42, 42);
+  transform: scale(1.05);
+}
+
 .nav-logo {
   transition: 0.5s;
 }

@@ -27,6 +27,94 @@ export default class CustomNavbar extends Component {
     });
   }
 
+  activeNewsNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'Новости') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/">
+          Новости
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/">
+          Новости
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
+  activeHistoryNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'История') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/">
+          История
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/">
+          История
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
+  activeTechNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'Техника') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/">
+          Техника
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/">
+          Техника
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
+  activeStatsNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'Статистика') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/">
+          Статистика
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/">
+          Статистика
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
   render() {
     return (
       <Navbar light expand="md" className="navbar-width">
@@ -36,31 +124,15 @@ export default class CustomNavbar extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink className="nav-section" href="/">
-                Новости
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="nav-section" href="/">
-                История
-              </NavLink>
-            </NavItem>
+            <NavItem>{this.activeNewsNav()}</NavItem>
+            <NavItem>{this.activeHistoryNav()}</NavItem>
           </Nav>
           <NavbarBrand className="nav-logo nav-logo-desktop" href="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink className="nav-section" href="/">
-                Техника
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="nav-section" href="/">
-                Статистика
-              </NavLink>
-            </NavItem>
+            <NavItem>{this.activeTechNav()}</NavItem>
+            <NavItem>{this.activeStatsNav()}</NavItem>
           </Nav>
         </Collapse>
       </Navbar>

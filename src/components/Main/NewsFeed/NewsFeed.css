@@ -4,6 +4,10 @@
   transition: 0.2s;
 }
 
+.row {
+  margin: 0 !important;
+}
+
 @media all and (max-width: 767px) {
   .news {
     width: 90%;
@@ -13,6 +17,11 @@
 @media all and (max-width: 1680px) {
   .news {
     width: 95%;
+  }
+
+  .col-md-3 {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 

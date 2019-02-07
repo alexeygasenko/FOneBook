@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomNavbar from '../../Navbar/Navbar';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsFeed.css';
 
@@ -20,9 +21,12 @@ export default class NewsFeed extends React.Component {
       });
 
     return (
-      <div className="news">
-        <div className="row">{newsComponent}</div>
-      </div>
+      <React.Fragment>
+        <CustomNavbar active="Новости" />
+        <div className="news">
+          <div className="row">{newsComponent}</div>
+        </div>
+      </React.Fragment>
     );
   }
 }
