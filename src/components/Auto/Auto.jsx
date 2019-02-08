@@ -2,13 +2,14 @@ import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import './Auto.css';
 import Footer from '../Footer/Footer';
-import img50s from '../../data/img/auto-50s.jpg';
-import img60s from '../../data/img/auto-60s.jpg';
-import img70s from '../../data/img/auto-70s.jpg';
-import img80s from '../../data/img/auto-80s.jpg';
-import img90s from '../../data/img/auto-90s.jpg';
-import img00s from '../../data/img/auto-00s.jpg';
-import img10s from '../../data/img/auto-10s.jpg';
+
+import img50s from '../../data/img/auto/auto-50s.jpg';
+import img60s from '../../data/img/auto/auto-60s.jpg';
+import img70s from '../../data/img/auto/auto-70s.jpg';
+import img80s from '../../data/img/auto/auto-80s.jpg';
+import img90s from '../../data/img/auto/auto-90s.jpg';
+import img00s from '../../data/img/auto/auto-00s.jpg';
+import img10s from '../../data/img/auto/auto-10s.jpg';
 
 export default class Auto extends React.Component {
   constructor(props) {
@@ -16,13 +17,13 @@ export default class Auto extends React.Component {
 
     this.state = {
       decadesSections: [
-        '2010-е',
-        '2000-е',
-        '1990-е',
-        '1980-е',
-        '1970-е',
-        '1960-е',
-        '1950-е',
+        '2010-2019',
+        '2000-2009',
+        '1990-1999',
+        '1980-1989',
+        '1970-1979',
+        '1960-1969',
+        '1950-1959',
       ],
       decadesImages: [img10s, img00s, img90s, img80s, img70s, img60s, img50s],
     };
