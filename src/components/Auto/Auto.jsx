@@ -2,6 +2,13 @@ import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import './Auto.css';
 import Footer from '../Footer/Footer';
+import img50s from '../../data/img/auto-50s.jpg';
+import img60s from '../../data/img/auto-60s.jpg';
+import img70s from '../../data/img/auto-70s.jpg';
+import img80s from '../../data/img/auto-80s.jpg';
+import img90s from '../../data/img/auto-90s.jpg';
+import img00s from '../../data/img/auto-00s.jpg';
+import img10s from '../../data/img/auto-10s.jpg';
 
 export default class Auto extends React.Component {
   constructor(props) {
@@ -17,11 +24,12 @@ export default class Auto extends React.Component {
         '1960-е',
         '1950-е',
       ],
+      decadesImages: [img10s, img00s, img90s, img80s, img70s, img60s, img50s],
     };
   }
 
   renderSections = () => {
-    const { decadesSections } = this.state;
+    const { decadesSections, decadesImages } = this.state;
     let sections = [];
 
     for (let i = 0; i < decadesSections.length; ++i) {
@@ -31,7 +39,7 @@ export default class Auto extends React.Component {
             <CardImg
               className="auto-img"
               top
-              src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97320&w=320&h=320"
+              src={decadesImages[i]}
               alt="Card image cap"
             />
             <Button className="read-more">{decadesSections[i]}</Button>
