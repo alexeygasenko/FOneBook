@@ -4,11 +4,24 @@ import Loadable from 'react-loadable';
 import CustomNavbar from './Navbar/Navbar';
 import Loading from './Loading/Loading';
 import delay from './Loading/Delay';
-import History from './History/History';
-import Auto from './Auto/Auto';
 
 let LoadableNews = Loadable({
   loader: () => delay(1500).then(() => import('./News/NewsFeed/NewsFeed')),
+  loading: Loading,
+});
+
+let LoadableHistory = Loadable({
+  loader: () => delay(1500).then(() => import('./History/History')),
+  loading: Loading,
+});
+
+let LoadableAuto = Loadable({
+  loader: () => delay(1500).then(() => import('./Auto/Auto')),
+  loading: Loading,
+});
+
+let LoadableStats = Loadable({
+  loader: () => delay(1500).then(() => import('./Auto/Auto')),
   loading: Loading,
 });
 
@@ -27,14 +40,21 @@ export default class Main extends React.Component {
           <Route path="/history">
             <React.Fragment>
               <CustomNavbar active="История" />
-              <History />
+              <LoadableHistory />
             </React.Fragment>
           </Route>
 
           <Route path="/auto">
             <React.Fragment>
               <CustomNavbar active="Техника" />
-              <Auto />
+              <LoadableAuto />
+            </React.Fragment>
+          </Route>
+
+          <Route path="/stats">
+            <React.Fragment>
+              <CustomNavbar active="Техника" />
+              <LoadableStats />
             </React.Fragment>
           </Route>
         </Switch>
