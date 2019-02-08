@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollUpButton from 'react-scroll-up-button';
 import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../../Footer/Footer';
 import './NewsFeed.css';
@@ -22,6 +23,7 @@ export default class NewsFeed extends React.Component {
 
     return (
       <React.Fragment>
+        <ScrollUpButton />
         <div className="news">
           <div className="row">{newsComponent}</div>
         </div>
