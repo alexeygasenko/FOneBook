@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import CustomNavbar from './Navbar/Navbar';
-import History from './History/History';
 import Loading from './Loading/Loading';
 import delay from './Loading/Delay';
+import History from './History/History';
+import Auto from './Auto/Auto';
 
 let LoadableNews = Loadable({
   loader: () => delay(1500).then(() => import('./News/NewsFeed/NewsFeed')),
@@ -27,6 +28,13 @@ export default class Main extends React.Component {
             <React.Fragment>
               <CustomNavbar active="История" />
               <History />
+            </React.Fragment>
+          </Route>
+
+          <Route path="/auto">
+            <React.Fragment>
+              <CustomNavbar active="Техника" />
+              <Auto />
             </React.Fragment>
           </Route>
         </Switch>

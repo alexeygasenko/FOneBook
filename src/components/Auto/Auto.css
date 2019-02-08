@@ -1,10 +1,10 @@
-.history {
+.auto {
   width: 80%;
   margin: 0 auto;
   transition: 0.2s;
 }
 
-.history-img {
+.auto-img {
   border-radius: 0;
 }
 
@@ -40,7 +40,7 @@
 }
 
 @media all and (max-width: 767px) {
-  .history {
+  .auto {
     width: 90%;
   }
 
@@ -54,13 +54,13 @@
 }
 
 @media all and (max-width: 1680px) {
-  .history {
+  .auto {
     width: 95%;
   }
 }
 
 @media all and (min-width: 2200px) {
-  .history {
+  .auto {
     width: 60%;
   }
 }

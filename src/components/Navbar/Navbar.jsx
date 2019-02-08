@@ -78,14 +78,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Техника') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/cars/">
+        <NavLink className="nav-section section-active" href="/auto/">
           Техника
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/cars/">
+        <NavLink className="nav-section" href="/auto/">
           Техника
         </NavLink>
       );
