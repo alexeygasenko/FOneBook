@@ -21,7 +21,7 @@ let LoadableAuto = Loadable({
 });
 
 let LoadableStats = Loadable({
-  loader: () => delay(1500).then(() => import('./Auto/Auto')),
+  loader: () => delay(1500).then(() => import('./Statistics/Statistics')),
   loading: Loading,
 });
 
@@ -53,7 +53,7 @@ export default class Main extends React.Component {
 
           <Route path="/stats">
             <React.Fragment>
-              <CustomNavbar active="Техника" />
+              <CustomNavbar active="Статистика" />
               <LoadableStats />
             </React.Fragment>
           </Route>
