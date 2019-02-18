@@ -30,6 +30,12 @@ let LoadableLogin = Loadable({
   loading: Loading,
 });
 
+let LoadableRegistration = Loadable({
+  loader: () =>
+    delay(1500).then(() => import('./Authorization/Registration/Registration')),
+  loading: Loading,
+});
+
 export default class Main extends React.Component {
   render() {
     return (
@@ -67,6 +73,13 @@ export default class Main extends React.Component {
             <React.Fragment>
               <CustomNavbar />
               <LoadableLogin />
+            </React.Fragment>
+          </Route>
+
+          <Route path="/registration">
+            <React.Fragment>
+              <CustomNavbar />
+              <LoadableRegistration />
             </React.Fragment>
           </Route>
         </Switch>
