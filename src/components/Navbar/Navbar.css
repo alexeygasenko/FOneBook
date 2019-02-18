@@ -66,7 +66,7 @@
 
 @media all and (min-width: 768px) and (max-width:1280px) {
   .nav-section {
-    margin: 0.2rem;
+    margin: 0rem;
   }
 }
 
@@ -79,6 +79,10 @@
 @media all and (max-width: 1680px) {
   .navbar-width {
     width: 100%;
+  }
+  
+  .nav-section {
+    margin: 0.2rem;
   }
 }
 
