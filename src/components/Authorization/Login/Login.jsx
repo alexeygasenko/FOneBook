@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputGroup, Input, Button } from 'reactstrap';
 import './Login.css';
-import Footer from '../Footer/Footer';
+import Footer from '../../Footer/Footer';
 
 export default class Login extends React.Component {
   render() {

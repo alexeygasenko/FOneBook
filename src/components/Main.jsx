@@ -26,7 +26,7 @@ let LoadableStats = Loadable({
 });
 
 let LoadableLogin = Loadable({
-  loader: () => delay(1500).then(() => import('./Login/Login')),
+  loader: () => delay(1500).then(() => import('./Authorization/Login/Login')),
   loading: Loading,
 });
 
