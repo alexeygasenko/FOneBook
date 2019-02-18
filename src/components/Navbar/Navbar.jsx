@@ -126,13 +126,18 @@ export default class CustomNavbar extends Component {
           <Nav className="mr-auto" navbar>
             <NavItem>{this.activeNewsNav()}</NavItem>
             <NavItem>{this.activeHistoryNav()}</NavItem>
+            <NavItem>{this.activeTechNav()}</NavItem>
           </Nav>
           <NavbarBrand className="nav-logo nav-logo-desktop" href="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
-            <NavItem>{this.activeTechNav()}</NavItem>
             <NavItem>{this.activeStatsNav()}</NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/login/">
+                Форум
+              </NavLink>
+            </NavItem>
             <NavItem>
               <NavLink className="nav-section" href="/login/">
                 Авторизация
