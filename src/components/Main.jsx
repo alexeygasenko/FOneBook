@@ -25,6 +25,11 @@ let LoadableStats = Loadable({
   loading: Loading,
 });
 
+let LoadableLogin = Loadable({
+  loader: () => delay(1500).then(() => import('./Login/Login')),
+  loading: Loading,
+});
+
 export default class Main extends React.Component {
   render() {
     return (
@@ -55,6 +60,13 @@ export default class Main extends React.Component {
             <React.Fragment>
               <CustomNavbar active="Статистика" />
               <LoadableStats />
+            </React.Fragment>
+          </Route>
+
+          <Route path="/login">
+            <React.Fragment>
+              <CustomNavbar />
+              <LoadableLogin />
             </React.Fragment>
           </Route>
         </Switch>

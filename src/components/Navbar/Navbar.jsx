@@ -133,6 +133,16 @@ export default class CustomNavbar extends Component {
           <Nav className="ml-auto" navbar>
             <NavItem>{this.activeTechNav()}</NavItem>
             <NavItem>{this.activeStatsNav()}</NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/login/">
+                Войти
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-section" href="/login/">
+                Регистрация
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
