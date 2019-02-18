@@ -135,12 +135,7 @@ export default class CustomNavbar extends Component {
             <NavItem>{this.activeStatsNav()}</NavItem>
             <NavItem>
               <NavLink className="nav-section" href="/login/">
-                Войти
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="nav-section" href="/login/">
-                Регистрация
+                Авторизация
               </NavLink>
             </NavItem>
           </Nav>
