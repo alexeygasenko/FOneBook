@@ -71,14 +71,14 @@ export default class Main extends React.Component {
 
           <Route path="/login">
             <React.Fragment>
-              <CustomNavbar />
+              <CustomNavbar active="Авторизация" />
               <LoadableLogin />
             </React.Fragment>
           </Route>
 
           <Route path="/registration">
             <React.Fragment>
-              <CustomNavbar />
+              <CustomNavbar active="Авторизация" />
               <LoadableRegistration />
             </React.Fragment>
           </Route>
