@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
+import { Helmet } from 'react-helmet';
 import './History.css';
 import Footer from '../Footer/Footer';
 
@@ -44,6 +45,10 @@ export default class History extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>История - FOneBook</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
         <div className="history">
           <div className="row">{this.renderSections()}</div>
         </div>
