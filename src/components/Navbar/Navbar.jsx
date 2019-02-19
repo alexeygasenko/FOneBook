@@ -115,6 +115,50 @@ export default class CustomNavbar extends Component {
     }
   };
 
+  activeForumNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'Форум') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/login/">
+          Форум
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/login/">
+          Форум
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
+  activeLoginNav = () => {
+    const { active } = this.props;
+
+    let activeNavBtn;
+
+    if (active === 'Авторизация') {
+      activeNavBtn = (
+        <NavLink className="nav-section section-active" href="/login/">
+          Авторизация
+        </NavLink>
+      );
+      return activeNavBtn;
+    } else {
+      activeNavBtn = (
+        <NavLink className="nav-section" href="/login/">
+          Авторизация
+        </NavLink>
+      );
+      return activeNavBtn;
+    }
+  };
+
   render() {
     return (
       <Navbar light expand="md" className="navbar-width">
@@ -133,16 +177,8 @@ export default class CustomNavbar extends Component {
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>{this.activeStatsNav()}</NavItem>
-            <NavItem>
-              <NavLink className="nav-section" href="/login/">
-                Форум
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="nav-section" href="/login/">
-                Авторизация
-              </NavLink>
-            </NavItem>
+            <NavItem>{this.activeForumNav()}</NavItem>
+            <NavItem>{this.activeLoginNav()}</NavItem>
           </Nav>
         </Collapse>
       </Navbar>
