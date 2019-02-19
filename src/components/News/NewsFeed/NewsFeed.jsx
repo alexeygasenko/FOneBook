@@ -1,5 +1,6 @@
 import React from 'react';
 import ScrollUpButton from 'react-scroll-up-button';
+import { Helmet } from 'react-helmet';
 import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../../Footer/Footer';
 import './NewsFeed.css';
@@ -23,6 +24,10 @@ export default class NewsFeed extends React.Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Новости - FOneBook</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
         <ScrollUpButton />
         <div className="news">
           <div className="row">{newsComponent}</div>

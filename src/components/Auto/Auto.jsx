@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
+import { Helmet } from 'react-helmet';
 import './Auto.css';
 import Footer from '../Footer/Footer';
 
@@ -55,6 +56,10 @@ export default class Auto extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Техника - FOneBook</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
         <div className="auto">
           <div className="row">{this.renderSections()}</div>
         </div>
