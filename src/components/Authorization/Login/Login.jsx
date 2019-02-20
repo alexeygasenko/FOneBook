@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import Footer from '../../Footer/Footer';
 
@@ -66,7 +67,7 @@ export default class Login extends React.Component {
                 Войти
               </Button>
             </FormGroup>
-            <Button className="login-btn" href="/registration">
+            <Button tag={Link} className="login-btn" to="/registration">
               Ещё не зарегистрированы?
             </Button>
             <Footer />
