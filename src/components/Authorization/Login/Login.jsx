@@ -1,10 +1,37 @@
 import React from 'react';
-import { InputGroup, Input, Button } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import './Login.css';
 import Footer from '../../Footer/Footer';
 
 export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errors: {},
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    console.log(user);
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -13,25 +40,37 @@ export default class Login extends React.Component {
           <meta name="description" content="Helmet application" />
         </Helmet>
         <div className="container">
-          <h4 className="login-header">Email:</h4>
-          <InputGroup>
-            <Input className="login-input" />
-          </InputGroup>
-          <br />
-          <h4 className="login-header">Пароль:</h4>
-          <InputGroup>
-            <Input className="login-input" />
-          </InputGroup>
-          <br />
-          <Button className="login-btn" type="submit">
-            Войти
-          </Button>
-          <br />
-          <br />
-          <Button className="login-btn" href="/registration">
-            Ещё не зарегистрированы?
-          </Button>
-          <Footer />
+          <Form onSubmit={this.handleSubmit}>
+            <FormGroup>
+              <Label className="login-header">Email:</Label>
+              <Input
+                type="email"
+                name="email"
+                className="login-input"
+                onChange={this.handleInputChange}
+                value={this.state.email}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label className="login-header">Пароль:</Label>
+              <Input
+                type="password"
+                name="password"
+                className="login-input"
+                onChange={this.handleInputChange}
+                value={this.state.password}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button className="login-btn" type="submit">
+                Войти
+              </Button>
+            </FormGroup>
+            <Button className="login-btn" href="/registration">
+              Ещё не зарегистрированы?
+            </Button>
+            <Footer />
+          </Form>
         </div>
       </React.Fragment>
     );
