@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -34,14 +35,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Новости') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/">
+        <NavLink tag={Link} className="nav-section section-active" to="/">
           Новости
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/">
+        <NavLink tag={Link} className="nav-section" to="/">
           Новости
         </NavLink>
       );
@@ -56,14 +57,18 @@ export default class CustomNavbar extends Component {
 
     if (active === 'История') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/history/">
+        <NavLink
+          tag={Link}
+          className="nav-section section-active"
+          to="/history"
+        >
           История
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/history/">
+        <NavLink tag={Link} className="nav-section" to="/history">
           История
         </NavLink>
       );
@@ -78,14 +83,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Техника') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/auto/">
+        <NavLink tag={Link} className="nav-section section-active" to="/auto">
           Техника
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/auto/">
+        <NavLink tag={Link} className="nav-section" to="/auto">
           Техника
         </NavLink>
       );
@@ -100,14 +105,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Статистика') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/stats/">
+        <NavLink tag={Link} className="nav-section section-active" to="/stats">
           Статистика
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/stats/">
+        <NavLink tag={Link} className="nav-section" to="/stats">
           Статистика
         </NavLink>
       );
@@ -122,14 +127,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Форум') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/login/">
+        <NavLink tag={Link} className="nav-section section-active" to="/login">
           Форум
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/login/">
+        <NavLink tag={Link} className="nav-section" to="/login">
           Форум
         </NavLink>
       );
@@ -144,14 +149,14 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Авторизация') {
       activeNavBtn = (
-        <NavLink className="nav-section section-active" href="/login/">
+        <NavLink tag={Link} className="nav-section section-active" to="/login">
           Авторизация
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink className="nav-section" href="/login/">
+        <NavLink tag={Link} className="nav-section" to="/login">
           Авторизация
         </NavLink>
       );

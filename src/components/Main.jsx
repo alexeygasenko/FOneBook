@@ -48,35 +48,35 @@ export default class Main extends React.Component {
             </React.Fragment>
           </Route>
 
-          <Route path="/history">
+          <Route exact path="/history">
             <React.Fragment>
               <CustomNavbar active="История" />
               <LoadableHistory />
             </React.Fragment>
           </Route>
 
-          <Route path="/auto">
+          <Route exact path="/auto">
             <React.Fragment>
               <CustomNavbar active="Техника" />
               <LoadableAuto />
             </React.Fragment>
           </Route>
 
-          <Route path="/stats">
+          <Route exact path="/stats">
             <React.Fragment>
               <CustomNavbar active="Статистика" />
               <LoadableStats />
             </React.Fragment>
           </Route>
 
-          <Route path="/login">
+          <Route exact path="/login">
             <React.Fragment>
               <CustomNavbar active="Авторизация" />
               <LoadableLogin />
             </React.Fragment>
           </Route>
 
-          <Route path="/registration">
+          <Route exact path="/registration">
             <React.Fragment>
               <CustomNavbar active="Авторизация" />
               <LoadableRegistration />
