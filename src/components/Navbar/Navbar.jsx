@@ -167,7 +167,7 @@ export default class CustomNavbar extends Component {
   render() {
     return (
       <Navbar light expand="md" className="navbar-width">
-        <NavbarBrand className="nav-logo nav-logo-mobile" href="/">
+        <NavbarBrand tag={Link} className="nav-logo nav-logo-mobile" to="/">
           <img className="logo" src={navbarLogo} alt="FOneBook logo" />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
@@ -177,7 +177,7 @@ export default class CustomNavbar extends Component {
             <NavItem>{this.activeHistoryNav()}</NavItem>
             <NavItem>{this.activeTechNav()}</NavItem>
           </Nav>
-          <NavbarBrand className="nav-logo nav-logo-desktop" href="/">
+          <NavbarBrand tag={Link} className="nav-logo nav-logo-desktop" to="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>

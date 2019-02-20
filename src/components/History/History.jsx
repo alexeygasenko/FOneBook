@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import CustomNavbar from '../Navbar/Navbar';
 import './History.css';
 import Footer from '../Footer/Footer';
 
@@ -45,6 +46,7 @@ export default class History extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <CustomNavbar active="История" />
         <Helmet>
           <title>История - FOneBook</title>
           <meta name="description" content="Helmet application" />

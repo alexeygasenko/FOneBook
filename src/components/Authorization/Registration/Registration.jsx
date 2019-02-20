@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import CustomNavbar from '../../Navbar/Navbar';
 import './Registration.css';
 import Footer from '../../Footer/Footer';
 
@@ -39,6 +40,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <CustomNavbar active="Авторизация" />
         <Helmet>
           <title>Регистрация - FOneBook</title>
           <meta name="description" content="Helmet application" />
