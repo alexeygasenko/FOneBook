@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Loadable from 'react-loadable';
+
+import store from '../store/store';
 import CustomNavbar from './Navbar/Navbar';
 import Loading from './Loading/Loading';
 import delay from './Loading/Delay';
@@ -39,51 +42,53 @@ let LoadableRegistration = Loadable({
 export default class Main extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <React.Fragment>
-              <CustomNavbar active="Новости" />
-              <LoadableNews />
-            </React.Fragment>
-          </Route>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <React.Fragment>
+                <CustomNavbar active="Новости" />
+                <LoadableNews />
+              </React.Fragment>
+            </Route>
 
-          <Route exact path="/history">
-            <React.Fragment>
-              <CustomNavbar active="История" />
-              <LoadableHistory />
-            </React.Fragment>
-          </Route>
+            <Route exact path="/history">
+              <React.Fragment>
+                <CustomNavbar active="История" />
+                <LoadableHistory />
+              </React.Fragment>
+            </Route>
 
-          <Route exact path="/auto">
-            <React.Fragment>
-              <CustomNavbar active="Техника" />
-              <LoadableAuto />
-            </React.Fragment>
-          </Route>
+            <Route exact path="/auto">
+              <React.Fragment>
+                <CustomNavbar active="Техника" />
+                <LoadableAuto />
+              </React.Fragment>
+            </Route>
 
-          <Route exact path="/stats">
-            <React.Fragment>
-              <CustomNavbar active="Статистика" />
-              <LoadableStats />
-            </React.Fragment>
-          </Route>
+            <Route exact path="/stats">
+              <React.Fragment>
+                <CustomNavbar active="Статистика" />
+                <LoadableStats />
+              </React.Fragment>
+            </Route>
 
-          <Route exact path="/login">
-            <React.Fragment>
-              <CustomNavbar active="Авторизация" />
-              <LoadableLogin />
-            </React.Fragment>
-          </Route>
+            <Route exact path="/login">
+              <React.Fragment>
+                <CustomNavbar active="Авторизация" />
+                <LoadableLogin />
+              </React.Fragment>
+            </Route>
 
-          <Route exact path="/registration">
-            <React.Fragment>
-              <CustomNavbar active="Авторизация" />
-              <LoadableRegistration />
-            </React.Fragment>
-          </Route>
-        </Switch>
-      </Router>
+            <Route exact path="/registration">
+              <React.Fragment>
+                <CustomNavbar active="Авторизация" />
+                <LoadableRegistration />
+              </React.Fragment>
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }
