@@ -8,11 +8,20 @@ import {
   Nav,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authentication';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import './Navbar.css';
 import navbarLogo from '../../logo/F1Book_Logo_3.png';
 
-export default class CustomNavbar extends Component {
+class CustomNavbar extends Component {
   constructor(props) {
     super(props);
 
@@ -149,25 +158,53 @@ export default class CustomNavbar extends Component {
 
     if (active === 'Авторизация') {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section section-active" to="/login">
-          Авторизация
-        </NavLink>
+        <NavItem>
+          <NavLink
+            tag={Link}
+            className="nav-section section-active"
+            to="/login"
+          >
+            Авторизация
+          </NavLink>
+        </NavItem>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section" to="/login">
-          Авторизация
-        </NavLink>
+        <NavItem>
+          <NavLink tag={Link} className="nav-section" to="/login">
+            Авторизация
+          </NavLink>
+        </NavItem>
       );
       return activeNavBtn;
     }
   };
 
+  onLogout(e) {
+    e.preventDefault();
+    this.props.logoutUser(this.props.history);
+  }
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+    const authLinks = (
+      <UncontrolledDropdown nav inNavbar className="nav-section">
+        <DropdownToggle nav caret>
+          {user.name}
+        </DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem>Профиль</DropdownItem>
+          <DropdownItem>Мои брони</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem onClick={this.onLogout.bind(this)}>Выйти</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    );
+
     return (
       <Navbar light expand="md" className="navbar-width">
-        <NavbarBrand className="nav-logo nav-logo-mobile" href="/">
+        <NavbarBrand tag={Link} className="nav-logo nav-logo-mobile" to="/">
           <img className="logo" src={navbarLogo} alt="FOneBook logo" />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
@@ -177,16 +214,30 @@ export default class CustomNavbar extends Component {
             <NavItem>{this.activeHistoryNav()}</NavItem>
             <NavItem>{this.activeTechNav()}</NavItem>
           </Nav>
-          <NavbarBrand className="nav-logo nav-logo-desktop" href="/">
+          <NavbarBrand tag={Link} className="nav-logo nav-logo-desktop" to="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>{this.activeStatsNav()}</NavItem>
             <NavItem>{this.activeForumNav()}</NavItem>
-            <NavItem>{this.activeLoginNav()}</NavItem>
+            {isAuthenticated ? authLinks : this.activeLoginNav()}
           </Nav>
         </Collapse>
       </Navbar>
     );
   }
 }
+
+CustomNavbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(withRouter(CustomNavbar));

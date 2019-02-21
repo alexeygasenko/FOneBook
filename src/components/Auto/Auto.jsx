@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import CustomNavbar from '../Navbar/Navbar';
 import './Auto.css';
 import Footer from '../Footer/Footer';
 
@@ -56,6 +57,7 @@ export default class Auto extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <CustomNavbar active="Техника" />
         <Helmet>
           <title>Техника - FOneBook</title>
           <meta name="description" content="Helmet application" />
