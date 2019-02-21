@@ -1,15 +1,19 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import { withRouter } from 'react-router-dom';
+import { registerUser } from '../../../actions/authentication';
+import PropTypes from 'prop-types';
 import CustomNavbar from '../../Navbar/Navbar';
-import './Registration.css';
 import Footer from '../../Footer/Footer';
+import './Registration.css';
+import { connect } from 'react-redux';
 
-export default class Login extends React.Component {
+class Registration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: '',
+      name: '',
       email: '',
       password: '',
       passwordConfirm: '',
@@ -29,12 +33,21 @@ export default class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = {
-      login: this.state.login,
+      name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       passwordConfirm: this.state.passwordConfirm,
     };
-    console.log(user);
+    this.props.registerUser(user, this.props.hisory);
+  }
+
+  // Переписать на getDerivedStateFromProps
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
   }
 
   render() {
@@ -51,10 +64,10 @@ export default class Login extends React.Component {
               <Label className="login-header">Логин:</Label>
               <Input
                 type="text"
-                name="login"
+                name="name"
                 className="login-input"
                 onChange={this.handleInputChange}
-                value={this.state.login}
+                value={this.state.name}
               />
             </FormGroup>
             <FormGroup>
@@ -99,3 +112,16 @@ export default class Login extends React.Component {
     );
   }
 }
+
+Registration.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Registration));
