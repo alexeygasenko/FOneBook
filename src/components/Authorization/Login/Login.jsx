@@ -2,11 +2,16 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../../../actions/authentication';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+
 import CustomNavbar from '../../Navbar/Navbar';
 import './Login.css';
 import Footer from '../../Footer/Footer';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,10 +36,19 @@ export default class Login extends React.Component {
       email: this.state.email,
       password: this.state.password,
     };
-    console.log(user);
+    this.props.loginUser(user);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <React.Fragment>
         <CustomNavbar active="Авторизация" />
@@ -49,20 +63,30 @@ export default class Login extends React.Component {
               <Input
                 type="email"
                 name="email"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.email,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.email}
               />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Label className="login-header">Пароль:</Label>
               <Input
                 type="password"
                 name="password"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.password,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.password}
               />
+              {errors.password && (
+                <div className="invalid-feedback">{errors.password}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Button className="login-btn" type="submit">
@@ -79,3 +103,16 @@ export default class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

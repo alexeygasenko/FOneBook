@@ -3,13 +3,13 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../../actions/authentication';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import './Registration.css';
-import { connect } from 'react-redux';
 
 class Registration extends React.Component {
   constructor(props) {
