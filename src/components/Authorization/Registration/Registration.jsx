@@ -40,15 +40,24 @@ class Registration extends React.Component {
       password: this.state.password,
       passwordConfirm: this.state.passwordConfirm,
     };
-    this.props.registerUser(user, this.props.hisory);
+    this.props.registerUser(user, this.props.history);
   }
 
   // Переписать на getDerivedStateFromProps
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors,
       });
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/');
     }
   }
 
@@ -138,9 +147,11 @@ class Registration extends React.Component {
 
 Registration.propTypes = {
   registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   errors: state.errors,
 });
 
