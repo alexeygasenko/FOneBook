@@ -3,7 +3,9 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../../actions/authentication';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
+
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import './Registration.css';
@@ -51,6 +53,7 @@ class Registration extends React.Component {
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <React.Fragment>
         <CustomNavbar active="Авторизация" />
@@ -65,44 +68,64 @@ class Registration extends React.Component {
               <Input
                 type="text"
                 name="name"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.name,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.name}
               />
+              {errors.name && (
+                <div className="invalid-feedback">{errors.name}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Label className="login-header">Email:</Label>
               <Input
                 type="email"
                 name="email"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.email,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.email}
               />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Label className="login-header">Пароль:</Label>
               <Input
                 type="password"
                 name="password"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.password,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.password}
               />
+              {errors.password && (
+                <div className="invalid-feedback">{errors.password}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Label className="login-header">Подтвердите пароль:</Label>
               <Input
                 type="password"
                 name="passwordConfirm"
-                className="login-input"
+                className={classnames('login-input', {
+                  'is-invalid': errors.passwordConfirm,
+                })}
                 onChange={this.handleInputChange}
                 value={this.state.passwordConfirm}
               />
+              {errors.passwordConfirm && (
+                <div className="invalid-feedback">{errors.passwordConfirm}</div>
+              )}
             </FormGroup>
             <FormGroup>
               <Button className="login-btn" type="submit">
-                Войти
+                Зарегистрироваться
               </Button>
             </FormGroup>
             <Footer />
