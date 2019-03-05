@@ -43,6 +43,12 @@
   height: auto;
 }
 
+
+
+.dropdown-nav:hover {
+  color: white !important;
+}
+
 @media all and (max-width: 767px) {
   .nav-logo-desktop {
     display: none;
