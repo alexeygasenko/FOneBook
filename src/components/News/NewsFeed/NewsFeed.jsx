@@ -15,6 +15,7 @@ export default class NewsFeed extends React.Component {
       .map(news => {
         return (
           <NewsCard
+            url={news.url}
             key={news.url}
             title={news.title}
             description={news.description}
