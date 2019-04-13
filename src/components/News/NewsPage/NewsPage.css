@@ -13,6 +13,7 @@
 
 .news-title {
   transition: 0.2s;
+  margin-top: 1rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-style: italic;
@@ -28,6 +29,32 @@
   text-align: right;
 }
 
+.news-description {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 1rem 0 1rem 0;
+}
+
+.news-paragraph {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.news-page-img {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.scalable-img {
+  width: 100%;
+  height: auto;
+}
+
 @media all and (max-width: 767px) {
   .row {
     width: 95%;
@@ -39,6 +66,10 @@
   }
 
   .news-title {
+    font-size: 1.3rem;
+  }
+
+  .news-date {
     font-size: 1.3rem;
   }
 }

@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
 import { Helmet } from 'react-helmet';
 import CustomNavbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 import './NewsPage.css';
 import './OtherNews.css';
 
@@ -25,7 +26,28 @@ export default class News extends React.Component {
   };
 
   render() {
-    const { url, date, title, description } = newsPageJSON;
+    const { url, date, title, description, blocks } = newsPageJSON;
+
+    const newsBlock = blocks.map(block => {
+      switch (block.type) {
+        case 'photo':
+          return (
+            <div className="news-page-img">
+              <img
+                className="scalable-img"
+                src="https://via.placeholder.com/600x400/EEEEEE/000000/?text=FOneBook+Newsfeed"
+                alt="News"
+              />
+              {block.content.photoDescription}
+            </div>
+          );
+        case 'text':
+          return <p className="news-paragraph">{block.content}</p>;
+        default:
+          return '';
+      }
+    });
+
     return (
       <React.Fragment>
         <CustomNavbar active="Новости" />
@@ -38,14 +60,15 @@ export default class News extends React.Component {
           <div className="news-page col-md-8">
             <div className="news-title">{title}</div>
             <div className="news-date">{this.convertDate(date)}</div>
-            <div className="news-photo">
-              {/* <img
-                src="https://via.placeholder.com/600x450/FFFFFF/000000/?text=FOneBook+Newsfeed"
-                alt="Card cap"
-              /> */}
+            <div className="news-page-img">
+              <img
+                className="scalable-img"
+                src="https://via.placeholder.com/600x300/EEEEEE/000000/?text=FOneBook+Newsfeed"
+                alt="News desc"
+              />
             </div>
-            {url}
-            {description}
+            <div className="news-description">{description}</div>
+            {newsBlock}
           </div>
 
           <div className="other-news col-md-3">
@@ -86,6 +109,7 @@ export default class News extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </React.Fragment>
     );
   }
