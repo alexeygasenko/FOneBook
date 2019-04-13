@@ -38,7 +38,9 @@ export default class News extends React.Component {
                 src="https://via.placeholder.com/600x400/EEEEEE/000000/?text=FOneBook+Newsfeed"
                 alt="News"
               />
-              {block.content.photoDescription}
+              <div className="photo-description">
+                {block.content.photoDescription}
+              </div>
             </div>
           );
         case 'text':
@@ -86,7 +88,6 @@ export default class News extends React.Component {
                     className="other-news-title"
                     tag={Link}
                     to={`/news/${url}`}
-                    target="_blank"
                   >
                     {title}
                   </CardTitle>
@@ -97,12 +98,7 @@ export default class News extends React.Component {
                     {description}
                   </CardText>
                 </CardBody>
-                <Button
-                  className="read-more"
-                  tag={Link}
-                  to={`/news/${url}`}
-                  target="_blank"
-                >
+                <Button className="read-more" tag={Link} to={`/news/${url}`}>
                   Читать дальше
                 </Button>
               </Card>
