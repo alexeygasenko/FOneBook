@@ -189,8 +189,8 @@ class CustomNavbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
-      <UncontrolledDropdown nav inNavbar className="nav-section">
-        <DropdownToggle nav caret>
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav className="nav-section">
           {user.name}
         </DropdownToggle>
         <DropdownMenu right>
