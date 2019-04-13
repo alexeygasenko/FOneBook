@@ -8,6 +8,7 @@ import {
   CardSubtitle,
   Button,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './NewsCard.css';
 
 export default class NewsCard extends React.Component {
@@ -26,17 +27,31 @@ export default class NewsCard extends React.Component {
           <CardImg
             className="news-img"
             top
-            src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
+            src="https://via.placeholder.com/320x250/FFFFFF/000000/?text=FOneBook+Newsfeed"
             alt="Card image cap"
           />
           <CardBody className="news-card-body">
-            <CardTitle className="news-title">{title}</CardTitle>
+            <CardTitle
+              className="news-title"
+              tag={Link}
+              to={`/news/${url}`}
+              target="_blank"
+            >
+              {title}
+            </CardTitle>
             <CardSubtitle className="news-date">
               {this.convertDate(date)}
             </CardSubtitle>
             <CardText className="news-description">{description}</CardText>
           </CardBody>
-          <Button className="read-more">Читать дальше</Button>
+          <Button
+            className="read-more"
+            tag={Link}
+            to={`/news/${url}`}
+            target="_blank"
+          >
+            Читать дальше
+          </Button>
         </Card>
       </div>
     );

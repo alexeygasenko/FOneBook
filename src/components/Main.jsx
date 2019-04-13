@@ -41,6 +41,11 @@ let LoadableRegistration = Loadable({
   loading: Loading,
 });
 
+let LoadableNewsPage = Loadable({
+  loader: () => delay(500).then(() => import('./News/NewsPage/NewsPage')),
+  loading: Loading,
+});
+
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -63,12 +68,15 @@ export default class Main extends React.Component {
             <Route exact path="/history" component={LoadableHistory} />
             <Route exact path="/auto" component={LoadableAuto} />
             <Route exact path="/stats" component={LoadableStats} />
+
             <Route exact path="/login" component={LoadableLogin} />
             <Route
               exact
               path="/registration"
               component={LoadableRegistration}
             />
+
+            <Route path="/news/:url" component={LoadableNewsPage} />
           </Switch>
         </Router>
       </Provider>
