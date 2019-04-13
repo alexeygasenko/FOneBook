@@ -42,7 +42,7 @@ let LoadableRegistration = Loadable({
 });
 
 let LoadableNewsPage = Loadable({
-  loader: () => delay(500).then(() => import('./News/News/News')),
+  loader: () => delay(500).then(() => import('./News/NewsPage/NewsPage')),
   loading: Loading,
 });
 
