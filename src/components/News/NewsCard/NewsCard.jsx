@@ -26,7 +26,7 @@ export default class NewsCard extends React.Component {
           <CardImg
             className="news-img"
             top
-            src="https://placeholdit.imgix.net/~text?txtsize=33&txt=320%C3%97250&w=320&h=250"
+            src="https://via.placeholder.com/320x250/FFFFFF/000000/?text=FOneBook+Newsfeed"
             alt="Card image cap"
           />
           <CardBody className="news-card-body">
