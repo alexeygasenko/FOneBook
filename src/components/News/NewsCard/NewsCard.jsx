@@ -39,7 +39,12 @@ export default class NewsCard extends React.Component {
             </CardSubtitle>
             <CardText className="news-description">{description}</CardText>
           </CardBody>
-          <Button className="read-more" tag={Link} to={`/news/${url}`}>
+          <Button
+            className="read-more"
+            tag={Link}
+            to={`/news/${url}`}
+            target="_blank"
+          >
             Читать дальше
           </Button>
         </Card>

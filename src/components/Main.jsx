@@ -9,6 +9,7 @@ import Loading from './Loading/Loading';
 import delay from './Loading/Delay';
 import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
+import News from './News/News/News';
 
 let LoadableNews = Loadable({
   loader: () => delay(1500).then(() => import('./News/NewsFeed/NewsFeed')),
@@ -69,6 +70,7 @@ export default class Main extends React.Component {
               path="/registration"
               component={LoadableRegistration}
             />
+            <Route path="/news/:url" component={News} />
           </Switch>
         </Router>
       </Provider>
