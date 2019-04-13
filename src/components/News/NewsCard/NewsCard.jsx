@@ -31,7 +31,12 @@ export default class NewsCard extends React.Component {
             alt="Card image cap"
           />
           <CardBody className="news-card-body">
-            <CardTitle className="news-title" tag={Link} to={`/news/${url}`}>
+            <CardTitle
+              className="news-title"
+              tag={Link}
+              to={`/news/${url}`}
+              target="_blank"
+            >
               {title}
             </CardTitle>
             <CardSubtitle className="news-date">
