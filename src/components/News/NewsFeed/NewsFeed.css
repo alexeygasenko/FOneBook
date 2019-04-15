@@ -4,10 +4,6 @@
   transition: 0.2s;
 }
 
-.row {
-  margin: 0 !important;
-}
-
 @media all and (max-width: 767px) {
   .news {
     width: 90%;

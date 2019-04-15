@@ -60,8 +60,8 @@ export default class News extends React.Component {
         <ScrollUpButton />
         <div className="row news-row">
           <div className="news-page col-md-8">
-            <div className="news-title">{title}</div>
-            <div className="news-date">{this.convertDate(date)}</div>
+            <div className="news-page-title">{title}</div>
+            <div className="news-page-date">{this.convertDate(date)}</div>
             <div className="news-page-img">
               <img
                 className="scalable-img"
@@ -69,7 +69,7 @@ export default class News extends React.Component {
                 alt="News desc"
               />
             </div>
-            <div className="news-description">{description}</div>
+            <div className="news-page-description">{description}</div>
             {newsBlock}
           </div>
 
