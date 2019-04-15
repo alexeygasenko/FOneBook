@@ -9,12 +9,12 @@ import {
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import './NewsCard.css';
 
 export default class NewsCard extends React.Component {
   convertDate = date => {
-    const tmpDate = new Date(Date.parse(date));
-    const newDate = `${tmpDate.getDate()}.${tmpDate.getMonth()}.${tmpDate.getFullYear()} ${tmpDate.getHours()}:${tmpDate.getMinutes()}`;
+    const newDate = moment(date).format('DD.mm.YYYY HH:MM');
     return newDate;
   };
 

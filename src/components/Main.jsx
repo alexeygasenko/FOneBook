@@ -11,7 +11,8 @@ import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
 let LoadableNews = Loadable({
-  loader: () => delay(1500).then(() => import('./News/NewsFeed/NewsFeed')),
+  loader: () =>
+    delay(1500).then(() => import('../containers/newsFeedContainer')),
   loading: Loading,
 });
 
