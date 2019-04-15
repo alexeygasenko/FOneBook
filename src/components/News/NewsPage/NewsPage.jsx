@@ -16,6 +16,7 @@ import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import './NewsPage.css';
 import './OtherNews.css';
+import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class NewsPage extends React.Component {
   convertDate = date => {
@@ -35,7 +36,18 @@ export class NewsPage extends React.Component {
     if (isFetching) {
       newsComponent = <p className="empty-news">Идёт загрузка...</p>;
     } else if (error || !newsPage) {
-      newsComponent = <p className="empty-news">Новостей пока нет.</p>;
+      newsComponent = (
+        <React.Fragment>
+          <div className="empty-news-page">
+            <img
+              className="empty-news-page-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>404: такой новости нет!</p>
+          </div>
+        </React.Fragment>
+      );
     } else {
       const newsBlock = newsPage.blocks.map(block => {
         switch (block.type) {
@@ -68,12 +80,10 @@ export class NewsPage extends React.Component {
 
       newsComponent = (
         <React.Fragment>
-          <CustomNavbar active="Новости" />
           <Helmet>
             <title>{newsPage.title} - FOneBook</title>
             <meta name="description" content="Helmet application" />
           </Helmet>
-          <ScrollUpButton />
           <div className="row news-row">
             <div className="news-page col-md-8">
               <div className="news-page-title">{newsPage.title}</div>
@@ -130,6 +140,12 @@ export class NewsPage extends React.Component {
       );
     }
 
-    return <React.Fragment>{newsComponent}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <CustomNavbar active="Новости" />
+        <ScrollUpButton />
+        {newsComponent}
+      </React.Fragment>
+    );
   }
 }
