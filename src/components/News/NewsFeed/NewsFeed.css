@@ -4,6 +4,18 @@
   transition: 0.2s;
 }
 
+.empty-news {
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.empty-news-img {
+  width: 100px;
+  height: 50px;
+}
+
 @media all and (max-width: 767px) {
   .news {
     width: 90%;
