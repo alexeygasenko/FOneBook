@@ -43,6 +43,21 @@
   height: auto;
 }
 
+.dropdown-menu {
+  border-radius: 0;
+}
+
+.dropdown-item {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  border-radius: 0;
+}
+
+.dropdown-item:active {
+  background-color: red;
+  outline: none;
+}
+
 @media all and (max-width: 767px) {
   .nav-logo-desktop {
     display: none;
