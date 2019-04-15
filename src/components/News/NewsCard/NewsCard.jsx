@@ -31,12 +31,7 @@ export default class NewsCard extends React.Component {
             alt="Card image cap"
           />
           <CardBody className="news-card-body">
-            <CardTitle
-              className="news-title"
-              tag={Link}
-              to={`/news/${url}`}
-              target="_blank"
-            >
+            <CardTitle className="news-title" tag={Link} to={`/news/${url}`}>
               {title}
             </CardTitle>
             <CardSubtitle className="news-date">
@@ -44,12 +39,7 @@ export default class NewsCard extends React.Component {
             </CardSubtitle>
             <CardText className="news-description">{description}</CardText>
           </CardBody>
-          <Button
-            className="read-more"
-            tag={Link}
-            to={`/news/${url}`}
-            target="_blank"
-          >
+          <Button className="read-more" tag={Link} to={`/news/${url}`}>
             Читать дальше
           </Button>
         </Card>
