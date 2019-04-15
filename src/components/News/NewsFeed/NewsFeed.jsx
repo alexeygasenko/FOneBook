@@ -28,7 +28,7 @@ export class NewsFeed extends React.Component {
               src={emptyPlaceholder}
               alt="News desc"
             />
-            <p className="empty-news">Новостей пока нет.</p>
+            <p>Новостей пока нет.</p>
           </div>
         </React.Fragment>
       );
