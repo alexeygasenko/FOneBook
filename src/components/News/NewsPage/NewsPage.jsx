@@ -116,6 +116,7 @@ export class NewsPage extends React.Component {
                   className="read-more"
                   tag={Link}
                   to={`/news/${news.url}`}
+                  onClick={this.forceUpdateHandler}
                 >
                   Читать дальше
                 </Button>
