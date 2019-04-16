@@ -5,6 +5,7 @@ import { getNewsPage } from '../actions/newsPageActions';
 const mapStateToProps = store => {
   return {
     newsPage: store.newsPageReducer.newsPage,
+    otherNews: store.newsPageReducer.otherNews,
     isFetching: store.newsPageReducer.isFetching,
     error: store.newsPageReducer.error,
   };
