@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   newsPage: null,
+  otherNews: [],
   isFetching: false,
   error: '',
 };
@@ -18,7 +19,8 @@ export function newsPageReducer(state = initialState, action) {
     case GET_NEWS_PAGE_SUCCESS:
       return {
         ...state,
-        newsPage: action.payload,
+        newsPage: action.payload.newsPage,
+        otherNews: action.payload.otherNews,
         isFetching: false,
         error: '',
       };

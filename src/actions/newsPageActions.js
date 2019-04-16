@@ -8,10 +8,13 @@ const newsPageRequest = () => {
   };
 };
 
-const newsPageSuccess = newsPage => {
+const newsPageSuccess = (newsPage, otherNews) => {
   return {
     type: GET_NEWS_PAGE_SUCCESS,
-    payload: newsPage,
+    payload: {
+      newsPage: newsPage,
+      otherNews: otherNews,
+    },
   };
 };
 
@@ -36,7 +39,7 @@ export function getNewsPage(url) {
     })
       .then(res => res.json())
       .then(
-        res => dispatch(newsPageSuccess(res)),
+        res => dispatch(newsPageSuccess(res.newsPage, res.otherNews)),
         e => dispatch(newsPageFail(e))
       );
   };
