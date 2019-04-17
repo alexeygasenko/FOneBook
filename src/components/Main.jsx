@@ -44,7 +44,7 @@ let LoadableRegistration = Loadable({
 
 let LoadableBookings = Loadable({
   loader: () =>
-    delay(500).then(() => import('./UserProfile/Bookings/BookingsList')),
+    delay(500).then(() => import('../containers/bookingsListContainer')),
   loading: Loading,
 });
 
