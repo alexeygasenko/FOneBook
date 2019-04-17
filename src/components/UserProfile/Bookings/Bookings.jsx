@@ -4,9 +4,22 @@ import ScrollUpButton from 'react-scroll-up-button';
 
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
+import BookingCard from './BookingCard/BookingCard';
+import './Bookings.css';
 
 export default class Bookings extends React.Component {
   render() {
+    let bookingsComponent;
+
+    bookingsComponent = (
+      <React.Fragment>
+        <BookingCard />
+        <BookingCard />
+        <BookingCard />
+        <BookingCard />
+      </React.Fragment>
+    );
+
     return (
       <React.Fragment>
         <Helmet>
@@ -15,6 +28,9 @@ export default class Bookings extends React.Component {
         </Helmet>
         <CustomNavbar />
         <ScrollUpButton />
+        <div className="bookings">
+          <div className="row">{bookingsComponent}</div>
+        </div>
         <Footer />
       </React.Fragment>
     );
