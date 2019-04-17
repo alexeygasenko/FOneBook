@@ -1,21 +1,29 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import './BookingCard.css';
 
 export default class BookingCard extends React.Component {
+  convertDate = date => {
+    const newDate = moment(date).format('D MM YYYY');
+    return newDate;
+  };
+
   render() {
+    const { key, title, date, country } = this.props;
+
     return (
-      <div className="col-md-3">
+      <div key={key} className="col-md-3">
         <Card className="booking-card">
           <CardBody className="booking-card-body">
             <CardTitle className="booking-card-title" tag={Link} to="/">
-              FORMULA 1 GRAN PREMIO HEINEKEN D’ITALIA 2019
+              {title}
             </CardTitle>
             <CardSubtitle className="booking-card-date">
               <div className="booking-subtitle-left booking-inline">Дата:</div>
               <div className="booking-subtitle-right booking-inline">
-                2 сентября 2019
+                {this.convertDate(date)}
               </div>
             </CardSubtitle>
             <CardSubtitle className="booking-card-date">
@@ -23,7 +31,7 @@ export default class BookingCard extends React.Component {
                 Страна:
               </div>
               <div className="booking-subtitle-right booking-inline">
-                Италия
+                {country}
               </div>
             </CardSubtitle>
           </CardBody>
