@@ -48,6 +48,14 @@ let LoadableBookings = Loadable({
   loading: Loading,
 });
 
+let LoadableBookTicket = Loadable({
+  loader: () =>
+    delay(500).then(() =>
+      import('./UserProfile/Bookings/BookTicket/BookTicket')
+    ),
+  loading: Loading,
+});
+
 let LoadableNewsPage = Loadable({
   loader: () =>
     delay(500).then(() => import('../containers/newsPageContainer')),
@@ -85,6 +93,11 @@ export default class Main extends React.Component {
             />
 
             <Route exact path="/bookings" component={LoadableBookings} />
+            <Route
+              exact
+              path="/bookings/book-a-ticket"
+              component={LoadableBookTicket}
+            />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
           </Switch>

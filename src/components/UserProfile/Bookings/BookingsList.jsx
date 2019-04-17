@@ -59,7 +59,11 @@ export class BookingsList extends React.Component {
         <CustomNavbar />
         <ScrollUpButton />
         <div className="bookings">
-          <Button className="book-ticket" tag={Link} to="/">
+          <Button
+            className="book-ticket-redirect"
+            tag={Link}
+            to="/bookings/book-a-ticket"
+          >
             Забронировать билет
           </Button>
           <div className="current-bookings">Текущие брони</div>
