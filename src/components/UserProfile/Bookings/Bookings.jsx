@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
 
 import CustomNavbar from '../../Navbar/Navbar';
@@ -29,6 +31,10 @@ export default class Bookings extends React.Component {
         <CustomNavbar />
         <ScrollUpButton />
         <div className="bookings">
+          <Button className="book-ticket" tag={Link} to="/">
+            Забронировать билет
+          </Button>
+          <div className="current-bookings">Текущие брони</div>
           <div className="row">{bookingsComponent}</div>
         </div>
         <Footer />
