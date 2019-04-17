@@ -7,7 +7,7 @@ import ScrollUpButton from 'react-scroll-up-button';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import BookingCard from './BookingCard/BookingCard';
-import './Bookings.css';
+import './BookingsList.css';
 
 export default class Bookings extends React.Component {
   render() {

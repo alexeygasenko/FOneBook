@@ -24,12 +24,14 @@ export class NewsPage extends React.Component {
     return newDate;
   };
 
-  forceUpdateHandler() {
-    this.forceUpdate();
-  }
-
   componentDidMount() {
     this.props.getNewsPage(this.props.match.params.url);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.url !== this.props.match.params.url) {
+      this.props.getNewsPage(nextProps.match.params.url);
+    }
   }
 
   render() {
@@ -101,7 +103,6 @@ export class NewsPage extends React.Component {
                     className="other-news-title"
                     tag={Link}
                     to={`/news/${news.url}`}
-                    onClick={this.forceUpdateHandler}
                   >
                     {news.title}
                   </CardTitle>
@@ -116,7 +117,6 @@ export class NewsPage extends React.Component {
                   className="read-more"
                   tag={Link}
                   to={`/news/${news.url}`}
-                  onClick={this.forceUpdateHandler}
                 >
                   Читать дальше
                 </Button>
