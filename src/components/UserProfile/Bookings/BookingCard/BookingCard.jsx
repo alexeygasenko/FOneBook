@@ -6,7 +6,7 @@ import './BookingCard.css';
 export default class BookingCard extends React.Component {
   render() {
     return (
-      <div className="col-md-4">
+      <div className="col-md-3">
         <Card className="booking-card">
           <CardBody className="booking-card-body">
             <CardTitle className="booking-card-title" tag={Link} to="/">
