@@ -10,8 +10,22 @@ export default class BookingCard extends React.Component {
     return newDate;
   };
 
+  convertDay = day => {
+    if (day) return 'Включено';
+    else return 'Отсуствует';
+  };
+
   render() {
-    const { key, title, date, country } = this.props;
+    const {
+      key,
+      title,
+      date,
+      country,
+      tribune,
+      friday,
+      saturday,
+      sunday,
+    } = this.props;
 
     return (
       <div key={key} className="col-md-3">
@@ -32,6 +46,38 @@ export default class BookingCard extends React.Component {
               </div>
               <div className="booking-subtitle-right booking-inline">
                 {country}
+              </div>
+            </CardSubtitle>
+            <CardSubtitle className="booking-card-date">
+              <div className="booking-subtitle-left booking-inline">
+                Трибуна:
+              </div>
+              <div className="booking-subtitle-right booking-inline">
+                {tribune}
+              </div>
+            </CardSubtitle>
+            <CardSubtitle className="booking-card-date">
+              <div className="booking-subtitle-left booking-inline">
+                Пятница:
+              </div>
+              <div className="booking-subtitle-right booking-inline">
+                {this.convertDay(friday)}
+              </div>
+            </CardSubtitle>
+            <CardSubtitle className="booking-card-date">
+              <div className="booking-subtitle-left booking-inline">
+                Суббота:
+              </div>
+              <div className="booking-subtitle-right booking-inline">
+                {this.convertDay(saturday)}
+              </div>
+            </CardSubtitle>
+            <CardSubtitle className="booking-card-date">
+              <div className="booking-subtitle-left booking-inline">
+                Воскресенье:
+              </div>
+              <div className="booking-subtitle-right booking-inline">
+                {this.convertDay(sunday)}
               </div>
             </CardSubtitle>
           </CardBody>

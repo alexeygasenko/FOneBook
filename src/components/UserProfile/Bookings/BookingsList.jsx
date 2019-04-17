@@ -64,6 +64,10 @@ export class BookingsList extends React.Component {
               title={booking.event.title}
               date={booking.event.date}
               country={booking.event.country}
+              tribune={booking.tribune}
+              friday={booking.dayOne}
+              saturday={booking.dayTwo}
+              sunday={booking.dayThree}
             />
           );
         });
