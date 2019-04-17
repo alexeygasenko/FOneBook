@@ -4,7 +4,7 @@
   transition: 0.2s;
 }
 
-.book-ticket {
+.book-ticket-redirect {
   width: 100%;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -20,7 +20,7 @@
   margin-bottom: 1rem;
 }
 
-.book-ticket:hover {
+.book-ticket-redirect:hover {
   background-color: rgb(220, 42, 42);
 }
 
