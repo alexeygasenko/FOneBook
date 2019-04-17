@@ -17,7 +17,6 @@ export default class BookingCard extends React.Component {
 
   render() {
     const {
-      key,
       title,
       date,
       country,
@@ -28,7 +27,7 @@ export default class BookingCard extends React.Component {
     } = this.props;
 
     return (
-      <div key={key} className="col-md-3">
+      <div className="col-md-3">
         <Card className="booking-card">
           <CardBody className="booking-card-body">
             <CardTitle className="booking-card-title" tag={Link} to="/">
