@@ -20,16 +20,18 @@ import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class NewsPage extends React.Component {
   convertDate = date => {
-    const newDate = moment(date).format('DD.mm.YYYY HH:MM');
+    const newDate = moment(date).format('DD.MM.YYYY HH:mm');
     return newDate;
   };
 
-  forceUpdateHandler() {
-    this.forceUpdate();
-  }
-
   componentDidMount() {
     this.props.getNewsPage(this.props.match.params.url);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.url !== this.props.match.params.url) {
+      this.props.getNewsPage(nextProps.match.params.url);
+    }
   }
 
   render() {
@@ -40,7 +42,18 @@ export class NewsPage extends React.Component {
     let otherNewsComponent;
 
     if (isFetching) {
-      newsComponent = <p className="empty-news">Идёт загрузка...</p>;
+      newsComponent = (
+        <React.Fragment>
+          <div className="empty-news-page">
+            <img
+              className="empty-news-page-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>Идёт загрузка...</p>
+          </div>
+        </React.Fragment>
+      );
     } else if (error || !newsPage) {
       newsComponent = (
         <React.Fragment>
@@ -88,7 +101,7 @@ export class NewsPage extends React.Component {
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
         .map(news => {
           return (
-            <div className="other-news-card">
+            <div key={news.url} className="other-news-card">
               <Card className="news-card">
                 <CardImg
                   className="news-img"
@@ -101,7 +114,6 @@ export class NewsPage extends React.Component {
                     className="other-news-title"
                     tag={Link}
                     to={`/news/${news.url}`}
-                    onClick={this.forceUpdateHandler}
                   >
                     {news.title}
                   </CardTitle>
@@ -116,7 +128,6 @@ export class NewsPage extends React.Component {
                   className="read-more"
                   tag={Link}
                   to={`/news/${news.url}`}
-                  onClick={this.forceUpdateHandler}
                 >
                   Читать дальше
                 </Button>
@@ -155,7 +166,6 @@ export class NewsPage extends React.Component {
               {otherNewsComponent}
             </div>
           </div>
-          <Footer />
         </React.Fragment>
       );
     }
@@ -165,6 +175,7 @@ export class NewsPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {newsComponent}
+        <Footer />
       </React.Fragment>
     );
   }

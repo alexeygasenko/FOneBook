@@ -1,0 +1,80 @@
+.booking-card {
+  transition: 0.2s;
+  background-color: white;
+  border: 1px solid #dedede;
+  margin-bottom: 1rem;
+  border-radius: 0;
+}
+
+.booking-inline {
+  display: inline-block;
+}
+
+.booking-card:hover {
+  transform: scale(1.05);
+}
+
+.booking-card-body {
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.booking-card-title {
+  transition: 0.2s;
+  margin-top: 0.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: black;
+  text-decoration: none;
+}
+
+.booking-card-title:hover {
+  color: rgb(255, 42, 42);
+  text-decoration: none;
+}
+
+.booking-card-date {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0.3rem 0 0 0;
+}
+
+.booking-subtitle-left {
+  text-align: left;
+}
+
+.booking-subtitle-right {
+  float: right;
+  text-align: right;
+}
+
+.open-booking {
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  border: 0;
+  border-radius: 0;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.open-booking:hover {
+  background-color: rgb(220, 42, 42);
+}
+
+@media all and (max-width: 767px) {
+  .booking-card {
+    margin-bottom: 1rem;
+  }
+
+  .booking-card:hover {
+    transform: none;
+  }
+}

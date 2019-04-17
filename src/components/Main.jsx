@@ -42,6 +42,12 @@ let LoadableRegistration = Loadable({
   loading: Loading,
 });
 
+let LoadableBookings = Loadable({
+  loader: () =>
+    delay(500).then(() => import('./UserProfile/Bookings/BookingsList')),
+  loading: Loading,
+});
+
 let LoadableNewsPage = Loadable({
   loader: () =>
     delay(500).then(() => import('../containers/newsPageContainer')),
@@ -77,6 +83,8 @@ export default class Main extends React.Component {
               path="/registration"
               component={LoadableRegistration}
             />
+
+            <Route exact path="/bookings" component={LoadableBookings} />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
           </Switch>
