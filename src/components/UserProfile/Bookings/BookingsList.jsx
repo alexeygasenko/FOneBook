@@ -12,7 +12,9 @@ import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class BookingsList extends React.Component {
   componentDidMount() {
-    this.props.getBookingsList(this.props.auth.user.id);
+    if (this.props.auth.isAuthenticated) {
+      this.props.getBookingsList(this.props.auth.user.id);
+    }
   }
 
   render() {
@@ -23,15 +25,25 @@ export class BookingsList extends React.Component {
 
     if (!isAuthenticated) {
       bookingsComponent = (
-        <div className="empty-bookings">
-          <img
-            className="empty-bookings-img"
-            src={emptyPlaceholder}
-            alt="News desc"
-          />
-          <p>Авторизируйтесь, чтобы забронировать билет!</p>
-        </div>
+        <React.Fragment>
+          <Helmet>
+            <title>Бронирование билетов на Гран-при - FOneBook</title>
+            <meta name="description" content="Helmet application" />
+          </Helmet>
+          <CustomNavbar />
+          <ScrollUpButton />
+          <div className="empty-bookings">
+            <img
+              className="empty-bookings-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>Авторизируйтесь, чтобы забронировать билет!</p>
+          </div>
+          <Footer />
+        </React.Fragment>
       );
+      return bookingsComponent;
     } else if (isFetching) {
       bookingsComponent = (
         <div className="empty-bookings">
@@ -60,7 +72,7 @@ export class BookingsList extends React.Component {
         .map(booking => {
           return (
             <BookingCard
-              key={booking.id}
+              key={booking._id}
               title={booking.event.title}
               date={booking.event.date}
               country={booking.event.country}
