@@ -42,7 +42,18 @@ export class NewsPage extends React.Component {
     let otherNewsComponent;
 
     if (isFetching) {
-      newsComponent = <p className="empty-news">Идёт загрузка...</p>;
+      newsComponent = (
+        <React.Fragment>
+          <div className="empty-news-page">
+            <img
+              className="empty-news-page-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>Идёт загрузка...</p>
+          </div>
+        </React.Fragment>
+      );
     } else if (error || !newsPage) {
       newsComponent = (
         <React.Fragment>
