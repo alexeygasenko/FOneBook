@@ -4,14 +4,42 @@ import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
 
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import BookingCard from './BookingCard/BookingCard';
 import './BookingsList.css';
+import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
-export default class Bookings extends React.Component {
+export class BookingsList extends React.Component {
   render() {
+    const { isAuthenticated } = this.props.auth;
+
     let bookingsComponent;
+
+    if (!isAuthenticated) {
+      bookingsComponent = (
+        <React.Fragment>
+          <Helmet>
+            <title>Бронирование билетов на Гран-при - FOneBook</title>
+            <meta name="description" content="Helmet application" />
+          </Helmet>
+          <CustomNavbar />
+          <ScrollUpButton />
+          <div className="empty-bookings">
+            <img
+              className="empty-bookings-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>Авторизируйтесь, чтобы забронировать билет!</p>
+          </div>
+          <Footer />
+        </React.Fragment>
+      );
+      return bookingsComponent;
+    }
 
     bookingsComponent = (
       <React.Fragment>
@@ -42,3 +70,9 @@ export default class Bookings extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(withRouter(BookingsList));
