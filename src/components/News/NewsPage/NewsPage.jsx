@@ -88,7 +88,7 @@ export class NewsPage extends React.Component {
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
         .map(news => {
           return (
-            <div className="other-news-card">
+            <div key={news.url} className="other-news-card">
               <Card className="news-card">
                 <CardImg
                   className="news-img"
