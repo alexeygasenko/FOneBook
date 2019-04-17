@@ -1,0 +1,23 @@
+.bookings {
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+@media all and (max-width: 767px) {
+  .bookings {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .bookings {
+    width: 95%;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .bookings {
+    width: 60%;
+  }
+}
