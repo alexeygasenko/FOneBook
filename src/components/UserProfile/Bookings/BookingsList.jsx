@@ -4,8 +4,6 @@ import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import BookingCard from './BookingCard/BookingCard';
@@ -13,6 +11,10 @@ import './BookingsList.css';
 import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class BookingsList extends React.Component {
+  componentDidMount() {
+    this.props.getBookingsList(this.props.auth.user.id);
+  }
+
   render() {
     const { isAuthenticated } = this.props.auth;
 
@@ -74,9 +76,3 @@ export class BookingsList extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps)(withRouter(BookingsList));
