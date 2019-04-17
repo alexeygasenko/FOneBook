@@ -195,7 +195,9 @@ class CustomNavbar extends Component {
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>Профиль</DropdownItem>
-          <DropdownItem>Мои брони</DropdownItem>
+          <DropdownItem tag={Link} to="/bookings">
+            Мои брони
+          </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.onLogout.bind(this)}>Выйти</DropdownItem>
         </DropdownMenu>

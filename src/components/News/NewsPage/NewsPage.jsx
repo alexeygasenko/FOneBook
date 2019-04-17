@@ -20,7 +20,7 @@ import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class NewsPage extends React.Component {
   convertDate = date => {
-    const newDate = moment(date).format('DD.mm.YYYY HH:MM');
+    const newDate = moment(date).format('DD.MM.YYYY HH:mm');
     return newDate;
   };
 
@@ -155,7 +155,6 @@ export class NewsPage extends React.Component {
               {otherNewsComponent}
             </div>
           </div>
-          <Footer />
         </React.Fragment>
       );
     }
@@ -165,6 +164,7 @@ export class NewsPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {newsComponent}
+        <Footer />
       </React.Fragment>
     );
   }
