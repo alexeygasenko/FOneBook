@@ -50,9 +50,7 @@ let LoadableBookings = Loadable({
 
 let LoadableBookingInfo = Loadable({
   loader: () =>
-    delay(500).then(() =>
-      import('../components/UserProfile/Bookings/BookingInfo/BookingInfo')
-    ),
+    delay(500).then(() => import('../containers/bookingInfoContainer')),
   loading: Loading,
 });
 

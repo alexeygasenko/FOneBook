@@ -4,6 +4,7 @@ import authReducer from './authReducer';
 import { newsFeedReducer } from './newsFeedReducer';
 import { newsPageReducer } from './newsPageReducer';
 import { bookingsListReducer } from './bookingsListReducer';
+import { bookingInfoReducer } from './bookingInfoReducer';
 
 export const rootReducer = combineReducers({
   errors: errorReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   newsFeedReducer: newsFeedReducer,
   newsPageReducer: newsPageReducer,
   bookingsListReducer: bookingsListReducer,
+  bookingInfoReducer: bookingInfoReducer,
 });
