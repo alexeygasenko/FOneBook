@@ -9,7 +9,7 @@
 .book-ticket-title {
   text-align: center;
   transition: 0.2s;
-  margin: 0.2rem 0rem 0rem 1rem;
+  margin: 0.2rem 0rem 0.2rem 0rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-style: italic;

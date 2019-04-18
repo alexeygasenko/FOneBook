@@ -1,0 +1,91 @@
+.booking-info {
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+.booking-inline {
+  display: inline-block;
+}
+
+.booking-left {
+  text-align: left;
+}
+
+.booking-right {
+  float: right;
+  text-align: right;
+}
+
+.track-map {
+  text-align: center;
+}
+
+.booking-info-title {
+  text-align: center;
+  transition: 0.2s;
+  padding: 0.5rem 0 0.5rem 0;
+  margin-bottom: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: black;
+  background-color: white;
+  border: 1px solid #dedede;
+}
+
+.booking-info-block-title {
+  text-align: center;
+  transition: 0.2s;
+  padding: 0.5rem 0 0.5rem 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.booking-info-block {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid #dedede;
+}
+
+.booking-general-info {
+  width: 30%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1rem;
+  padding-bottom: 0.3rem;
+}
+
+.booking-total {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+@media all and (max-width: 767px) {
+  .booking-info {
+    width: 90%;
+  }
+
+  .booking-general-info {
+    width: 95%;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .booking-info {
+    width: 95%;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .booking-info {
+    width: 60%;
+  }
+}
