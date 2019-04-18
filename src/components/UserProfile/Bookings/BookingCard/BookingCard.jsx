@@ -85,7 +85,11 @@ export default class BookingCard extends React.Component {
               </div>
             </CardSubtitle>
           </CardBody>
-          <Button className="open-booking" tag={Link} to={`/bookings/${id}`}>
+          <Button
+            className="open-booking"
+            tag={Link}
+            to={`/bookings/booking-info/${id}`}
+          >
             Подробнее
           </Button>
         </Card>
