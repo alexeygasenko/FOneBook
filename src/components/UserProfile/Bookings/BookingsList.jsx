@@ -73,6 +73,7 @@ export class BookingsList extends React.Component {
           return (
             <BookingCard
               key={booking._id}
+              id={booking._id}
               title={booking.event.title}
               date={booking.event.date}
               country={booking.event.country}

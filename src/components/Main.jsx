@@ -48,6 +48,14 @@ let LoadableBookings = Loadable({
   loading: Loading,
 });
 
+let LoadableBookingInfo = Loadable({
+  loader: () =>
+    delay(500).then(() =>
+      import('../components/UserProfile/Bookings/BookingInfo/BookingInfo')
+    ),
+  loading: Loading,
+});
+
 let LoadableBookTicket = Loadable({
   loader: () =>
     delay(500).then(() =>
@@ -100,6 +108,7 @@ export default class Main extends React.Component {
             />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
+            <Route path="/bookings/:id" component={LoadableBookingInfo} />
           </Switch>
         </Router>
       </Provider>
