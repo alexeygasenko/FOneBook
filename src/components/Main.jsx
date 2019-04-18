@@ -106,7 +106,10 @@ export default class Main extends React.Component {
             />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
-            <Route path="/bookings/:id" component={LoadableBookingInfo} />
+            <Route
+              path="/bookings/booking-info/:id"
+              component={LoadableBookingInfo}
+            />
           </Switch>
         </Router>
       </Provider>
