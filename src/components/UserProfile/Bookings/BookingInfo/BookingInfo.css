@@ -64,8 +64,22 @@
 }
 
 .booking-total {
+  margin-top: 0.5rem;
   font-weight: 700;
   font-size: 1.3rem;
+}
+
+.empty-booking-info {
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.empty-booking-info-img {
+  width: 100px;
+  height: 50px;
 }
 
 @media all and (max-width: 767px) {
