@@ -26,7 +26,7 @@ export function getBookingInfo(bookingId) {
   return dispatch => {
     dispatch(bookingsInfoRequest());
 
-    fetch(`http://localhost:8000/api/bookings/bookinginfo/${bookingId}`, {
+    fetch(`http://localhost:8000/api/bookings/booking-info/${bookingId}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

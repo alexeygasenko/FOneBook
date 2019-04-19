@@ -22,6 +22,27 @@ export class BookingInfo extends React.Component {
     else return 'Отсуствует';
   };
 
+  priceCalculator = bookingInfo => {
+    let price = 0;
+    let tribunePricing;
+
+    for (let i = 0; i < bookingInfo.event.tribunes.length; ++i) {
+      if (bookingInfo.event.tribunes[i].name === bookingInfo.tribune) {
+        tribunePricing = {
+          dayOne: bookingInfo.event.tribunes[i].dayOne.price,
+          dayTwo: bookingInfo.event.tribunes[i].dayTwo.price,
+          dayThree: bookingInfo.event.tribunes[i].dayThree.price,
+        };
+      }
+    }
+
+    if (bookingInfo.dayOne) price += tribunePricing.dayOne;
+    if (bookingInfo.dayTwo) price += tribunePricing.dayTwo;
+    if (bookingInfo.dayThree) price += tribunePricing.dayThree;
+
+    return price;
+  };
+
   componentDidMount() {
     this.props.getBookingInfo(this.props.match.params.id);
   }
@@ -130,7 +151,7 @@ export class BookingInfo extends React.Component {
                 Итого:
               </div>
               <div className="booking-right booking-total booking-inline">
-                520 EUR
+                {this.priceCalculator(bookingInfo)} RUB
               </div>
             </div>
           </div>
