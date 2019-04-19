@@ -4,7 +4,7 @@
   transition: 0.2s;
 }
 
-.book-ticket {
+.book-ticket-redirect {
   width: 100%;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -20,7 +20,7 @@
   margin-bottom: 1rem;
 }
 
-.book-ticket:hover {
+.book-ticket-redirect:hover {
   background-color: rgb(220, 42, 42);
 }
 
@@ -33,9 +33,22 @@
   font-size: 1.5rem;
   color: black;
   background-color: #ffffff;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 0rem 0.5rem 0rem;
   border: 1px solid #dedede;
   margin-bottom: 1rem;
+}
+
+.empty-bookings {
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.empty-bookings-img {
+  width: 100px;
+  height: 50px;
 }
 
 @media all and (max-width: 767px) {

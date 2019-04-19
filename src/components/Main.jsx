@@ -44,7 +44,21 @@ let LoadableRegistration = Loadable({
 
 let LoadableBookings = Loadable({
   loader: () =>
-    delay(500).then(() => import('./UserProfile/Bookings/BookingsList')),
+    delay(500).then(() => import('../containers/bookingsListContainer')),
+  loading: Loading,
+});
+
+let LoadableBookingInfo = Loadable({
+  loader: () =>
+    delay(500).then(() => import('../containers/bookingInfoContainer')),
+  loading: Loading,
+});
+
+let LoadableBookTicket = Loadable({
+  loader: () =>
+    delay(500).then(() =>
+      import('./UserProfile/Bookings/BookTicket/BookTicket')
+    ),
   loading: Loading,
 });
 
@@ -85,8 +99,17 @@ export default class Main extends React.Component {
             />
 
             <Route exact path="/bookings" component={LoadableBookings} />
+            <Route
+              exact
+              path="/bookings/book-a-ticket"
+              component={LoadableBookTicket}
+            />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
+            <Route
+              path="/bookings/booking-info/:id"
+              component={LoadableBookingInfo}
+            />
           </Switch>
         </Router>
       </Provider>
