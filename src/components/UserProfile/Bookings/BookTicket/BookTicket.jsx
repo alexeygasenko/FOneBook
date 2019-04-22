@@ -6,17 +6,72 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
 import './BookTicket.css';
+import emptyPlaceholder from '../../../../data/img/empty-placeholder.png';
 
-export default class BookTicket extends React.Component {
+export class BookTicket extends React.Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.getEventList();
+    }
+  }
+
   render() {
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>Бронирование билетов на Гран-при - FOneBook</title>
-          <meta name="description" content="Helmet application" />
-        </Helmet>
-        <CustomNavbar />
-        <ScrollUpButton />
+    const { isAuthenticated } = this.props.auth;
+    const { events, isFetching, error } = this.props;
+
+    let bookTicketComponent;
+
+    if (!isAuthenticated) {
+      bookTicketComponent = (
+        <React.Fragment>
+          <Helmet>
+            <title>Бронирование билетов на Гран-при - FOneBook</title>
+            <meta name="description" content="Helmet application" />
+          </Helmet>
+          <CustomNavbar />
+          <ScrollUpButton />
+          <div className="empty-bookings">
+            <img
+              className="empty-bookings-img"
+              src={emptyPlaceholder}
+              alt="News desc"
+            />
+            <p>Авторизируйтесь, чтобы забронировать билет!</p>
+          </div>
+          <Footer />
+        </React.Fragment>
+      );
+      return bookTicketComponent;
+    } else if (isFetching) {
+      bookTicketComponent = (
+        <div className="empty-bookings">
+          <img
+            className="empty-bookings-img"
+            src={emptyPlaceholder}
+            alt="News desc"
+          />
+          <p>Идёт загрузка...</p>
+        </div>
+      );
+    } else if (error || !events.length) {
+      bookTicketComponent = (
+        <div className="empty-bookings">
+          <img
+            className="empty-bookings-img"
+            src={emptyPlaceholder}
+            alt="News desc"
+          />
+          <p>{error}</p>
+        </div>
+      );
+    } else {
+      let eventsList = events
+        .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+        .map(event => {
+          return <option>{event.title}</option>;
+        });
+
+      bookTicketComponent = (
         <div className="book-ticket">
           <div className="book-ticket-title">Бронирование билета</div>
           <Form>
@@ -30,11 +85,7 @@ export default class BookTicket extends React.Component {
                 id="selectTrack"
                 className="select-track"
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                {eventsList}
               </Input>
             </FormGroup>
             <FormGroup>
@@ -57,6 +108,18 @@ export default class BookTicket extends React.Component {
             <Button className="make-a-book">Забронировать</Button>
           </Form>
         </div>
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <Helmet>
+          <title>Бронирование билетов на Гран-при - FOneBook</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
+        <CustomNavbar />
+        <ScrollUpButton />
+        {bookTicketComponent}
         <Footer />
       </React.Fragment>
     );

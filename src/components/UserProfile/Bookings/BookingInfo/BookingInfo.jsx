@@ -151,7 +151,7 @@ export class BookingInfo extends React.Component {
                 Итого:
               </div>
               <div className="booking-right booking-total booking-inline">
-                {this.priceCalculator(bookingInfo)} RUB
+                {this.priceCalculator(bookingInfo)} EUR
               </div>
             </div>
           </div>

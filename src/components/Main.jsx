@@ -56,9 +56,7 @@ let LoadableBookingInfo = Loadable({
 
 let LoadableBookTicket = Loadable({
   loader: () =>
-    delay(500).then(() =>
-      import('./UserProfile/Bookings/BookTicket/BookTicket')
-    ),
+    delay(500).then(() => import('../containers/bookTicketContainer')),
   loading: Loading,
 });
 
