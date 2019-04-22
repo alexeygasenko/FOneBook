@@ -9,15 +9,40 @@ import './BookTicket.css';
 import emptyPlaceholder from '../../../../data/img/empty-placeholder.png';
 
 export class BookTicket extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      eventTitle: 'FORMULA 1 GRAN PREMIO HEINEKEN D’ITALIA 2019',
+      tribuneName: '',
+      dayOne: false,
+      dayTwo: false,
+      dayThree: false,
+    };
+  }
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       this.props.getEventList();
     }
   }
 
+  onTitleChangeHandler = e => {
+    this.setState({
+      eventTitle: e.currentTarget.value,
+    });
+  };
+
+  onTribuneChangeHandler = e => {
+    this.setState({
+      tribuneName: e.currentTarget.value,
+    });
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth;
     const { events, isFetching, error } = this.props;
+    const { eventTitle, tribuneName } = this.state;
 
     let bookTicketComponent;
 
@@ -68,8 +93,14 @@ export class BookTicket extends React.Component {
       let eventsList = events
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
         .map(event => {
-          return <option>{event.title}</option>;
+          return <option key={event._id}>{event.title}</option>;
         });
+
+      let currentEvent = events.find(event => event.title === eventTitle);
+
+      let tribunesList = currentEvent.tribunes.map(tribune => {
+        return <option key={tribune.name}>{tribune.name}</option>;
+      });
 
       bookTicketComponent = (
         <div className="book-ticket">
@@ -84,6 +115,8 @@ export class BookTicket extends React.Component {
                 name="selectTrack"
                 id="selectTrack"
                 className="select-track"
+                onChange={this.onTitleChangeHandler}
+                value={eventTitle}
               >
                 {eventsList}
               </Input>
@@ -97,12 +130,10 @@ export class BookTicket extends React.Component {
                 name="selectTribune"
                 id="selectTribune"
                 className="select-track"
+                onChange={this.onTribuneChangeHandler}
+                value={tribuneName}
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                {tribunesList}
               </Input>
             </FormGroup>
             <Button className="make-a-book">Забронировать</Button>
