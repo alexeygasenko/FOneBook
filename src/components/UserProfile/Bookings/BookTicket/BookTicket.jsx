@@ -50,12 +50,13 @@ export class BookTicket extends React.Component {
   };
 
   onTribuneChangeHandler = e => {
-    this.setState(state => ({
-      ...state,
-      tribune: state.event.tribunes.find(
+    console.log(this.state.tribune.name);
+    this.setState({
+      tribune: this.state.event.tribunes.find(
         tribune => tribune.name === e.currentTarget.value
       ),
-    }));
+    });
+    console.log(this.state.tribune.name);
   };
 
   render() {
@@ -117,6 +118,8 @@ export class BookTicket extends React.Component {
         return <option key={tribune.name}>{tribune.name}</option>;
       });
 
+      console.log('asd ' + tribune.name);
+
       bookTicketComponent = (
         <div className="book-ticket">
           <div className="book-ticket-title">Бронирование билета</div>
@@ -151,7 +154,7 @@ export class BookTicket extends React.Component {
                 {tribunesList}
               </Input>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTribune">
                 Пятница:
               </Label>
@@ -161,6 +164,11 @@ export class BookTicket extends React.Component {
                 size="3"
                 borderThickness="1"
               />
+              <Label className="book-tribune-seats" for="selectTribune">
+                Мест: {tribune.dayOne.seats}
+              </Label>
+            </FormGroup>
+            <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTribune">
                 Суббота:
               </Label>
@@ -170,6 +178,11 @@ export class BookTicket extends React.Component {
                 size="3"
                 borderThickness="1"
               />
+              <Label className="book-tribune-seats" for="selectTribune">
+                Мест: {tribune.dayTwo.seats}
+              </Label>
+            </FormGroup>
+            <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTribune">
                 Воскресенье:
               </Label>
@@ -179,6 +192,9 @@ export class BookTicket extends React.Component {
                 size="3"
                 borderThickness="1"
               />
+              <Label className="book-tribune-seats" for="selectTribune">
+                Мест: {tribune.dayThree.seats}
+              </Label>
             </FormGroup>
             <Button className="make-a-book">Забронировать</Button>
           </Form>
