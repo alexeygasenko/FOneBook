@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import ScrollUpButton from 'react-scroll-up-button';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import Checkbox from 'react-simple-checkbox';
 
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
@@ -13,8 +14,8 @@ export class BookTicket extends React.Component {
     super(props);
 
     this.state = {
-      eventTitle: 'FORMULA 1 GRAN PREMIO HEINEKEN D’ITALIA 2019',
-      tribuneName: '',
+      event: null,
+      tribune: null,
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -27,22 +28,40 @@ export class BookTicket extends React.Component {
     }
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.events.length && state.event === null && state.tribune === null) {
+      return {
+        ...state,
+        event: props.events[0],
+        tribune: props.events[0].tribunes[0],
+      };
+    }
+    return null;
+  }
+
   onTitleChangeHandler = e => {
+    const event = this.props.events.find(
+      event => event.title === e.currentTarget.value
+    );
     this.setState({
-      eventTitle: e.currentTarget.value,
+      event: event,
+      tribune: event.tribunes[0],
     });
   };
 
   onTribuneChangeHandler = e => {
-    this.setState({
-      tribuneName: e.currentTarget.value,
-    });
+    this.setState(state => ({
+      ...state,
+      tribune: state.event.tribunes.find(
+        tribune => tribune.name === e.currentTarget.value
+      ),
+    }));
   };
 
   render() {
     const { isAuthenticated } = this.props.auth;
     const { events, isFetching, error } = this.props;
-    const { eventTitle, tribuneName } = this.state;
+    const { event, tribune } = this.state;
 
     let bookTicketComponent;
 
@@ -90,15 +109,11 @@ export class BookTicket extends React.Component {
         </div>
       );
     } else {
-      let eventsList = events
-        .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-        .map(event => {
-          return <option key={event._id}>{event.title}</option>;
-        });
+      let eventsList = events.map(event => {
+        return <option key={event._id}>{event.title}</option>;
+      });
 
-      let currentEvent = events.find(event => event.title === eventTitle);
-
-      let tribunesList = currentEvent.tribunes.map(tribune => {
+      let tribunesList = event.tribunes.map(tribune => {
         return <option key={tribune.name}>{tribune.name}</option>;
       });
 
@@ -116,7 +131,7 @@ export class BookTicket extends React.Component {
                 id="selectTrack"
                 className="select-track"
                 onChange={this.onTitleChangeHandler}
-                value={eventTitle}
+                value={event.title}
               >
                 {eventsList}
               </Input>
@@ -131,10 +146,39 @@ export class BookTicket extends React.Component {
                 id="selectTribune"
                 className="select-track"
                 onChange={this.onTribuneChangeHandler}
-                value={tribuneName}
+                value={tribune.name}
               >
                 {tribunesList}
               </Input>
+            </FormGroup>
+            <FormGroup>
+              <Label className="book-ticket-track" for="selectTribune">
+                Пятница:
+              </Label>
+              <Checkbox
+                className="book-checkbox"
+                color="#F6231D"
+                size="3"
+                borderThickness="1"
+              />
+              <Label className="book-ticket-track" for="selectTribune">
+                Суббота:
+              </Label>
+              <Checkbox
+                className="book-checkbox"
+                color="#F6231D"
+                size="3"
+                borderThickness="1"
+              />
+              <Label className="book-ticket-track" for="selectTribune">
+                Воскресенье:
+              </Label>
+              <Checkbox
+                className="book-checkbox"
+                color="#F6231D"
+                size="3"
+                borderThickness="1"
+              />
             </FormGroup>
             <Button className="make-a-book">Забронировать</Button>
           </Form>

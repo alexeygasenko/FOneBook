@@ -28,8 +28,13 @@
 }
 
 .select-track {
-  margin-left: 2rem;
+  margin: 0 auto;
   max-width: 40%;
+}
+
+.book-checkbox {
+  margin-left: 2rem;
+  top: 0;
 }
 
 .make-a-book {
@@ -67,6 +72,11 @@
 @media all and (max-width: 767px) {
   .book-ticket {
     width: 90%;
+  }
+
+  .select-track {
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
 
