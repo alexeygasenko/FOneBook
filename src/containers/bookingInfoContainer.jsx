@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { BookingInfo } from '../components/UserProfile/Bookings/BookingInfo/BookingInfo';
 import { getBookingInfo } from '../actions/bookingInfoActions';
+import { deleteBooking } from '../actions/deleteBookingActions';
 
 const mapStateToProps = store => {
   return {
@@ -14,6 +15,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     getBookingInfo: bookingId => dispatch(getBookingInfo(bookingId)),
+    deleteBooking: bookingId => dispatch(deleteBooking(bookingId)),
   };
 };
 

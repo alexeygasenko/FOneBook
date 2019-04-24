@@ -26,7 +26,7 @@ export function bookTicket(eventId, userId, tribune, dayOne, dayTwo, dayThree) {
   return dispatch => {
     dispatch(addBookingRequest());
 
-    fetch(`http://localhost:8000/api/bookings/make-a-book/`, {
+    fetch('http://localhost:8000/api/bookings/make-a-book/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

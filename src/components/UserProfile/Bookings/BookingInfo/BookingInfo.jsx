@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import ModalImage from 'react-modal-image';
 import ScrollUpButton from 'react-scroll-up-button';
 import moment from 'moment';
+import { Button } from 'reactstrap';
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
 import './BookingInfo.css';
@@ -41,6 +42,12 @@ export class BookingInfo extends React.Component {
     if (bookingInfo.dayThree) price += tribunePricing.dayThree;
 
     return price;
+  };
+
+  deleteBooking = () => {
+    this.props.deleteBooking(this.props.bookingInfo._id);
+    this.props.history.push('/bookings');
+    /* alert(`Заявка ${this.props.bookingInfo._id} успешно удалена`); */
   };
 
   componentDidMount() {
@@ -154,6 +161,9 @@ export class BookingInfo extends React.Component {
                 {this.priceCalculator(bookingInfo)} EUR
               </div>
             </div>
+            <Button className="delete-booking" onClick={this.deleteBooking}>
+              Удалить бронь
+            </Button>
           </div>
         </div>
       );
