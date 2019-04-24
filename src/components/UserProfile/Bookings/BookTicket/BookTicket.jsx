@@ -208,6 +208,9 @@ export class BookTicket extends React.Component {
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayOne.seats}
                 </Label>
+                <Label className="book-tribune-seats">
+                  Стоимость: {tribune.dayOne.price} EUR
+                </Label>
               </FormGroup>
             </FormGroup>
             <hr />
@@ -223,6 +226,9 @@ export class BookTicket extends React.Component {
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayTwo.seats}
                 </Label>
+                <Label className="book-tribune-seats">
+                  Стоимость: {tribune.dayTwo.price} EUR
+                </Label>
               </FormGroup>
             </FormGroup>
             <hr />
@@ -237,6 +243,9 @@ export class BookTicket extends React.Component {
               <FormGroup>
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayThree.seats}
+                </Label>
+                <Label className="book-tribune-seats">
+                  Стоимость: {tribune.dayThree.price} EUR
                 </Label>
               </FormGroup>
             </FormGroup>
