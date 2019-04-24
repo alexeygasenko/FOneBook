@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import ScrollUpButton from 'react-scroll-up-button';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import Checkbox from 'react-simple-checkbox';
 
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
@@ -50,13 +49,57 @@ export class BookTicket extends React.Component {
   };
 
   onTribuneChangeHandler = e => {
-    console.log(this.state.tribune.name);
     this.setState({
       tribune: this.state.event.tribunes.find(
         tribune => tribune.name === e.currentTarget.value
       ),
     });
-    console.log(this.state.tribune.name);
+  };
+
+  onCheckboxOneChangeHandler = e => {
+    this.setState({
+      dayOne: !this.state.dayOne,
+    });
+  };
+
+  onCheckboxTwoChangeHandler = e => {
+    this.setState({
+      dayTwo: !this.state.dayTwo,
+    });
+  };
+
+  onCheckboxThreeChangeHandler = e => {
+    this.setState({
+      dayThree: !this.state.dayThree,
+    });
+  };
+
+  submitBooking = () => {
+    const eventId = this.state.event._id;
+    const userId = this.props.auth.user.id;
+    this.props.bookTicket(
+      eventId,
+      userId,
+      this.state.tribune.name,
+      this.state.dayOne,
+      this.state.dayTwo,
+      this.state.dayThree
+    );
+    this.props.history.push('/bookings');
+  };
+
+  validate = () => {
+    if (!this.state.dayOne && !this.state.dayTwo && !this.state.dayThree) {
+      return false;
+    } else if (this.state.tribune.dayOne.seats === 0 && this.state.dayOne) {
+      return false;
+    } else if (this.state.tribune.dayTwo.seats === 0 && this.state.dayTwo) {
+      return false;
+    } else if (this.state.tribune.dayThree.seats === 0 && this.state.dayThree) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   render() {
@@ -118,8 +161,6 @@ export class BookTicket extends React.Component {
         return <option key={tribune.name}>{tribune.name}</option>;
       });
 
-      console.log('asd ' + tribune.name);
-
       bookTicketComponent = (
         <div className="book-ticket">
           <div className="book-ticket-title">Бронирование билета</div>
@@ -154,49 +195,58 @@ export class BookTicket extends React.Component {
                 {tribunesList}
               </Input>
             </FormGroup>
+            <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track" for="selectTribune">
-                Пятница:
-              </Label>
-              <Checkbox
+              <Label className="book-ticket-track">Пятница:</Label>
+              <Input
                 className="book-checkbox"
-                color="#F6231D"
-                size="3"
-                borderThickness="1"
+                type="checkbox"
+                name="dayOne"
+                onChange={this.onCheckboxOneChangeHandler}
               />
-              <Label className="book-tribune-seats" for="selectTribune">
-                Мест: {tribune.dayOne.seats}
-              </Label>
+              <FormGroup>
+                <Label className="book-tribune-seats">
+                  Мест: {tribune.dayOne.seats}
+                </Label>
+              </FormGroup>
             </FormGroup>
+            <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track" for="selectTribune">
-                Суббота:
-              </Label>
-              <Checkbox
+              <Label className="book-ticket-track">Суббота:</Label>
+              <Input
                 className="book-checkbox"
-                color="#F6231D"
-                size="3"
-                borderThickness="1"
+                type="checkbox"
+                name="dayTwo"
+                onChange={this.onCheckboxTwoChangeHandler}
               />
-              <Label className="book-tribune-seats" for="selectTribune">
-                Мест: {tribune.dayTwo.seats}
-              </Label>
+              <FormGroup>
+                <Label className="book-tribune-seats">
+                  Мест: {tribune.dayTwo.seats}
+                </Label>
+              </FormGroup>
             </FormGroup>
+            <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track" for="selectTribune">
-                Воскресенье:
-              </Label>
-              <Checkbox
+              <Label className="book-ticket-track">Воскресенье:</Label>
+              <Input
                 className="book-checkbox"
-                color="#F6231D"
-                size="3"
-                borderThickness="1"
+                type="checkbox"
+                name="dayThree"
+                onChange={this.onCheckboxThreeChangeHandler}
               />
-              <Label className="book-tribune-seats" for="selectTribune">
-                Мест: {tribune.dayThree.seats}
-              </Label>
+              <FormGroup>
+                <Label className="book-tribune-seats">
+                  Мест: {tribune.dayThree.seats}
+                </Label>
+              </FormGroup>
             </FormGroup>
-            <Button className="make-a-book">Забронировать</Button>
+            <Button
+              className="make-a-book"
+              disabled={!this.validate()}
+              onClick={this.submitBooking}
+            >
+              Забронировать
+            </Button>
           </Form>
         </div>
       );
