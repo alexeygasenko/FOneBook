@@ -9,12 +9,17 @@
 .book-ticket-title {
   text-align: center;
   transition: 0.2s;
-  margin: 0.2rem 0rem 0.2rem 0rem;
+  margin: 0.2rem 0rem 1rem 0rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 1.5rem;
   color: black;
+}
+
+.book-ticket-seats{
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .book-ticket-track {
@@ -27,9 +32,24 @@
   color: black;
 }
 
+.book-tribune-seats{
+  transition: 0.2s;
+  margin: 0.2rem 0rem 0rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: black;
+}
+
 .select-track {
-  margin-left: 2rem;
-  max-width: 30%;
+  margin: 0 auto;
+  max-width: 40%;
+}
+
+.book-checkbox {
+  margin-top: 0.9rem;
+  margin-left: 1rem;
 }
 
 .make-a-book {
@@ -50,9 +70,28 @@
   background-color: rgb(220, 42, 42);
 }
 
+.empty-bookings {
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.empty-bookings-img {
+  width: 100px;
+  height: 50px;
+}
+
+
 @media all and (max-width: 767px) {
   .book-ticket {
     width: 90%;
+  }
+
+  .select-track {
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
 
