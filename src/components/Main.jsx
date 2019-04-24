@@ -11,58 +11,56 @@ import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
 let LoadableNews = Loadable({
-  loader: () =>
-    delay(1500).then(() => import('../containers/newsFeedContainer')),
+  loader: () => delay(0).then(() => import('../containers/newsFeedContainer')),
   loading: Loading,
 });
 
 let LoadableHistory = Loadable({
-  loader: () => delay(500).then(() => import('./History/History')),
+  loader: () => delay(0).then(() => import('./History/History')),
   loading: Loading,
 });
 
 let LoadableAuto = Loadable({
-  loader: () => delay(500).then(() => import('./Auto/Auto')),
+  loader: () => delay(0).then(() => import('./Auto/Auto')),
   loading: Loading,
 });
 
 let LoadableStats = Loadable({
-  loader: () => delay(500).then(() => import('./Statistics/Statistics')),
+  loader: () => delay(0).then(() => import('./Statistics/Statistics')),
   loading: Loading,
 });
 
 let LoadableLogin = Loadable({
-  loader: () => delay(500).then(() => import('./Authorization/Login/Login')),
+  loader: () => delay(0).then(() => import('./Authorization/Login/Login')),
   loading: Loading,
 });
 
 let LoadableRegistration = Loadable({
   loader: () =>
-    delay(500).then(() => import('./Authorization/Registration/Registration')),
+    delay(0).then(() => import('./Authorization/Registration/Registration')),
   loading: Loading,
 });
 
 let LoadableBookings = Loadable({
   loader: () =>
-    delay(500).then(() => import('../containers/bookingsListContainer')),
+    delay(0).then(() => import('../containers/bookingsListContainer')),
   loading: Loading,
 });
 
 let LoadableBookingInfo = Loadable({
   loader: () =>
-    delay(500).then(() => import('../containers/bookingInfoContainer')),
+    delay(0).then(() => import('../containers/bookingInfoContainer')),
   loading: Loading,
 });
 
 let LoadableBookTicket = Loadable({
   loader: () =>
-    delay(500).then(() => import('../containers/bookTicketContainer')),
+    delay(0).then(() => import('../containers/bookTicketContainer')),
   loading: Loading,
 });
 
 let LoadableNewsPage = Loadable({
-  loader: () =>
-    delay(500).then(() => import('../containers/newsPageContainer')),
+  loader: () => delay(0).then(() => import('../containers/newsPageContainer')),
   loading: Loading,
 });
 
