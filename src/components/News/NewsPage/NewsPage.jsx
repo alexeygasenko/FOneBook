@@ -134,7 +134,8 @@ export class NewsPage extends React.Component {
               </Card>
             </div>
           );
-        });
+        })
+        .slice(0, 3);
 
       newsComponent = (
         <React.Fragment>
