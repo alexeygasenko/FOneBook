@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import ScrollUpButton from 'react-scroll-up-button';
 import ModalImage from 'react-modal-image';
+import moment from 'moment';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import CustomNavbar from '../../../Navbar/Navbar';
@@ -106,6 +107,12 @@ export class BookTicket extends React.Component {
     }
   };
 
+  convertDate = date => {
+    moment.locale('ru');
+    const newDate = moment(date).format('LL');
+    return newDate;
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth;
     const { events, isFetching, error } = this.props;
@@ -183,6 +190,16 @@ export class BookTicket extends React.Component {
               >
                 {eventsList}
               </Input>
+            </FormGroup>
+            <FormGroup className="book-ticket-seats">
+              <Label className="book-ticket-track" for="selectTrack">
+                Дата мероприятия:
+              </Label>
+              <FormGroup>
+                <Label className="book-ticket-track" for="selectTrack">
+                  {this.convertDate(event.date)}
+                </Label>
+              </FormGroup>
             </FormGroup>
             <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTrack">
