@@ -1,12 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import ScrollUpButton from 'react-scroll-up-button';
+import ModalImage from 'react-modal-image';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
 import './BookTicket.css';
 import emptyPlaceholder from '../../../../data/img/empty-placeholder.png';
+
+import trackLarge from '../../../../data/img/trackLarge.jpg';
+import trackSmall from '../../../../data/img/trackSmall.jpg';
 
 export class BookTicket extends React.Component {
   constructor(props) {
@@ -165,7 +169,7 @@ export class BookTicket extends React.Component {
         <div className="book-ticket">
           <div className="book-ticket-title">Бронирование билета</div>
           <Form>
-            <FormGroup>
+            <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTrack">
                 Выберите трассу:
               </Label>
@@ -180,7 +184,18 @@ export class BookTicket extends React.Component {
                 {eventsList}
               </Input>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className="book-ticket-seats">
+              <Label className="book-ticket-track" for="selectTrack">
+                Карта трассы:
+              </Label>
+              <ModalImage
+                small={trackSmall}
+                large={trackLarge}
+                hideZoom
+                hideDownload
+              />
+            </FormGroup>
+            <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTribune">
                 Выберите трибуну:
               </Label>
@@ -208,6 +223,8 @@ export class BookTicket extends React.Component {
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayOne.seats}
                 </Label>
+              </FormGroup>
+              <FormGroup>
                 <Label className="book-tribune-seats">
                   Стоимость: {tribune.dayOne.price} EUR
                 </Label>
@@ -226,6 +243,8 @@ export class BookTicket extends React.Component {
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayTwo.seats}
                 </Label>
+              </FormGroup>
+              <FormGroup>
                 <Label className="book-tribune-seats">
                   Стоимость: {tribune.dayTwo.price} EUR
                 </Label>
@@ -244,6 +263,8 @@ export class BookTicket extends React.Component {
                 <Label className="book-tribune-seats">
                   Мест: {tribune.dayThree.seats}
                 </Label>
+              </FormGroup>
+              <FormGroup>
                 <Label className="book-tribune-seats">
                   Стоимость: {tribune.dayThree.price} EUR
                 </Label>
