@@ -34,7 +34,7 @@ export default class BookingCard extends React.Component {
             <CardTitle
               className="booking-card-title"
               tag={Link}
-              to={`/bookings/${id}`}
+              to={`/bookings/booking-info/${id}`}
             >
               {title}
             </CardTitle>
