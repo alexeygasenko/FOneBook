@@ -3,7 +3,17 @@ import { Helmet } from 'react-helmet';
 import ScrollUpButton from 'react-scroll-up-button';
 import ModalImage from 'react-modal-image';
 import moment from 'moment';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+} from 'reactstrap';
 
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
@@ -23,8 +33,15 @@ export class BookTicket extends React.Component {
       dayOne: false,
       dayTwo: false,
       dayThree: false,
+      modal: false,
     };
   }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  };
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -306,10 +323,31 @@ export class BookTicket extends React.Component {
             <Button
               className="make-a-book"
               disabled={!this.validate()}
-              onClick={this.submitBooking}
+              onClick={this.toggle}
             >
               Забронировать
             </Button>
+            <Modal
+              className="delete-booking-modal"
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+            >
+              <ModalHeader className="modal-header" toggle={this.toggle}>
+                Забронировать билет
+              </ModalHeader>
+              <ModalBody className="modal-body">Создать заявку?</ModalBody>
+              <ModalFooter>
+                <Button
+                  className="modal-delete-btn"
+                  onClick={this.submitBooking}
+                >
+                  Забронировать
+                </Button>
+                <Button className="modal-cancel-btn" onClick={this.toggle}>
+                  Отмена
+                </Button>
+              </ModalFooter>
+            </Modal>
           </Form>
         </div>
       );

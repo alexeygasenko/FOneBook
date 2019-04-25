@@ -22,7 +22,14 @@ const deleteBookingFail = error => {
   };
 };
 
-export function deleteBooking(bookingId) {
+export function deleteBooking(
+  eventId,
+  bookingId,
+  tribune,
+  dayOne,
+  dayTwo,
+  dayThree
+) {
   return dispatch => {
     dispatch(deleteBookingRequest());
 
@@ -33,6 +40,13 @@ export function deleteBooking(bookingId) {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
       },
+      body: JSON.stringify({
+        eventId: eventId,
+        tribune: tribune,
+        dayOne: dayOne,
+        dayTwo: dayTwo,
+        dayThree: dayThree,
+      }),
     })
       .then(res => res.json())
       .then(

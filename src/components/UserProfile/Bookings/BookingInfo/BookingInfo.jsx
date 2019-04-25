@@ -58,7 +58,14 @@ export class BookingInfo extends React.Component {
   };
 
   deleteBooking = () => {
-    this.props.deleteBooking(this.props.bookingInfo._id);
+    this.props.deleteBooking(
+      this.props.bookingInfo.event,
+      this.props.bookingInfo._id,
+      this.props.bookingInfo.tribune,
+      this.props.bookingInfo.dayOne,
+      this.props.bookingInfo.dayTwo,
+      this.props.bookingInfo.dayThree
+    );
     this.props.history.push('/bookings');
   };
 

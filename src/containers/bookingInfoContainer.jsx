@@ -15,7 +15,10 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     getBookingInfo: bookingId => dispatch(getBookingInfo(bookingId)),
-    deleteBooking: bookingId => dispatch(deleteBooking(bookingId)),
+    deleteBooking: (eventId, bookingId, tribune, dayOne, dayTwo, dayThree) =>
+      dispatch(
+        deleteBooking(eventId, bookingId, tribune, dayOne, dayTwo, dayThree)
+      ),
   };
 };
 
