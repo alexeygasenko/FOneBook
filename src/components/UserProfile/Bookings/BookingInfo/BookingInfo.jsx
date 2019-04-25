@@ -58,9 +58,15 @@ export class BookingInfo extends React.Component {
   };
 
   deleteBooking = () => {
-    this.props.deleteBooking(this.props.bookingInfo._id);
+    this.props.deleteBooking(
+      this.props.bookingInfo.event,
+      this.props.bookingInfo._id,
+      this.props.bookingInfo.tribune,
+      this.props.bookingInfo.dayOne,
+      this.props.bookingInfo.dayTwo,
+      this.props.bookingInfo.dayThree
+    );
     this.props.history.push('/bookings');
-    /* alert(`Заявка ${this.props.bookingInfo._id} успешно удалена`); */
   };
 
   componentDidMount() {
@@ -142,27 +148,30 @@ export class BookingInfo extends React.Component {
 
             <div className="booking-general-info">
               <div className="booking-left booking-inline">
-                Билет на пятницу:
+                Практика 1 & 2 (Пт):
               </div>
               <div className="booking-right booking-inline">
+                ({bookingInfo.event.dayOne.starts} -{' '}
+                {bookingInfo.event.dayOne.ends}){' '}
                 {this.convertDay(bookingInfo.dayOne)}
               </div>
             </div>
 
             <div className="booking-general-info">
               <div className="booking-left booking-inline">
-                Билет на субботу:
+                Квалификация (Сб):
               </div>
               <div className="booking-right booking-inline">
+                ({bookingInfo.event.dayTwo.starts} -{' '}
+                {bookingInfo.event.dayTwo.ends}){' '}
                 {this.convertDay(bookingInfo.dayTwo)}
               </div>
             </div>
 
             <div className="booking-general-info">
-              <div className="booking-left booking-inline">
-                Билет на воскресенье:
-              </div>
+              <div className="booking-left booking-inline">Гонка (Вс):</div>
               <div className="booking-right booking-inline">
+                ({bookingInfo.event.dayThree.starts}){' '}
                 {this.convertDay(bookingInfo.dayThree)}
               </div>
             </div>
