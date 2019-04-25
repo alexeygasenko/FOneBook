@@ -200,6 +200,22 @@ export class BookTicket extends React.Component {
                   {this.convertDate(event.date)}
                 </Label>
               </FormGroup>
+              <FormGroup>
+                <Label className="book-ticket-track" for="selectTrack">
+                  Практика 1 & 2 (Пт): {event.dayOne.starts} -{' '}
+                  {event.dayOne.ends}
+                </Label>
+              </FormGroup>
+              <FormGroup>
+                <Label className="book-ticket-track" for="selectTrack">
+                  Квалификация (Сб): {event.dayTwo.starts} - {event.dayTwo.ends}
+                </Label>
+              </FormGroup>
+              <FormGroup>
+                <Label className="book-ticket-track" for="selectTrack">
+                  Гонка (Вс): {event.dayThree.starts}
+                </Label>
+              </FormGroup>
             </FormGroup>
             <FormGroup className="book-ticket-seats">
               <Label className="book-ticket-track" for="selectTrack">
@@ -229,7 +245,7 @@ export class BookTicket extends React.Component {
             </FormGroup>
             <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track">Пятница:</Label>
+              <Label className="book-ticket-track">Практика 1 & 2 (Пт):</Label>
               <Input
                 className="book-checkbox"
                 type="checkbox"
@@ -238,7 +254,7 @@ export class BookTicket extends React.Component {
               />
               <FormGroup>
                 <Label className="book-tribune-seats">
-                  Мест: {tribune.dayOne.seats}
+                  Свободных мест: {tribune.dayOne.seats}
                 </Label>
               </FormGroup>
               <FormGroup>
@@ -249,7 +265,7 @@ export class BookTicket extends React.Component {
             </FormGroup>
             <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track">Суббота:</Label>
+              <Label className="book-ticket-track">Квалификация (Сб):</Label>
               <Input
                 className="book-checkbox"
                 type="checkbox"
@@ -258,7 +274,7 @@ export class BookTicket extends React.Component {
               />
               <FormGroup>
                 <Label className="book-tribune-seats">
-                  Мест: {tribune.dayTwo.seats}
+                  Свободных мест: {tribune.dayTwo.seats}
                 </Label>
               </FormGroup>
               <FormGroup>
@@ -269,7 +285,7 @@ export class BookTicket extends React.Component {
             </FormGroup>
             <hr />
             <FormGroup className="book-ticket-seats">
-              <Label className="book-ticket-track">Воскресенье:</Label>
+              <Label className="book-ticket-track">Гонка (Вс):</Label>
               <Input
                 className="book-checkbox"
                 type="checkbox"
@@ -278,7 +294,7 @@ export class BookTicket extends React.Component {
               />
               <FormGroup>
                 <Label className="book-tribune-seats">
-                  Мест: {tribune.dayThree.seats}
+                  Свободных мест: {tribune.dayThree.seats}
                 </Label>
               </FormGroup>
               <FormGroup>

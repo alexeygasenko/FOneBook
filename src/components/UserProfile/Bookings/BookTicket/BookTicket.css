@@ -24,7 +24,7 @@
 
 .book-ticket-track {
   transition: 0.2s;
-  margin: 0.2rem 0rem 1rem 2rem;
+  margin: 0.2rem 0rem 1rem 0rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-style: italic;
