@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 import CustomNavbar from '../../Navbar/Navbar';
 import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../../Footer/Footer';
+import Error from '../../Loading/Error/Error';
 import './NewsFeed.css';
-import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class NewsFeed extends React.Component {
   componentDidMount() {
@@ -18,20 +18,9 @@ export class NewsFeed extends React.Component {
     let newsComponent;
 
     if (isFetching) {
-      newsComponent = <p className="empty-news">Идёт загрузка...</p>;
+      newsComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !newsFeed.length) {
-      newsComponent = (
-        <React.Fragment>
-          <div className="empty-news">
-            <img
-              className="empty-news-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Новостей пока нет.</p>
-          </div>
-        </React.Fragment>
-      );
+      newsComponent = <Error error="Новостей пока нет." />;
     } else {
       newsComponent = newsFeed
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))

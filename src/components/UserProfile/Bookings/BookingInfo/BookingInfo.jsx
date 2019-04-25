@@ -6,8 +6,8 @@ import moment from 'moment';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
+import Error from '../../../Loading/Error/Error';
 import './BookingInfo.css';
-import emptyPlaceholder from '../../../../data/img/empty-placeholder.png';
 
 import trackLarge from '../../../../data/img/trackLarge.jpg';
 import trackSmall from '../../../../data/img/trackSmall.jpg';
@@ -79,30 +79,10 @@ export class BookingInfo extends React.Component {
     let bookingInfoComponent;
 
     if (isFetching) {
-      bookingInfoComponent = (
-        <React.Fragment>
-          <div className="empty-booking-info">
-            <img
-              className="empty-booking-info-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Идёт загрузка...</p>
-          </div>
-        </React.Fragment>
-      );
+      bookingInfoComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !bookingInfo) {
       bookingInfoComponent = (
-        <React.Fragment>
-          <div className="empty-booking-info">
-            <img
-              className="empty-booking-info-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Заявки на бронирование с таким ID не существует.</p>
-          </div>
-        </React.Fragment>
+        <Error error="Заявки на бронирование с таким ID не существует." />
       );
     } else {
       bookingInfoComponent = (
