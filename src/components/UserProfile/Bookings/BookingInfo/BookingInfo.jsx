@@ -177,16 +177,25 @@ export class BookingInfo extends React.Component {
             <Button className="delete-booking" onClick={this.toggle}>
               Удалить бронь
             </Button>
-            <Modal isOpen={this.state.modal} toggle={this.toggle}>
-              <ModalHeader toggle={this.toggle}>
+            <Modal
+              className="delete-booking-modal"
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+            >
+              <ModalHeader className="modal-header" toggle={this.toggle}>
                 Удалить заявку на бронирование
               </ModalHeader>
-              <ModalBody>Вы действительно хотите удалить заявку?</ModalBody>
+              <ModalBody className="modal-body">
+                Вы действительно хотите удалить заявку?
+              </ModalBody>
               <ModalFooter>
-                <Button color="danger" onClick={this.deleteBooking}>
+                <Button
+                  className="modal-delete-btn"
+                  onClick={this.deleteBooking}
+                >
                   Удалить
                 </Button>
-                <Button color="secondary" onClick={this.toggle}>
+                <Button className="modal-cancel-btn" onClick={this.toggle}>
                   Отмена
                 </Button>
               </ModalFooter>
