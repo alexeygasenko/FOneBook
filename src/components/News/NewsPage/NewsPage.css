@@ -28,6 +28,48 @@
   text-align: right;
 }
 
+.news-page-author {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.2rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.more-author {
+  border-radius: 0;
+  border: 1px solid #dedede;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.more-author-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.more-author-date {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.more-author-rating {
+  font-weight: 700;
+  font-style: italic;
+  background-color: rgb(255, 42, 42);;
+  color: white;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
 .news-page-description {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;

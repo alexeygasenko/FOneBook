@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
+import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
@@ -126,6 +127,34 @@ export class NewsPage extends React.Component {
               <div className="news-page-title">{newsPage.title}</div>
               <div className="news-page-date">
                 {this.convertDate(newsPage.date)}
+              </div>
+              <div className="news-page-author">
+                Автор:{' '}
+                <span data-tip data-for="article-author" className="author">
+                  {newsPage.author.name}
+                </span>
+                <ReactTooltip
+                  id="article-author"
+                  place="bottom"
+                  type="light"
+                  effect="solid"
+                  className="more-author"
+                >
+                  <img
+                    className="more-author-img"
+                    src={newsPage.author.avatar}
+                    alt="Профиль"
+                  />
+                  <p>{newsPage.author.name}</p>
+                  <p className="more-author-date">Дата регистрации:</p>
+                  <p className="more-author-date">
+                    {this.convertDate(newsPage.author.registrationDate)}
+                  </p>
+                  <p className="more-author-date">Рейтинг:</p>
+                  <span className="more-author-rating">
+                    {newsPage.author.rating}
+                  </span>
+                </ReactTooltip>
               </div>
               <div className="news-page-img">
                 <img
