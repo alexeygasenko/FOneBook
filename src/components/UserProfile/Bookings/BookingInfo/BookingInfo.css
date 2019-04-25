@@ -47,7 +47,6 @@
 }
 
 .booking-info-block {
-  padding-bottom: 1rem;
   margin-bottom: 1rem;
   background-color: white;
   border: 1px solid #dedede;
@@ -65,6 +64,7 @@
 
 .booking-total {
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 700;
   font-size: 1.3rem;
 }
@@ -77,9 +77,63 @@
   font-style: italic;
 }
 
+.delete-booking {
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  border: 0;
+  border-radius: 0;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.delete-booking:hover {
+  background-color: rgb(220, 42, 42);
+}
+
 .empty-booking-info-img {
   width: 100px;
   height: 50px;
+}
+
+.delete-booking-modal {
+  border: 0;
+  border-radius: 0;
+}
+
+.modal-header {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.modal-body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.modal-delete-btn,
+.modal-cancel-btn {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  border: 0;
+  border-radius: 0;
+}
+
+.modal-delete-btn:hover {
+  background-color: rgb(220, 42, 42);
+}
+
+.modal-cancel-btn {
+  background-color: rgb(158, 158, 158);
 }
 
 @media all and (max-width: 767px) {

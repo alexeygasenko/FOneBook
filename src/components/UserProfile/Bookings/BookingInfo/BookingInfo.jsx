@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import ModalImage from 'react-modal-image';
 import ScrollUpButton from 'react-scroll-up-button';
 import moment from 'moment';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
 import './BookingInfo.css';
@@ -12,6 +13,19 @@ import trackLarge from '../../../../data/img/trackLarge.jpg';
 import trackSmall from '../../../../data/img/trackSmall.jpg';
 
 export class BookingInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    };
+  }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  };
+
   convertDate = date => {
     const newDate = moment(date).format('D.MM.YYYY');
     return newDate;
@@ -41,6 +55,12 @@ export class BookingInfo extends React.Component {
     if (bookingInfo.dayThree) price += tribunePricing.dayThree;
 
     return price;
+  };
+
+  deleteBooking = () => {
+    this.props.deleteBooking(this.props.bookingInfo._id);
+    this.props.history.push('/bookings');
+    /* alert(`Заявка ${this.props.bookingInfo._id} успешно удалена`); */
   };
 
   componentDidMount() {
@@ -154,6 +174,32 @@ export class BookingInfo extends React.Component {
                 {this.priceCalculator(bookingInfo)} EUR
               </div>
             </div>
+            <Button className="delete-booking" onClick={this.toggle}>
+              Удалить бронь
+            </Button>
+            <Modal
+              className="delete-booking-modal"
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+            >
+              <ModalHeader className="modal-header" toggle={this.toggle}>
+                Удалить заявку на бронирование
+              </ModalHeader>
+              <ModalBody className="modal-body">
+                Вы действительно хотите удалить заявку?
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  className="modal-delete-btn"
+                  onClick={this.deleteBooking}
+                >
+                  Удалить
+                </Button>
+                <Button className="modal-cancel-btn" onClick={this.toggle}>
+                  Отмена
+                </Button>
+              </ModalFooter>
+            </Modal>
           </div>
         </div>
       );
