@@ -14,11 +14,10 @@ import {
   ModalFooter,
   ModalHeader,
 } from 'reactstrap';
-
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
+import Error from '../../../Loading/Error/Error';
 import './BookTicket.css';
-import emptyPlaceholder from '../../../../data/img/empty-placeholder.png';
 
 import trackLarge from '../../../../data/img/trackLarge.jpg';
 import trackSmall from '../../../../data/img/trackSmall.jpg';
@@ -146,40 +145,15 @@ export class BookTicket extends React.Component {
           </Helmet>
           <CustomNavbar />
           <ScrollUpButton />
-          <div className="empty-bookings">
-            <img
-              className="empty-bookings-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Авторизируйтесь, чтобы забронировать билет!</p>
-          </div>
+          <Error error="Авторизируйтесь, чтобы забронировать билет!" />
           <Footer />
         </React.Fragment>
       );
       return bookTicketComponent;
     } else if (isFetching) {
-      bookTicketComponent = (
-        <div className="empty-bookings">
-          <img
-            className="empty-bookings-img"
-            src={emptyPlaceholder}
-            alt="News desc"
-          />
-          <p>Идёт загрузка...</p>
-        </div>
-      );
+      bookTicketComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !events.length) {
-      bookTicketComponent = (
-        <div className="empty-bookings">
-          <img
-            className="empty-bookings-img"
-            src={emptyPlaceholder}
-            alt="News desc"
-          />
-          <p>{error}</p>
-        </div>
-      );
+      bookTicketComponent = <Error error={error} />;
     } else {
       let eventsList = events.map(event => {
         return <option key={event._id}>{event.title}</option>;

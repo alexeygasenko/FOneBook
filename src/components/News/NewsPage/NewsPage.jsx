@@ -14,9 +14,9 @@ import { Helmet } from 'react-helmet';
 import moment from 'moment';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
+import Error from '../../Loading/Error/Error';
 import './NewsPage.css';
 import './OtherNews.css';
-import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class NewsPage extends React.Component {
   convertDate = date => {
@@ -42,31 +42,9 @@ export class NewsPage extends React.Component {
     let otherNewsComponent;
 
     if (isFetching) {
-      newsComponent = (
-        <React.Fragment>
-          <div className="empty-news-page">
-            <img
-              className="empty-news-page-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Идёт загрузка...</p>
-          </div>
-        </React.Fragment>
-      );
+      newsComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !newsPage) {
-      newsComponent = (
-        <React.Fragment>
-          <div className="empty-news-page">
-            <img
-              className="empty-news-page-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>404: такой новости нет!</p>
-          </div>
-        </React.Fragment>
-      );
+      newsComponent = <Error error="404: такой новости нет!" />;
     } else {
       const newsBlock = newsPage.blocks.map(block => {
         switch (block.type) {

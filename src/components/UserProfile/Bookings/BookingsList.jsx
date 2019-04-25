@@ -6,9 +6,9 @@ import ScrollUpButton from 'react-scroll-up-button';
 
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
+import Error from '../../Loading/Error/Error';
 import BookingCard from './BookingCard/BookingCard';
 import './BookingsList.css';
-import emptyPlaceholder from '../../../data/img/empty-placeholder.png';
 
 export class BookingsList extends React.Component {
   componentDidMount() {
@@ -32,40 +32,15 @@ export class BookingsList extends React.Component {
           </Helmet>
           <CustomNavbar />
           <ScrollUpButton />
-          <div className="empty-bookings">
-            <img
-              className="empty-bookings-img"
-              src={emptyPlaceholder}
-              alt="News desc"
-            />
-            <p>Авторизируйтесь, чтобы забронировать билет!</p>
-          </div>
+          <Error error="Авторизируйтесь, чтобы забронировать билет!" />
           <Footer />
         </React.Fragment>
       );
       return bookingsComponent;
     } else if (isFetching) {
-      bookingsComponent = (
-        <div className="empty-bookings">
-          <img
-            className="empty-bookings-img"
-            src={emptyPlaceholder}
-            alt="News desc"
-          />
-          <p>Идёт загрузка...</p>
-        </div>
-      );
+      bookingsComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !bookingsList.length) {
-      bookingsComponent = (
-        <div className="empty-bookings">
-          <img
-            className="empty-bookings-img"
-            src={emptyPlaceholder}
-            alt="News desc"
-          />
-          <p>Забронированных билетов пока нет.</p>
-        </div>
-      );
+      bookingsComponent = <Error error="Забронированных билетов пока нет." />;
     } else {
       bookingsComponent = bookingsList
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
