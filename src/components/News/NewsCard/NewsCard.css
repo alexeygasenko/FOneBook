@@ -12,6 +12,11 @@
   border-radius: 0;
 }
 
+.news-img {
+  width: 100%;
+  height: auto;
+}
+
 .news-card-body {
   padding: 0.5rem 1rem 1rem 1rem;
 }

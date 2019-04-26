@@ -32,6 +32,7 @@ export class NewsFeed extends React.Component {
               title={news.title}
               description={news.description}
               date={news.date}
+              pic={news.pic}
             />
           );
         });

@@ -19,17 +19,12 @@ export default class NewsCard extends React.Component {
   };
 
   render() {
-    const { url, title, description, date } = this.props;
+    const { url, title, description, date, pic } = this.props;
 
     return (
       <div id={url} className="col-md-3">
         <Card className="news-card">
-          <CardImg
-            className="news-img"
-            top
-            src="https://via.placeholder.com/320x250/FFFFFF/000000/?text=FOneBook+Newsfeed"
-            alt="Card image cap"
-          />
+          <CardImg className="news-img" top src={pic} alt="Новость" />
           <CardBody className="news-card-body">
             <CardTitle className="news-title" tag={Link} to={`/news/${url}`}>
               {title}
