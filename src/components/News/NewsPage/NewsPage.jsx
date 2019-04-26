@@ -57,7 +57,7 @@ export class NewsPage extends React.Component {
               >
                 <img
                   className="scalable-img"
-                  src="https://via.placeholder.com/600x400/EEEEEE/000000/?text=FOneBook+Newsfeed"
+                  src={block.content.photoURL}
                   alt="News"
                 />
                 <div className="photo-description">
@@ -159,7 +159,7 @@ export class NewsPage extends React.Component {
               <div className="news-page-img">
                 <img
                   className="scalable-img"
-                  src="https://via.placeholder.com/600x300/EEEEEE/000000/?text=FOneBook+Newsfeed"
+                  src={newsPage.pic}
                   alt="News desc"
                 />
               </div>
