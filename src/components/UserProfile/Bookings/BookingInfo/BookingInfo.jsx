@@ -4,8 +4,10 @@ import ModalImage from 'react-modal-image';
 import ScrollUpButton from 'react-scroll-up-button';
 import moment from 'moment';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import PrintComponents from 'react-print-components';
 import CustomNavbar from '../../../Navbar/Navbar';
 import Footer from '../../../Footer/Footer';
+import BookingInfoPrint from './BookingInfoPrint/BookingInfoPrint';
 import Error from '../../../Loading/Error/Error';
 import './BookingInfo.css';
 
@@ -163,6 +165,13 @@ export class BookingInfo extends React.Component {
                 {this.priceCalculator(bookingInfo)} EUR
               </div>
             </div>
+            <PrintComponents
+              trigger={
+                <Button className="print-booking">Распечатать заявку</Button>
+              }
+            >
+              <BookingInfoPrint bookingInfo={bookingInfo} />
+            </PrintComponents>
             <Button className="delete-booking" onClick={this.toggle}>
               Удалить бронь
             </Button>
