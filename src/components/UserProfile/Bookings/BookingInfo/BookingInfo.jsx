@@ -11,9 +11,6 @@ import BookingInfoPrint from './BookingInfoPrint/BookingInfoPrint';
 import Error from '../../../Loading/Error/Error';
 import './BookingInfo.css';
 
-import trackLarge from '../../../../data/img/trackLarge.jpg';
-import trackSmall from '../../../../data/img/trackSmall.jpg';
-
 export class BookingInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +84,8 @@ export class BookingInfo extends React.Component {
         <Error error="Заявки на бронирование с таким ID не существует." />
       );
     } else {
+      const trackSmall = bookingInfo.event.imageSmall;
+      const trackLarge = bookingInfo.event.imageLarge;
       bookingInfoComponent = (
         <div className="booking-info">
           <div className="booking-info-title">Бронирование билета</div>

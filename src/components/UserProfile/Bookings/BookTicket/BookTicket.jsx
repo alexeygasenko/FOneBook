@@ -19,9 +19,6 @@ import Footer from '../../../Footer/Footer';
 import Error from '../../../Loading/Error/Error';
 import './BookTicket.css';
 
-import trackLarge from '../../../../data/img/trackLarge.jpg';
-import trackSmall from '../../../../data/img/trackSmall.jpg';
-
 export class BookTicket extends React.Component {
   constructor(props) {
     super(props);
@@ -162,6 +159,9 @@ export class BookTicket extends React.Component {
       let tribunesList = event.tribunes.map(tribune => {
         return <option key={tribune.name}>{tribune.name}</option>;
       });
+
+      const trackSmall = event.imageSmall;
+      const trackLarge = event.imageLarge;
 
       bookTicketComponent = (
         <div className="book-ticket">
