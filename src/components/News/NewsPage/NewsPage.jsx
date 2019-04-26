@@ -85,7 +85,7 @@ export class NewsPage extends React.Component {
                 <CardImg
                   className="news-img"
                   top
-                  src="https://via.placeholder.com/320x250/FFFFFF/000000/?text=FOneBook+Newsfeed"
+                  src={news.pic}
                   alt="Card image cap"
                 />
                 <CardBody className="news-card-body">
