@@ -69,7 +69,8 @@
   font-size: 1.3rem;
 }
 
-.delete-booking {
+.delete-booking,
+.print-booking {
   width: 100%;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -83,8 +84,13 @@
   padding: 0.5rem 0 0.5rem 0;
 }
 
-.delete-booking:hover {
+.delete-booking:hover,
+.print-booking:hover {
   background-color: rgb(220, 42, 42);
+}
+
+.print-booking {
+  margin-bottom: 0.5rem;
 }
 
 .delete-booking-modal {

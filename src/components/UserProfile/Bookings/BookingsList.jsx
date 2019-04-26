@@ -40,7 +40,29 @@ export class BookingsList extends React.Component {
     } else if (isFetching) {
       bookingsComponent = <Error error="Идёт загрузка..." />;
     } else if (error || !bookingsList.length) {
-      bookingsComponent = <Error error="Забронированных билетов пока нет." />;
+      bookingsComponent = (
+        <React.Fragment>
+          <Helmet>
+            <title>Бронирование билетов на Гран-при - FOneBook</title>
+            <meta name="description" content="Helmet application" />
+          </Helmet>
+          <CustomNavbar />
+          <ScrollUpButton />
+          <div className="bookings">
+            <Button
+              className="book-ticket-redirect"
+              tag={Link}
+              to="/bookings/book-a-ticket"
+            >
+              Забронировать билет
+            </Button>
+            <div className="current-bookings">Текущие брони</div>
+            <Error error="Забронированных билетов пока нет." />
+          </div>
+          <Footer />
+        </React.Fragment>
+      );
+      return bookingsComponent;
     } else {
       bookingsComponent = bookingsList
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))

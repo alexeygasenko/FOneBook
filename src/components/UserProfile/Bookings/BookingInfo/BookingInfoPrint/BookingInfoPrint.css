@@ -1,0 +1,22 @@
+.print-general-info {
+  width: 70%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  padding-bottom: 0.3rem;
+}
+
+.print-info-block {
+  margin-top: 1rem;
+  background-color: white;
+  border: 1px solid #dedede;
+}
+
+.print-total {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
