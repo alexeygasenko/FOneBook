@@ -44,7 +44,7 @@ export class EditProfile extends React.Component {
       return (
         <React.Fragment>
           <Helmet>
-            <title>Бронирование билетов на Гран-при - FOneBook</title>
+            <title>Профиль - FOneBook</title>
             <meta name="description" content="Helmet application" />
           </Helmet>
           <CustomNavbar />
@@ -108,22 +108,22 @@ export class EditProfile extends React.Component {
               <Input
                 className="profile-input"
                 type="password"
-                name="password"
-                id="password"
+                name="old-password"
+                id="old-password"
                 placeholder="Введите старый пароль"
               />
               <Input
                 className="profile-input"
                 type="password"
-                name="password"
-                id="password"
+                name="new-password"
+                id="new-password"
                 placeholder="Введите новый пароль"
               />
               <Input
                 className="profile-input"
                 type="password"
-                name="password"
-                id="password"
+                name="new-password-again"
+                id="new-password-again"
                 placeholder="Повторите новый пароль"
               />
             </FormGroup>
