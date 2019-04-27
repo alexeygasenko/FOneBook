@@ -14,7 +14,7 @@ import './NewsCard.css';
 
 export default class NewsCard extends React.Component {
   convertDate = date => {
-    const newDate = moment(date).format('DD.mm.YYYY HH:MM');
+    const newDate = moment(date).format('DD.MM.YYYY HH:mm');
     return newDate;
   };
 
