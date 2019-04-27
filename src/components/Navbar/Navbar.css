@@ -43,6 +43,14 @@
   height: auto;
 }
 
+.dropdown-user-name {
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  width: 110px;
+  text-overflow: ellipsis;
+}
+
 .dropdown-menu {
   border-radius: 0;
 }

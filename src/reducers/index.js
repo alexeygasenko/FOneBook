@@ -6,6 +6,7 @@ import { newsPageReducer } from './newsPageReducer';
 import { bookingsListReducer } from './bookingsListReducer';
 import { bookingInfoReducer } from './bookingInfoReducer';
 import { bookTicketReducer } from './bookTicketReducer';
+import { userProfileReducer } from './userProfileReducer';
 
 export const rootReducer = combineReducers({
   errors: errorReducer,
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
   bookingsListReducer: bookingsListReducer,
   bookingInfoReducer: bookingInfoReducer,
   bookTicketReducer: bookTicketReducer,
+  userProfileReducer: userProfileReducer,
 });
