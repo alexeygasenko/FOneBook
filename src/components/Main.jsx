@@ -41,6 +41,12 @@ let LoadableRegistration = Loadable({
   loading: Loading,
 });
 
+let LoadableProfile = Loadable({
+  loader: () =>
+    delay(0).then(() => import('./UserProfile/EditProfile/EditProfile')),
+  loading: Loading,
+});
+
 let LoadableBookings = Loadable({
   loader: () =>
     delay(0).then(() => import('../containers/bookingsListContainer')),
@@ -93,6 +99,7 @@ export default class Main extends React.Component {
               path="/registration"
               component={LoadableRegistration}
             />
+            <Route exact path="/my-profile" component={LoadableProfile} />
 
             <Route exact path="/bookings" component={LoadableBookings} />
             <Route

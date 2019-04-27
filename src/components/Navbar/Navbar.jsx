@@ -190,11 +190,13 @@ class CustomNavbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
       <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav className="nav-section">
+        <DropdownToggle nav className="nav-section dropdown-user-name">
           {user.name}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>Профиль</DropdownItem>
+          <DropdownItem tag={Link} to="/my-profile/">
+            Профиль
+          </DropdownItem>
           <DropdownItem tag={Link} to="/bookings">
             Мои брони
           </DropdownItem>
