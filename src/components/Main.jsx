@@ -43,7 +43,7 @@ let LoadableRegistration = Loadable({
 
 let LoadableProfile = Loadable({
   loader: () =>
-    delay(0).then(() => import('./UserProfile/EditProfile/EditProfile')),
+    delay(0).then(() => import('../containers/userProfileContainer')),
   loading: Loading,
 });
 

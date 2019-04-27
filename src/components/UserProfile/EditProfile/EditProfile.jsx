@@ -6,7 +6,11 @@ import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
 import './EditProfile.css';
 
-export default class EditProfile extends React.Component {
+export class EditProfile extends React.Component {
+  componentDidMount() {
+    this.props.getUserProfile(this.props.auth.user.id);
+  }
+
   render() {
     return (
       <React.Fragment>
