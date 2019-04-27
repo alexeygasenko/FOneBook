@@ -54,6 +54,16 @@ export class EditProfile extends React.Component {
       );
     }
 
+    let moderatorButton;
+
+    if (user.isModerator) {
+      moderatorButton = (
+        <FormGroup>
+          <Button className="profile-update-btn">Добавить пост</Button>
+        </FormGroup>
+      );
+    }
+
     return (
       <React.Fragment>
         <Helmet>
@@ -63,6 +73,7 @@ export class EditProfile extends React.Component {
         <CustomNavbar />
         <div className="profile">
           <Form>
+            {moderatorButton}
             <FormGroup className="profile-title">
               <Label>Профиль пользователя {user.name}</Label>
             </FormGroup>
