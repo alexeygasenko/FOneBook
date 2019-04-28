@@ -1,17 +1,7 @@
 import React from 'react';
 /* import { Link } from 'react-router-dom'; */
 import { Helmet } from 'react-helmet';
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
@@ -22,21 +12,15 @@ export class EditProfile extends React.Component {
     super(props);
 
     this.state = {
-      modal: false,
       isEditing: false,
       name: '',
       email: '',
       oldPassword: '',
       newPassword: '',
       newPasswordConfirm: '',
+      errors: {},
     };
   }
-
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  };
 
   editProfileHandler = () => {
     this.setState({ isEditing: true });
@@ -51,6 +35,22 @@ export class EditProfile extends React.Component {
   componentDidMount() {
     this.props.getUserProfile(this.props.auth.user.id);
   }
+
+  updateNameHandler = () => {
+    this.props.updateName(this.props.user._id, this.state.name);
+  };
+
+  updateEmailHandler = () => {
+    this.props.updateName(this.props.user._id, this.state.email);
+  };
+
+  updatePasswordHandler = () => {
+    this.props.updatePassport(
+      this.props.user._id,
+      this.state.oldPassword,
+      this.state.newPassword
+    );
+  };
 
   render() {
     const { isEditing } = this.state;
@@ -82,6 +82,12 @@ export class EditProfile extends React.Component {
             placeholder={user.name}
           />
           <Label>Осталось попыток: {user.nameChangeAttempts}</Label>
+          <Button
+            className="profile-update-btn"
+            onClick={this.updateNameHandler}
+          >
+            Обновить никнейм
+          </Button>
         </FormGroup>
         <FormGroup className="profile-email">
           <Label>Изменить Email:</Label>
@@ -92,6 +98,12 @@ export class EditProfile extends React.Component {
             id="email"
             placeholder={user.email}
           />
+          <Button
+            className="profile-update-btn"
+            onClick={this.updateEmailHandler}
+          >
+            Обновить Email
+          </Button>
         </FormGroup>
         <FormGroup className="profile-password">
           <Label>Изменить пароль:</Label>
@@ -116,33 +128,13 @@ export class EditProfile extends React.Component {
             id="new-password-again"
             placeholder="Повторите новый пароль"
           />
+          <Button
+            className="profile-update-btn"
+            onClick={this.updatePasswordHandler}
+          >
+            Обновить пароль
+          </Button>
         </FormGroup>
-        <Button className="profile-update-btn" onClick={this.toggle}>
-          Обновить данные
-        </Button>
-        <Modal
-          className="delete-booking-modal"
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-        >
-          <ModalHeader className="modal-header" toggle={this.toggle}>
-            Обновить данные
-          </ModalHeader>
-          <ModalBody className="modal-body">
-            Вы точно хотите отредактировать свой профиль?
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              className="modal-delete-btn"
-              onClick={this.submitProfileChanges}
-            >
-              Да
-            </Button>
-            <Button className="modal-cancel-btn" onClick={this.toggle}>
-              Отмена
-            </Button>
-          </ModalFooter>
-        </Modal>
       </React.Fragment>
     );
 
