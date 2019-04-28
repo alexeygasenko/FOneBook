@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import classnames from 'classnames';
-import validator from 'email-validator';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
@@ -53,25 +52,7 @@ export class EditProfile extends React.Component {
       });
     } else {
       this.props.updateName(this.props.user._id, this.state.name);
-    }
-  };
-
-  updateEmailHandler = () => {
-    const { email } = this.state;
-    if (email === this.props.user.email) {
-      this.setState({
-        errors: {
-          email: 'Новый Email совпадает с предыдущим!',
-        },
-      });
-    } else if (validator.validate(email)) {
-      this.props.updateName(this.props.user._id, email);
-    } else {
-      this.setState({
-        errors: {
-          email: 'Некорректный Email',
-        },
-      });
+      this.props.history.push('/');
     }
   };
 
@@ -96,7 +77,7 @@ export class EditProfile extends React.Component {
         },
       });
     } else {
-      this.props.updatePassport(this.props.user._id, oldPassword, newPassword);
+      this.props.updatePassword(this.props.user._id, oldPassword, newPassword);
     }
   };
 
@@ -145,27 +126,7 @@ export class EditProfile extends React.Component {
           ) : null}
         </FormGroup>
         <FormGroup className="profile-email">
-          <Label>Изменить Email:</Label>
-          <Input
-            className={classnames('profile-input', {
-              'is-invalid': errors.email,
-            })}
-            type="email"
-            name="email"
-            id="email"
-            placeholder={user.email}
-            value={this.state.email}
-            onChange={this.inputChangeHandler}
-          />
-          {errors.email && (
-            <div className="invalid-feedback">{errors.email}</div>
-          )}
-          <Button
-            className="profile-update-btn"
-            onClick={this.updateEmailHandler}
-          >
-            Обновить Email
-          </Button>
+          <Label>Email: {user.email}</Label>
         </FormGroup>
         <FormGroup className="profile-password">
           <Label>Изменить пароль:</Label>
