@@ -1,7 +1,8 @@
 import React from 'react';
-/* import { Link } from 'react-router-dom'; */
 import { Helmet } from 'react-helmet';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import classnames from 'classnames';
+import validator from 'email-validator';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
@@ -28,7 +29,7 @@ export class EditProfile extends React.Component {
 
   inputChangeHandler = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
 
@@ -37,23 +38,70 @@ export class EditProfile extends React.Component {
   }
 
   updateNameHandler = () => {
-    this.props.updateName(this.props.user._id, this.state.name);
+    const { name } = this.state;
+    if (name === this.props.user.name) {
+      this.setState({
+        errors: {
+          name: 'Новый никнейм совпадает с предыдущим!',
+        },
+      });
+    } else if (name.length < 4) {
+      this.setState({
+        errors: {
+          name: 'Новый никнейм должен быть длинной не менее 4 символов!',
+        },
+      });
+    } else {
+      this.props.updateName(this.props.user._id, this.state.name);
+    }
   };
 
   updateEmailHandler = () => {
-    this.props.updateName(this.props.user._id, this.state.email);
+    const { email } = this.state;
+    if (email === this.props.user.email) {
+      this.setState({
+        errors: {
+          email: 'Новый Email совпадает с предыдущим!',
+        },
+      });
+    } else if (validator.validate(email)) {
+      this.props.updateName(this.props.user._id, email);
+    } else {
+      this.setState({
+        errors: {
+          email: 'Некорректный Email',
+        },
+      });
+    }
   };
 
   updatePasswordHandler = () => {
-    this.props.updatePassport(
-      this.props.user._id,
-      this.state.oldPassword,
-      this.state.newPassword
-    );
+    const { oldPassword, newPassword, newPasswordConfirm } = this.state;
+    if (newPassword !== newPasswordConfirm) {
+      this.setState({
+        errors: {
+          passwordConfirm: 'Пароль и подтверждение пароля должны совпадать!',
+        },
+      });
+    } else if (oldPassword.length < 8) {
+      this.setState({
+        errors: {
+          password: 'Пароль должен быть длинной не менее 8 символов!',
+        },
+      });
+    } else if (newPassword.length < 8) {
+      this.setState({
+        errors: {
+          passwordConfirm: 'Пароль должен быть длинной не менее 8 символов!',
+        },
+      });
+    } else {
+      this.props.updatePassport(this.props.user._id, oldPassword, newPassword);
+    }
   };
 
   render() {
-    const { isEditing } = this.state;
+    const { isEditing, errors } = this.state;
     const { isAuthenticated } = this.props.auth;
     const { user } = this.props;
 
@@ -76,28 +124,42 @@ export class EditProfile extends React.Component {
         <FormGroup className="profile-email">
           <Label>Изменить никнейм:</Label>
           <Input
-            className="profile-input"
-            name="nickname"
-            id="nickname"
+            className={classnames('profile-input', {
+              'is-invalid': errors.name,
+            })}
+            name="name"
+            id="name"
             placeholder={user.name}
+            value={this.state.name}
+            onChange={this.inputChangeHandler}
           />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
           <Label>Осталось попыток: {user.nameChangeAttempts}</Label>
-          <Button
-            className="profile-update-btn"
-            onClick={this.updateNameHandler}
-          >
-            Обновить никнейм
-          </Button>
+          {user.nameChangeAttempts !== 0 ? (
+            <Button
+              className="profile-update-btn"
+              onClick={this.updateNameHandler}
+            >
+              Обновить никнейм
+            </Button>
+          ) : null}
         </FormGroup>
         <FormGroup className="profile-email">
           <Label>Изменить Email:</Label>
           <Input
-            className="profile-input"
+            className={classnames('profile-input', {
+              'is-invalid': errors.email,
+            })}
             type="email"
             name="email"
             id="email"
             placeholder={user.email}
+            value={this.state.email}
+            onChange={this.inputChangeHandler}
           />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
           <Button
             className="profile-update-btn"
             onClick={this.updateEmailHandler}
@@ -108,26 +170,47 @@ export class EditProfile extends React.Component {
         <FormGroup className="profile-password">
           <Label>Изменить пароль:</Label>
           <Input
-            className="profile-input"
+            className={classnames('profile-input', {
+              'is-invalid': errors.password,
+            })}
             type="password"
             name="oldPassword"
             id="old-password"
             placeholder="Введите старый пароль"
+            value={this.state.oldPassword}
+            onChange={this.inputChangeHandler}
           />
+          {errors.password && (
+            <div className="invalid-feedback">{errors.password}</div>
+          )}
           <Input
-            className="profile-input"
+            className={classnames('profile-input', {
+              'is-invalid': errors.passwordConfirm,
+            })}
             type="password"
             name="newPassword"
             id="new-password"
             placeholder="Введите новый пароль"
+            value={this.state.newPassword}
+            onChange={this.inputChangeHandler}
           />
+          {errors.passwordConfirm && (
+            <div className="invalid-feedback">{errors.passwordConfirm}</div>
+          )}
           <Input
-            className="profile-input"
+            className={classnames('profile-input', {
+              'is-invalid': errors.passwordConfirm,
+            })}
             type="password"
             name="newPasswordConfirm"
             id="new-password-again"
             placeholder="Повторите новый пароль"
+            value={this.state.newPasswordConfirm}
+            onChange={this.inputChangeHandler}
           />
+          {errors.passwordConfirm && (
+            <div className="invalid-feedback">{errors.passwordConfirm}</div>
+          )}
           <Button
             className="profile-update-btn"
             onClick={this.updatePasswordHandler}

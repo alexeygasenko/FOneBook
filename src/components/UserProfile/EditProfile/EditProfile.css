@@ -76,6 +76,10 @@
   border: 0;
 }
 
+.invalid-feedback {
+  margin-bottom: 0.5rem;
+}
+
 @media all and (max-width: 767px) {
   .profile {
     width: 90%;
