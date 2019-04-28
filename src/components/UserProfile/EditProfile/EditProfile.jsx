@@ -23,6 +23,12 @@ export class EditProfile extends React.Component {
 
     this.state = {
       modal: false,
+      isEditing: false,
+      name: '',
+      email: '',
+      oldPassword: '',
+      newPassword: '',
+      newPasswordConfirm: '',
     };
   }
 
@@ -32,11 +38,22 @@ export class EditProfile extends React.Component {
     });
   };
 
+  editProfileHandler = () => {
+    this.setState({ isEditing: true });
+  };
+
+  inputChangeHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   componentDidMount() {
     this.props.getUserProfile(this.props.auth.user.id);
   }
 
   render() {
+    const { isEditing } = this.state;
     const { isAuthenticated } = this.props.auth;
     const { user } = this.props;
 
@@ -54,15 +71,80 @@ export class EditProfile extends React.Component {
       );
     }
 
-    let moderatorButton;
-
-    if (user.isModerator) {
-      moderatorButton = (
-        <FormGroup>
-          <Button className="profile-update-btn">Добавить пост</Button>
+    const editComponent = (
+      <React.Fragment>
+        <FormGroup className="profile-email">
+          <Label>Изменить никнейм:</Label>
+          <Input
+            className="profile-input"
+            name="nickname"
+            id="nickname"
+            placeholder={user.name}
+          />
+          <Label>Осталось попыток: {user.nameChangeAttempts}</Label>
         </FormGroup>
-      );
-    }
+        <FormGroup className="profile-email">
+          <Label>Изменить Email:</Label>
+          <Input
+            className="profile-input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder={user.email}
+          />
+        </FormGroup>
+        <FormGroup className="profile-password">
+          <Label>Изменить пароль:</Label>
+          <Input
+            className="profile-input"
+            type="password"
+            name="oldPassword"
+            id="old-password"
+            placeholder="Введите старый пароль"
+          />
+          <Input
+            className="profile-input"
+            type="password"
+            name="newPassword"
+            id="new-password"
+            placeholder="Введите новый пароль"
+          />
+          <Input
+            className="profile-input"
+            type="password"
+            name="newPasswordConfirm"
+            id="new-password-again"
+            placeholder="Повторите новый пароль"
+          />
+        </FormGroup>
+        <Button className="profile-update-btn" onClick={this.toggle}>
+          Обновить данные
+        </Button>
+        <Modal
+          className="delete-booking-modal"
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+        >
+          <ModalHeader className="modal-header" toggle={this.toggle}>
+            Обновить данные
+          </ModalHeader>
+          <ModalBody className="modal-body">
+            Вы точно хотите отредактировать свой профиль?
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              className="modal-delete-btn"
+              onClick={this.submitProfileChanges}
+            >
+              Да
+            </Button>
+            <Button className="modal-cancel-btn" onClick={this.toggle}>
+              Отмена
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </React.Fragment>
+    );
 
     return (
       <React.Fragment>
@@ -73,7 +155,11 @@ export class EditProfile extends React.Component {
         <CustomNavbar />
         <div className="profile">
           <Form>
-            {moderatorButton}
+            {user.isModerator ? (
+              <FormGroup>
+                <Button className="profile-update-btn">Добавить пост</Button>
+              </FormGroup>
+            ) : null}
             <FormGroup className="profile-title">
               <Label>Профиль пользователя {user.name}</Label>
             </FormGroup>
@@ -94,76 +180,16 @@ export class EditProfile extends React.Component {
                 <span className="profile-rating-number">{user.rating}</span>
               </Label>
             </FormGroup>
-            <FormGroup className="profile-email">
-              <Label>Изменить никнейм:</Label>
-              <Input
-                className="profile-input"
-                name="nickname"
-                id="nickname"
-                placeholder={user.name}
-              />
-              <Label>Осталось попыток - {user.nameChangeAttempts}</Label>
-            </FormGroup>
-            <FormGroup className="profile-email">
-              <Label>Изменить Email:</Label>
-              <Input
-                className="profile-input"
-                type="email"
-                name="email"
-                id="email"
-                placeholder={user.email}
-              />
-            </FormGroup>
-            <FormGroup className="profile-password">
-              <Label>Изменить пароль:</Label>
-              <Input
-                className="profile-input"
-                type="password"
-                name="old-password"
-                id="old-password"
-                placeholder="Введите старый пароль"
-              />
-              <Input
-                className="profile-input"
-                type="password"
-                name="new-password"
-                id="new-password"
-                placeholder="Введите новый пароль"
-              />
-              <Input
-                className="profile-input"
-                type="password"
-                name="new-password-again"
-                id="new-password-again"
-                placeholder="Повторите новый пароль"
-              />
-            </FormGroup>
-            <Button className="profile-update-btn" onClick={this.toggle}>
-              Обновить данные
-            </Button>
-            <Modal
-              className="delete-booking-modal"
-              isOpen={this.state.modal}
-              toggle={this.toggle}
-            >
-              <ModalHeader className="modal-header" toggle={this.toggle}>
-                Обновить данные
-              </ModalHeader>
-              <ModalBody className="modal-body">
-                Вы точно хотите отредактировать свой профиль?
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  className="modal-delete-btn"
-                  onClick={this.submitProfileChanges}
-                >
-                  Да
-                </Button>
-                <Button className="modal-cancel-btn" onClick={this.toggle}>
-                  Отмена
-                </Button>
-              </ModalFooter>
-            </Modal>
+            {!isEditing ? (
+              <Button
+                className="profile-update-btn"
+                onClick={this.editProfileHandler}
+              >
+                Редактировать профиль
+              </Button>
+            ) : (
+              editComponent
+            )}
           </Form>
         </div>
         <Footer />
