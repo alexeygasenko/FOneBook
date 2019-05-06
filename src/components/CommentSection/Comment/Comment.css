@@ -1,0 +1,51 @@
+.comment {
+  background-color: white;
+  margin: 1rem 0rem 1rem 0rem;
+  border: 1px solid #dedede;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.comment-top {
+  vertical-align: top;
+}
+
+.comment-avatar {
+  width: 75px;
+  height: 75px;
+  margin-right: 1rem;
+}
+
+.comment-author {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.comment-rating {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+}
+
+.comment-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-decoration: none;
+}
+
+.comment-date {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: italic;
+  padding-left: 1rem;
+}
+
+.comment-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}

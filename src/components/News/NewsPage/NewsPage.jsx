@@ -16,6 +16,7 @@ import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
+import CommentSection from '../../CommentSection/CommentSection';
 import './NewsPage.css';
 import './OtherNews.css';
 
@@ -183,6 +184,7 @@ export class NewsPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {newsComponent}
+        <CommentSection />
         <Footer />
       </React.Fragment>
     );

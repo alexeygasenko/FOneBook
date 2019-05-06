@@ -1,0 +1,37 @@
+.comment-section {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.comment-section-title {
+  text-align: center;
+  transition: 0.2s;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: black;
+  background-color: #ffffff;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  border: 1px solid #dedede;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media all and (max-width: 767px) {
+  .comment-section {
+    width: 95%;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .comment-section {
+    width: 95%;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .comment-section {
+    width: 60%;
+  }
+}
