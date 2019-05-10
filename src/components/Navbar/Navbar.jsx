@@ -129,22 +129,26 @@ class CustomNavbar extends Component {
     }
   };
 
-  activeForumNav = () => {
+  activeCommunityNav = () => {
     const { active } = this.props;
 
     let activeNavBtn;
 
-    if (active === 'Форум') {
+    if (active === 'Сообщество') {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section section-active" to="/login">
-          Форум
+        <NavLink
+          tag={Link}
+          className="nav-section section-active"
+          to="/community"
+        >
+          Сообщество
         </NavLink>
       );
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section" to="/login">
-          Форум
+        <NavLink tag={Link} className="nav-section" to="/community">
+          Сообщество
         </NavLink>
       );
       return activeNavBtn;
@@ -215,15 +219,15 @@ class CustomNavbar extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>{this.activeNewsNav()}</NavItem>
+            <NavItem>{this.activeCommunityNav()}</NavItem>
             <NavItem>{this.activeHistoryNav()}</NavItem>
-            <NavItem>{this.activeTechNav()}</NavItem>
           </Nav>
           <NavbarBrand tag={Link} className="nav-logo nav-logo-desktop" to="/">
             <img className="logo" src={navbarLogo} alt="FOneBook logo" />
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
+            <NavItem>{this.activeTechNav()}</NavItem>
             <NavItem>{this.activeStatsNav()}</NavItem>
-            <NavItem>{this.activeForumNav()}</NavItem>
             {isAuthenticated ? authLinks : this.activeLoginNav()}
           </Nav>
         </Collapse>
