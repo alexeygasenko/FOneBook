@@ -164,16 +164,23 @@ export class BookingInfo extends React.Component {
                 {this.priceCalculator(bookingInfo)} EUR
               </div>
             </div>
-            <PrintComponents
-              trigger={
-                <Button className="print-booking">Распечатать заявку</Button>
-              }
-            >
-              <BookingInfoPrint bookingInfo={bookingInfo} />
-            </PrintComponents>
-            <Button className="delete-booking" onClick={this.toggle}>
-              Удалить бронь
-            </Button>
+
+            {bookingInfo.event.expired ? null : (
+              <React.Fragment>
+                <PrintComponents
+                  trigger={
+                    <Button className="print-booking">
+                      Распечатать заявку
+                    </Button>
+                  }
+                >
+                  <BookingInfoPrint bookingInfo={bookingInfo} />
+                </PrintComponents>
+                <Button className="delete-booking" onClick={this.toggle}>
+                  Удалить бронь
+                </Button>
+              </React.Fragment>
+            )}
             <Modal
               className="delete-booking-modal"
               isOpen={this.state.modal}

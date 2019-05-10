@@ -21,10 +21,11 @@ export class BookingsList extends React.Component {
     const { isAuthenticated } = this.props.auth;
     const { bookingsList, isFetching, error } = this.props;
 
-    let bookingsComponent;
+    let currentBookings;
+    let expiredBookings;
 
     if (!isAuthenticated) {
-      bookingsComponent = (
+      currentBookings = (
         <React.Fragment>
           <Helmet>
             <title>Бронирование билетов на Гран-при - FOneBook</title>
@@ -36,11 +37,11 @@ export class BookingsList extends React.Component {
           <Footer />
         </React.Fragment>
       );
-      return bookingsComponent;
+      return currentBookings;
     } else if (isFetching) {
-      bookingsComponent = <Error error="Идёт загрузка..." />;
+      currentBookings = <Error error="Идёт загрузка..." />;
     } else if (error || !bookingsList.length) {
-      bookingsComponent = (
+      currentBookings = (
         <React.Fragment>
           <Helmet>
             <title>Бронирование билетов на Гран-при - FOneBook</title>
@@ -62,9 +63,29 @@ export class BookingsList extends React.Component {
           <Footer />
         </React.Fragment>
       );
-      return bookingsComponent;
+      return currentBookings;
     } else {
-      bookingsComponent = bookingsList
+      currentBookings = bookingsList
+        .filter(booking => !booking.event.expired)
+        .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+        .map(booking => {
+          return (
+            <BookingCard
+              key={booking._id}
+              id={booking._id}
+              title={booking.event.title}
+              date={booking.event.date}
+              country={booking.event.country}
+              tribune={booking.tribune}
+              friday={booking.dayOne}
+              saturday={booking.dayTwo}
+              sunday={booking.dayThree}
+            />
+          );
+        });
+
+      expiredBookings = bookingsList
+        .filter(booking => booking.event.expired)
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
         .map(booking => {
           return (
@@ -100,7 +121,9 @@ export class BookingsList extends React.Component {
             Забронировать билет
           </Button>
           <div className="current-bookings">Текущие брони</div>
-          <div className="row">{bookingsComponent}</div>
+          <div className="row">{currentBookings}</div>
+          <div className="current-bookings">Завершенные брони</div>
+          <div className="row">{expiredBookings}</div>
         </div>
         <Footer />
       </React.Fragment>
