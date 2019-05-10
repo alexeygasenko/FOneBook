@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import CustomNavbar from '../Navbar/Navbar';
 import './History.css';
 import Footer from '../Footer/Footer';
@@ -17,11 +18,12 @@ export default class History extends React.Component {
     this.state = {
       historySections: ['Гонщики', 'Гран-при', 'Трассы', 'Автомобили'],
       historyImages: [drivers, grandPrix, tracks, auto],
+      historyTypes: ['drivers', 'grandPrix', 'tracks', 'auto'],
     };
   }
 
   renderSections = () => {
-    const { historySections, historyImages } = this.state;
+    const { historySections, historyImages, historyTypes } = this.state;
     let sections = [];
 
     for (let i = 0; i < historySections.length; ++i) {
@@ -34,7 +36,13 @@ export default class History extends React.Component {
               src={historyImages[i]}
               alt="Card image cap"
             />
-            <Button className="read-more">{historySections[i]}</Button>
+            <Button
+              className="read-more"
+              tag={Link}
+              to={`/history/${historyTypes[i]}`}
+            >
+              {historySections[i]}
+            </Button>
           </Card>
         </div>
       );

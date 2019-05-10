@@ -20,6 +20,12 @@ let LoadableHistory = Loadable({
   loading: Loading,
 });
 
+let LoadableHistoryFeed = Loadable({
+  loader: () =>
+    delay(0).then(() => import('./History/HistoryFeed/HistoryFeed')),
+  loading: Loading,
+});
+
 let LoadableAuto = Loadable({
   loader: () => delay(0).then(() => import('./Auto/Auto')),
   loading: Loading,
@@ -89,7 +95,10 @@ export default class Main extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" component={LoadableNews} />
+
             <Route exact path="/history" component={LoadableHistory} />
+            <Route path="/history/:type" component={LoadableHistoryFeed} />
+
             <Route exact path="/auto" component={LoadableAuto} />
             <Route exact path="/stats" component={LoadableStats} />
 
