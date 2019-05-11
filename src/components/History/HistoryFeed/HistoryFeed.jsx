@@ -7,19 +7,20 @@ import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
 import './HistoryFeed.css';
 
-export default class HistoryFeed extends React.Component {
-  /* componentDidMount() {
+export class HistoryFeed extends React.Component {
+  componentDidMount() {
     this.props.getHistoryFeed(this.props.match.params.type);
-  } */
+  }
 
   render() {
-    /* const { historyFeed, isFetching, error } = this.props; */
+    const { historyFeed, isFetching, error } = this.props;
+    console.log(historyFeed);
 
     let historyComponent;
 
-    /* if (isFetching) {
+    if (isFetching) {
       historyComponent = <Error error="Идёт загрузка..." />;
-    } else if (error || !historyFeed.length) {
+    } else if (error || !historyFeed) {
       historyComponent = <Error error="Новостей пока нет." />;
     } else {
       historyComponent = historyFeed
@@ -36,7 +37,7 @@ export default class HistoryFeed extends React.Component {
             />
           );
         });
-    } */
+    }
 
     return (
       <React.Fragment>

@@ -29,7 +29,7 @@ export default class HistoryCard extends React.Component {
             <CardTitle
               className="history-title"
               tag={Link}
-              to={`/history/${url}`}
+              to={`/history-article/${url}`}
             >
               {title}
             </CardTitle>
@@ -38,7 +38,11 @@ export default class HistoryCard extends React.Component {
             </CardSubtitle>
             <CardText className="history-description">{description}</CardText>
           </CardBody>
-          <Button className="read-more" tag={Link} to={`/history/${url}`}>
+          <Button
+            className="read-more"
+            tag={Link}
+            to={`/history-article/${url}`}
+          >
             Читать дальше
           </Button>
         </Card>

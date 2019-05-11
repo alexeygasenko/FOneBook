@@ -15,6 +15,11 @@ let LoadableNews = Loadable({
   loading: Loading,
 });
 
+let LoadableNewsPage = Loadable({
+  loader: () => delay(0).then(() => import('../containers/newsPageContainer')),
+  loading: Loading,
+});
+
 let LoadableHistory = Loadable({
   loader: () => delay(0).then(() => import('./History/History')),
   loading: Loading,
@@ -22,7 +27,13 @@ let LoadableHistory = Loadable({
 
 let LoadableHistoryFeed = Loadable({
   loader: () =>
-    delay(0).then(() => import('./History/HistoryFeed/HistoryFeed')),
+    delay(0).then(() => import('../containers/historyFeedContainer')),
+  loading: Loading,
+});
+
+let LoadableHistoryPage = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/historyPageContainer')),
   loading: Loading,
 });
 
@@ -71,11 +82,6 @@ let LoadableBookTicket = Loadable({
   loading: Loading,
 });
 
-let LoadableNewsPage = Loadable({
-  loader: () => delay(0).then(() => import('../containers/newsPageContainer')),
-  loading: Loading,
-});
-
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -96,8 +102,14 @@ export default class Main extends React.Component {
           <Switch>
             <Route exact path="/" component={LoadableNews} />
 
+            <Route path="/news/:url" component={LoadableNewsPage} />
+
             <Route exact path="/history" component={LoadableHistory} />
             <Route path="/history/:type" component={LoadableHistoryFeed} />
+            <Route
+              path="/history-article/:url"
+              component={LoadableHistoryPage}
+            />
 
             <Route exact path="/auto" component={LoadableAuto} />
             <Route exact path="/stats" component={LoadableStats} />
@@ -117,7 +129,6 @@ export default class Main extends React.Component {
               component={LoadableBookTicket}
             />
 
-            <Route path="/news/:url" component={LoadableNewsPage} />
             <Route
               path="/bookings/booking-info/:id"
               component={LoadableBookingInfo}
