@@ -22,7 +22,7 @@ export default class HistoryCard extends React.Component {
     const { url, title, description, date, pic } = this.props;
 
     return (
-      <div id={url} className="col-md-3">
+      <div id={url} className="col-md-4">
         <Card className="history-card">
           <CardImg className="history-img" top src={pic} alt="Новость" />
           <CardBody className="history-card-body">

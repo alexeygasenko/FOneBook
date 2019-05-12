@@ -96,7 +96,6 @@ export class HistoryPage extends React.Component {
                     {this.convertType(historyPage.type)}
                   </Link>
                 </BreadcrumbItem>
-                <BreadcrumbItem active />
               </Breadcrumb>
             </div>
             <div className="history-page">

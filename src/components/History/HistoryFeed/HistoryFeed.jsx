@@ -20,8 +20,8 @@ export class HistoryFeed extends React.Component {
 
     if (isFetching) {
       historyComponent = <Error error="Идёт загрузка..." />;
-    } else if (error || !historyFeed) {
-      historyComponent = <Error error="Новостей пока нет." />;
+    } else if (error || !historyFeed || !historyFeed.length) {
+      historyComponent = <Error error="Статей из этого раздела пока нет." />;
     } else {
       historyComponent = historyFeed
         .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
