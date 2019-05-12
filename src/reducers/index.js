@@ -8,6 +8,9 @@ import { newsPageReducer } from './news/newsPageReducer';
 import { historyFeedReducer } from './history/historyFeedReducer';
 import { historyPageReducer } from './history/historyPageReducer';
 
+import { autoFeedReducer } from './auto/autoFeedReducer';
+import { autoPageReducer } from './auto/autoPageReducer';
+
 import { bookingsListReducer } from './booking/bookingsListReducer';
 import { bookingInfoReducer } from './booking/bookingInfoReducer';
 import { bookTicketReducer } from './booking/bookTicketReducer';
@@ -23,6 +26,9 @@ export const rootReducer = combineReducers({
 
   historyFeedReducer: historyFeedReducer,
   historyPageReducer: historyPageReducer,
+
+  autoFeedReducer: autoFeedReducer,
+  autoPageReducer: autoPageReducer,
 
   bookingsListReducer: bookingsListReducer,
   bookingInfoReducer: bookingInfoReducer,

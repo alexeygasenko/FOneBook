@@ -1,0 +1,28 @@
+.auto {
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+@media all and (max-width: 767px) {
+  .auto {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .auto {
+    width: 95%;
+  }
+
+  .col-md-3 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .auto {
+    width: 60%;
+  }
+}
