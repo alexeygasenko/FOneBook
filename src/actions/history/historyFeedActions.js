@@ -8,10 +8,10 @@ const historyFeedRequest = () => {
   };
 };
 
-const historyFeedSuccess = newsFeed => {
+const historyFeedSuccess = historyFeed => {
   return {
     type: GET_HISTORY_FEED_SUCCESS,
-    payload: newsFeed,
+    payload: historyFeed,
   };
 };
 

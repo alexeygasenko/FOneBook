@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, Button } from 'reactstrap';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import CustomNavbar from '../Navbar/Navbar';
 import './Auto.css';
 import Footer from '../Footer/Footer';
@@ -28,11 +29,12 @@ export default class Auto extends React.Component {
         '1950-1959',
       ],
       decadesImages: [img10s, img00s, img90s, img80s, img70s, img60s, img50s],
+      decadeTypes: ['10s', '00s', '90s', '80s', '70s', '60s', '50s'],
     };
   }
 
   renderSections = () => {
-    const { decadesSections, decadesImages } = this.state;
+    const { decadesSections, decadesImages, decadeTypes } = this.state;
     let sections = [];
 
     for (let i = 0; i < decadesSections.length; ++i) {
@@ -45,7 +47,13 @@ export default class Auto extends React.Component {
               src={decadesImages[i]}
               alt="Card image cap"
             />
-            <Button className="read-more">{decadesSections[i]}</Button>
+            <Button
+              className="read-more"
+              tag={Link}
+              to={`/auto/${decadeTypes[i]}`}
+            >
+              {decadesSections[i]}
+            </Button>
           </Card>
         </div>
       );

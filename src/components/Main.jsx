@@ -10,6 +10,9 @@ import delay from './Loading/Delay';
 import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
+//================================================================================
+// News
+//================================================================================
 let LoadableNews = Loadable({
   loader: () =>
     delay(0).then(() => import('../containers/news/newsFeedContainer')),
@@ -22,6 +25,9 @@ let LoadableNewsPage = Loadable({
   loading: Loading,
 });
 
+//================================================================================
+// History
+//================================================================================
 let LoadableHistory = Loadable({
   loader: () => delay(0).then(() => import('./History/History')),
   loading: Loading,
@@ -39,16 +45,37 @@ let LoadableHistoryPage = Loadable({
   loading: Loading,
 });
 
+//================================================================================
+// Auto
+//================================================================================
 let LoadableAuto = Loadable({
   loader: () => delay(0).then(() => import('./Auto/Auto')),
   loading: Loading,
 });
 
+let LoadableAutoFeed = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/auto/autoFeedContainer')),
+  loading: Loading,
+});
+
+let LoadableAutoPage = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/auto/autoPageContainer')),
+  loading: Loading,
+});
+
+//================================================================================
+// Statistics
+//================================================================================
 let LoadableStats = Loadable({
   loader: () => delay(0).then(() => import('./Statistics/Statistics')),
   loading: Loading,
 });
 
+//================================================================================
+// Authorization and user profile
+//================================================================================
 let LoadableLogin = Loadable({
   loader: () => delay(0).then(() => import('./Authorization/Login/Login')),
   loading: Loading,
@@ -66,6 +93,9 @@ let LoadableProfile = Loadable({
   loading: Loading,
 });
 
+//================================================================================
+// Booking
+//================================================================================
 let LoadableBookings = Loadable({
   loader: () =>
     delay(0).then(() => import('../containers/booking/bookingsListContainer')),
@@ -114,6 +144,9 @@ export default class Main extends React.Component {
             />
 
             <Route exact path="/auto" component={LoadableAuto} />
+            <Route path="/auto/:type" component={LoadableAutoFeed} />
+            <Route path="/auto-article/:url" component={LoadableAutoPage} />
+
             <Route exact path="/stats" component={LoadableStats} />
 
             <Route exact path="/login" component={LoadableLogin} />
