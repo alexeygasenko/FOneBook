@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { NewsPage } from '../components/News/NewsPage/NewsPage';
-import { getNewsPage } from '../actions/news/newsPageActions';
+import { NewsPage } from '../../components/News/NewsPage/NewsPage';
+import { getNewsPage } from '../../actions/news/newsPageActions';
 
 const mapStateToProps = store => {
   return {

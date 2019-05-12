@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { NewsFeed } from '../components/News/NewsFeed/NewsFeed';
-import { getNewsFeed } from '../actions/news/newsFeedActions';
+import { NewsFeed } from '../../components/News/NewsFeed/NewsFeed';
+import { getNewsFeed } from '../../actions/news/newsFeedActions';
 
 const mapStateToProps = store => {
   return {

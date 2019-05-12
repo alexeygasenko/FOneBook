@@ -2,7 +2,7 @@ import {
   GET_BOOKINGS_LIST_REQUEST,
   GET_BOOKINGS_LIST_SUCCESS,
   GET_BOOKINGS_LIST_FAIL,
-} from '../actions/booking/bookingsListActions';
+} from '../../actions/booking/bookingsListActions';
 
 const initialState = {
   bookingsList: [],

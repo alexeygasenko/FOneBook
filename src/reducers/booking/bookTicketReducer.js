@@ -2,13 +2,13 @@ import {
   ADD_BOOKING_REQUEST,
   ADD_BOOKING_SUCCESS,
   ADD_BOOKING_FAIL,
-} from '../actions/booking/bookTicketActions';
+} from '../../actions/booking/bookTicketActions';
 
 import {
   GET_EVENTS_REQUEST,
   GET_EVENTS_SUCCESS,
   GET_EVENTS_FAIL,
-} from '../actions/booking/eventActions';
+} from '../../actions/booking/eventActions';
 
 const initialState = {
   userBooking: null,

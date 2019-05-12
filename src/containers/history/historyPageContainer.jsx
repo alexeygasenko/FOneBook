@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { HistoryPage } from '../components/History/HistoryPage/HistoryPage';
-import { getHistoryPage } from '../actions/history/historyPageActions';
+import { HistoryPage } from '../../components/History/HistoryPage/HistoryPage';
+import { getHistoryPage } from '../../actions/history/historyPageActions';
 
 const mapStateToProps = store => {
   return {

@@ -11,12 +11,14 @@ import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
 let LoadableNews = Loadable({
-  loader: () => delay(0).then(() => import('../containers/newsFeedContainer')),
+  loader: () =>
+    delay(0).then(() => import('../containers/news/newsFeedContainer')),
   loading: Loading,
 });
 
 let LoadableNewsPage = Loadable({
-  loader: () => delay(0).then(() => import('../containers/newsPageContainer')),
+  loader: () =>
+    delay(0).then(() => import('../containers/news/newsPageContainer')),
   loading: Loading,
 });
 
@@ -27,13 +29,13 @@ let LoadableHistory = Loadable({
 
 let LoadableHistoryFeed = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/historyFeedContainer')),
+    delay(0).then(() => import('../containers/history/historyFeedContainer')),
   loading: Loading,
 });
 
 let LoadableHistoryPage = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/historyPageContainer')),
+    delay(0).then(() => import('../containers/history/historyPageContainer')),
   loading: Loading,
 });
 
@@ -66,19 +68,19 @@ let LoadableProfile = Loadable({
 
 let LoadableBookings = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookingsListContainer')),
+    delay(0).then(() => import('../containers/booking/bookingsListContainer')),
   loading: Loading,
 });
 
 let LoadableBookingInfo = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookingInfoContainer')),
+    delay(0).then(() => import('../containers/booking/bookingInfoContainer')),
   loading: Loading,
 });
 
 let LoadableBookTicket = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookTicketContainer')),
+    delay(0).then(() => import('../containers/booking/bookTicketContainer')),
   loading: Loading,
 });
 

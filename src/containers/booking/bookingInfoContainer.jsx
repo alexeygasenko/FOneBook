@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { BookingInfo } from '../components/UserProfile/Bookings/BookingInfo/BookingInfo';
-import { getBookingInfo } from '../actions/booking/bookingInfoActions';
-import { deleteBooking } from '../actions/booking/deleteBookingActions';
+import { BookingInfo } from '../../components/UserProfile/Bookings/BookingInfo/BookingInfo';
+import { getBookingInfo } from '../../actions/booking/bookingInfoActions';
+import { deleteBooking } from '../../actions/booking/deleteBookingActions';
 
 const mapStateToProps = store => {
   return {

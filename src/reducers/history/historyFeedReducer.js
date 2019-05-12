@@ -2,7 +2,7 @@ import {
   GET_HISTORY_FEED_REQUEST,
   GET_HISTORY_FEED_SUCCESS,
   GET_HISTORY_FEED_FAIL,
-} from '../actions/history/historyFeedActions';
+} from '../../actions/history/historyFeedActions';
 
 const initialState = {
   historyFeed: [],
