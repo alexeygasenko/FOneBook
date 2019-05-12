@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: .75rem 1rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   list-style: none;
   background-color: white;
@@ -133,7 +134,7 @@
 }
 
 @media all and (max-width: 767px) {
-  .row {
+  .history-row {
     width: 95%;
   }
 
@@ -152,13 +153,13 @@
 }
 
 @media all and (max-width: 1680px) {
-  .row {
+  .history-row {
     width: 95%;
   }
 }
 
 @media all and (min-width: 2200px) {
-  .row {
+  .history-row {
     width: 60%;
   }
 }
