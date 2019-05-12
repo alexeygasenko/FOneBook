@@ -2,7 +2,7 @@ import {
   GET_HISTORY_PAGE_REQUEST,
   GET_HISTORY_PAGE_SUCCESS,
   GET_HISTORY_PAGE_FAIL,
-} from '../actions/historyPageActions';
+} from '../actions/history/historyPageActions';
 
 const initialState = {
   historyPage: null,

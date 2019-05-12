@@ -2,7 +2,7 @@ import {
   GET_NEWS_FEED_REQUEST,
   GET_NEWS_FEED_SUCCESS,
   GET_NEWS_FEED_FAIL,
-} from '../actions/newsFeedActions';
+} from '../actions/news/newsFeedActions';
 
 const initialState = {
   newsFeed: [],

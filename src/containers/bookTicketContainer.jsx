@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { BookTicket } from '../components/UserProfile/Bookings/BookTicket/BookTicket';
-import { bookTicket } from '../actions/bookTicketActions';
-import { getEventList } from '../actions/eventActions';
+import { bookTicket } from '../actions/booking/bookTicketActions';
+import { getEventList } from '../actions/booking/eventActions';
 
 const mapStateToProps = store => {
   return {

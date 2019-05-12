@@ -12,7 +12,7 @@ export default class CommentSection extends React.Component {
           avatar:
             'http://www.gravatar.com/avatar/324a730e1cec1f5c57628a990779d370?s=200&r=pg&d=mm',
         },
-        text: 'testesadsadsfjsadfhsadjhfsjoadhlkadhf',
+        text: 'Вот это да!',
         rating: 59,
         date: Date.now(),
       },
@@ -22,7 +22,7 @@ export default class CommentSection extends React.Component {
           avatar:
             'http://www.gravatar.com/avatar/324a730e1cec1f5c57628a990779d370?s=200&r=pg&d=mm',
         },
-        text: 'testesadsadsfjsadfhsadjhfsjoadhlkadhf',
+        text: 'Круто!',
         rating: 40,
         date: Date.now(),
       },

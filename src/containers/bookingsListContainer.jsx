@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { BookingsList } from '../components/UserProfile/Bookings/BookingsList';
-import { getBookingsList } from '../actions/bookingsListActions';
+import { getBookingsList } from '../actions/booking/bookingsListActions';
 
 const mapStateToProps = store => {
   return {

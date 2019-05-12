@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { HistoryFeed } from '../components/History/HistoryFeed/HistoryFeed';
-import { getHistoryFeed } from '../actions/historyFeedActions';
+import { getHistoryFeed } from '../actions/history/historyFeedActions';
 
 const mapStateToProps = store => {
   return {
