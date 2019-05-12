@@ -1,29 +1,29 @@
 import {
-  GET_NEWS_FEED_REQUEST,
-  GET_NEWS_FEED_SUCCESS,
-  GET_NEWS_FEED_FAIL,
-} from '../actions/newsFeedActions';
+  GET_HISTORY_FEED_REQUEST,
+  GET_HISTORY_FEED_SUCCESS,
+  GET_HISTORY_FEED_FAIL,
+} from '../../actions/history/historyFeedActions';
 
 const initialState = {
-  newsFeed: [],
+  historyFeed: [],
   isFetching: false,
   error: '',
 };
 
-export function newsFeedReducer(state = initialState, action) {
+export function historyFeedReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_NEWS_FEED_REQUEST:
+    case GET_HISTORY_FEED_REQUEST:
       return { ...state, isFetching: true, error: '' };
 
-    case GET_NEWS_FEED_SUCCESS:
+    case GET_HISTORY_FEED_SUCCESS:
       return {
         ...state,
-        newsFeed: action.payload,
+        historyFeed: action.payload,
         isFetching: false,
         error: '',
       };
 
-    case GET_NEWS_FEED_FAIL:
+    case GET_HISTORY_FEED_FAIL:
       return { ...state, isFetching: false, error: action.payload.message };
 
     default:

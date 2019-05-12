@@ -1,16 +1,49 @@
-.news-row {
-  width: 80%;
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .75rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: white;
+  border-radius: .25rem;
+}
+
+.breadcrumb-item {
+  transition: 0.2s;
+}
+
+.breadcrumb-item:hover {
+  transform: scale(1.1);
+}
+
+.breadcrumb-item > a {
+  transition: 0.2s;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
+.breadcrumb-item > a:hover {
+  text-decoration: none;
+  color: rgb(255, 42, 42);
+}
+
+.history-row {
+  width: 55%;
   margin: 0 auto;
 }
 
-.news-page {
+.history-page {
   transition: 0.2s;
   background-color: #ffffff;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   border: 1px solid #dedede;
 }
 
-.news-page-title {
+.history-page-title {
   transition: 0.2s;
   margin-top: 1rem;
   font-family: 'Roboto', sans-serif;
@@ -20,7 +53,7 @@
   color: black;
 }
 
-.news-page-date {
+.history-page-date {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-style: italic;
@@ -28,7 +61,7 @@
   text-align: right;
 }
 
-.news-page-author {
+.history-page-author {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-style: italic;
@@ -70,20 +103,20 @@
   padding: 0.2rem 1rem 0.2rem 1rem;
 }
 
-.news-page-description {
+.history-page-description {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 1.3rem;
   margin: 1rem 0 1rem 0;
 }
 
-.news-paragraph {
+.history-paragraph {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
 }
 
-.news-page-img {
+.history-page-img {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -101,32 +134,32 @@
 }
 
 @media all and (max-width: 767px) {
-  .row {
+  .history-row {
     width: 95%;
   }
 
-  .news {
+  .history {
     padding: 0.5rem 1rem 0.5rem 1rem;
     box-shadow: 0px 7px 18px -12px rgba(0,0,0,0.75);
   }
 
-  .news-title {
+  .history-title {
     font-size: 1.3rem;
   }
 
-  .news-date {
+  .history-date {
     font-size: 1.3rem;
   }
 }
 
 @media all and (max-width: 1680px) {
-  .row {
+  .history-row {
     width: 95%;
   }
 }
 
 @media all and (min-width: 2200px) {
-  .row {
+  .history-row {
     width: 60%;
   }
 }

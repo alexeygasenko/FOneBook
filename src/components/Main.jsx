@@ -11,12 +11,31 @@ import setAuthToken from '../setAuthToken';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
 let LoadableNews = Loadable({
-  loader: () => delay(0).then(() => import('../containers/newsFeedContainer')),
+  loader: () =>
+    delay(0).then(() => import('../containers/news/newsFeedContainer')),
+  loading: Loading,
+});
+
+let LoadableNewsPage = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/news/newsPageContainer')),
   loading: Loading,
 });
 
 let LoadableHistory = Loadable({
   loader: () => delay(0).then(() => import('./History/History')),
+  loading: Loading,
+});
+
+let LoadableHistoryFeed = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/history/historyFeedContainer')),
+  loading: Loading,
+});
+
+let LoadableHistoryPage = Loadable({
+  loader: () =>
+    delay(0).then(() => import('../containers/history/historyPageContainer')),
   loading: Loading,
 });
 
@@ -49,24 +68,19 @@ let LoadableProfile = Loadable({
 
 let LoadableBookings = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookingsListContainer')),
+    delay(0).then(() => import('../containers/booking/bookingsListContainer')),
   loading: Loading,
 });
 
 let LoadableBookingInfo = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookingInfoContainer')),
+    delay(0).then(() => import('../containers/booking/bookingInfoContainer')),
   loading: Loading,
 });
 
 let LoadableBookTicket = Loadable({
   loader: () =>
-    delay(0).then(() => import('../containers/bookTicketContainer')),
-  loading: Loading,
-});
-
-let LoadableNewsPage = Loadable({
-  loader: () => delay(0).then(() => import('../containers/newsPageContainer')),
+    delay(0).then(() => import('../containers/booking/bookTicketContainer')),
   loading: Loading,
 });
 
@@ -89,7 +103,16 @@ export default class Main extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" component={LoadableNews} />
+
+            <Route path="/news/:url" component={LoadableNewsPage} />
+
             <Route exact path="/history" component={LoadableHistory} />
+            <Route path="/history/:type" component={LoadableHistoryFeed} />
+            <Route
+              path="/history-article/:url"
+              component={LoadableHistoryPage}
+            />
+
             <Route exact path="/auto" component={LoadableAuto} />
             <Route exact path="/stats" component={LoadableStats} />
 
@@ -108,7 +131,6 @@ export default class Main extends React.Component {
               component={LoadableBookTicket}
             />
 
-            <Route path="/news/:url" component={LoadableNewsPage} />
             <Route
               path="/bookings/booking-info/:id"
               component={LoadableBookingInfo}

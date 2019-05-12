@@ -1,0 +1,28 @@
+.history {
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+@media all and (max-width: 767px) {
+  .history {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .history {
+    width: 95%;
+  }
+
+  .col-md-3 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .history {
+    width: 60%;
+  }
+}

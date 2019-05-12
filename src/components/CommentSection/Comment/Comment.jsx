@@ -24,11 +24,11 @@ export default class Comment extends React.Component {
             {this.convertDate(date)}
           </div>
           <div className="comment-rating display-inline">
-            <button class="comment-btn" id="apartmentBtnUp">
+            <button className="comment-btn" id="apartmentBtnUp">
               <img src={up} id="votegUp" alt="Up" />
             </button>
             {rating}
-            <button class="comment-btn" id="apartmentBtnDown">
+            <button className="comment-btn" id="apartmentBtnDown">
               <img src={down} id="voteDown" alt="Down" />
             </button>
           </div>

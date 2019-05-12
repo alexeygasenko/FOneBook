@@ -2,7 +2,7 @@ import {
   GET_NEWS_PAGE_REQUEST,
   GET_NEWS_PAGE_SUCCESS,
   GET_NEWS_PAGE_FAIL,
-} from '../actions/newsPageActions';
+} from '../../actions/news/newsPageActions';
 
 const initialState = {
   newsPage: null,

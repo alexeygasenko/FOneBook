@@ -2,13 +2,13 @@ import {
   GET_BOOKING_INFO_REQUEST,
   GET_BOOKING_INFO_SUCCESS,
   GET_BOOKING_INFO_FAIL,
-} from '../actions/bookingInfoActions';
+} from '../../actions/booking/bookingInfoActions';
 
 import {
   DELETE_BOOKING_REQUEST,
   DELETE_BOOKING_SUCCESS,
   DELETE_BOOKING_FAIL,
-} from '../actions/deleteBookingActions';
+} from '../../actions/booking/deleteBookingActions';
 
 const initialState = {
   userBooking: null,
