@@ -1,5 +1,37 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: white;
+  border-radius: .25rem;
+}
+
+.breadcrumb-item {
+  transition: 0.2s;
+}
+
+.breadcrumb-item:hover {
+  transform: scale(1.1);
+}
+
+.breadcrumb-item > a {
+  transition: 0.2s;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
+.breadcrumb-item > a:hover {
+  text-decoration: none;
+  color: rgb(255, 42, 42);
+}
+
 .history-row {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -65,7 +97,7 @@
 .more-author-rating {
   font-weight: 700;
   font-style: italic;
-  background-color: rgb(255, 42, 42);;
+  background-color: rgb(255, 42, 42);
   color: white;
   padding: 0.2rem 1rem 0.2rem 1rem;
 }

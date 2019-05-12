@@ -33,6 +33,7 @@ export default class CommentSection extends React.Component {
       .map(comment => {
         return (
           <Comment
+            key={comment.date + comment.rating}
             text={comment.text}
             user={comment.user}
             rating={comment.rating}

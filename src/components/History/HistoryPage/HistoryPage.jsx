@@ -1,5 +1,7 @@
 import React from 'react';
 import ScrollUpButton from 'react-scroll-up-button';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
 import ReactTooltip from 'react-tooltip';
@@ -15,13 +17,31 @@ export class HistoryPage extends React.Component {
     return newDate;
   };
 
+  convertType = type => {
+    switch (type) {
+      case 'drivers':
+        return 'Гонщики';
+
+      case 'grandPrix':
+        return 'Гран-при';
+
+      case 'tracks':
+        return 'Трассы';
+
+      case 'auto':
+        return 'Авто';
+
+      default:
+        return null;
+    }
+  };
+
   componentDidMount() {
     this.props.getHistoryPage(this.props.match.params.url);
   }
 
   render() {
     const { historyPage, isFetching, error } = this.props;
-    console.log(historyPage);
 
     let historyComponent;
 
@@ -65,8 +85,21 @@ export class HistoryPage extends React.Component {
             <title>{historyPage.title} - FOneBook</title>
             <meta name="description" content="Helmet application" />
           </Helmet>
-          <div className="row history-row">
-            <div className="history-page col-md-8">
+          <div className="history-row">
+            <div>
+              <Breadcrumb>
+                <BreadcrumbItem>
+                  <Link to="/history">История</Link>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <Link to={`/history/${historyPage.type}`}>
+                    {this.convertType(historyPage.type)}
+                  </Link>
+                </BreadcrumbItem>
+                <BreadcrumbItem active />
+              </Breadcrumb>
+            </div>
+            <div className="history-page">
               <div className="history-page-title">{historyPage.title}</div>
               <div className="history-page-date">
                 {this.convertDate(historyPage.date)}
