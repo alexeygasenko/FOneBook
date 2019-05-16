@@ -81,7 +81,15 @@ export class Statistics extends React.Component {
                 <img className="stats-car" src={driver.currentCar} alt="Car" />
               </td>
               <td>{driver.number}</td>
-              <td>{driver.season[0].points}</td>
+              <td>
+                {
+                  driver.season[
+                    driver.season.findIndex(
+                      season => season.year === stats.year
+                    )
+                  ].points
+                }
+              </td>
             </tr>
           );
         });
@@ -101,7 +109,13 @@ export class Statistics extends React.Component {
               <th scope="row">{teamCounter}</th>
               <td />
               <td>{team.name}</td>
-              <td>{team.season[0].points}</td>
+              <td>
+                {
+                  team.season[
+                    team.season.findIndex(season => season.year === stats.year)
+                  ].points
+                }
+              </td>
             </tr>
           );
         });
