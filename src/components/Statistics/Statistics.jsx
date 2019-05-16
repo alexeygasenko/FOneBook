@@ -1,39 +1,29 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { /* Input, */ Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import CustomNavbar from '../Navbar/Navbar';
 import './Statistics.css';
 import Footer from '../Footer/Footer';
 import Error from '../Loading/Error/Error';
 
 export class Statistics extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      year: 2019,
-    };
-  }
-
   componentDidMount() {
     this.props.getStats(this.props.match.params.year);
   }
 
-  onYearSelectHandler = e => {
-    this.setState({
-      year: e.currentTarget.value,
-    });
-    this.props.history.push(`/stats/${e.currentTarget.value}`);
-    this.forceUpdate();
-  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.year !== this.props.match.params.year) {
+      this.props.getStats(nextProps.match.params.year);
+    }
+  }
 
   render() {
     const { stats, isFetching, error } = this.props;
 
+    let buttonComponent;
     let driversChampionship;
     let teamsChampionship;
-    /* let yearChange; */
-    let years = [];
 
     let errorComponent = null;
     let driverCounter = 0;
@@ -44,26 +34,32 @@ export class Statistics extends React.Component {
     } else if (error || !stats) {
       errorComponent = <Error error="Статистика пока недоступна." />;
     } else {
-      for (let i = 2019; i >= 1950; i--) {
-        let comp = (
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-        years.push(comp);
-      }
-      /* yearChange = (
-        <Input
-          type="select"
-          name="selectYear"
-          id="selectYear"
-          className="select-year"
-          onChange={this.onYearSelectHandler}
-          value={this.state.year}
-        >
-          {years}
-        </Input>
-      ); */
+      buttonComponent = (
+        <div className="select-year">
+          {stats.year === 1950 ? null : (
+            <div className="display-inline">
+              <Button
+                className="select-year-btn select-year-btn-prev"
+                tag={Link}
+                to={`/stats/${stats.year - 1}`}
+              >
+                ◀ {stats.year - 1}
+              </Button>
+            </div>
+          )}
+          {stats.year === 2019 ? null : (
+            <div className="display-inline">
+              <Button
+                className="select-year-btn select-year-btn-next"
+                tag={Link}
+                to={`/stats/${stats.year + 1}`}
+              >
+                {stats.year + 1} ▶
+              </Button>
+            </div>
+          )}
+        </div>
+      );
 
       driversChampionship = stats.drivers
         .sort(
@@ -118,6 +114,7 @@ export class Statistics extends React.Component {
           <title>Статистика - FOneBook</title>
           <meta name="description" content="Helmet application" />
         </Helmet>
+        {buttonComponent}
         <div className="row statistics">
           <div className="col-md-8 stats-table">
             <div className="stats-title">Чемпионат пилотов</div>
