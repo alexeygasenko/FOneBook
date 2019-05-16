@@ -121,7 +121,7 @@ class CustomNavbar extends Component {
       return activeNavBtn;
     } else {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section" to="/stats">
+        <NavLink tag={Link} className="nav-section" to="/stats/2019">
           Статистика
         </NavLink>
       );
