@@ -7,23 +7,25 @@ import Footer from '../Footer/Footer';
 import Error from '../Loading/Error/Error';
 
 export class Statistics extends React.Component {
-  /*  constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       year: 2019,
     };
-  } */
+  }
 
   componentDidMount() {
     this.props.getStats(this.props.match.params.year);
   }
 
-  /*  onYearSelectHandler = e => {
+  onYearSelectHandler = e => {
     this.setState({
       year: e.currentTarget.value,
     });
-  }; */
+    this.props.history.push(`/stats/${e.currentTarget.value}`);
+    this.forceUpdate();
+  };
 
   render() {
     const { stats, isFetching, error } = this.props;
@@ -31,6 +33,7 @@ export class Statistics extends React.Component {
     let driversChampionship;
     let teamsChampionship;
     /* let yearChange; */
+    let years = [];
 
     let errorComponent = null;
     let driverCounter = 0;
@@ -41,6 +44,14 @@ export class Statistics extends React.Component {
     } else if (error || !stats) {
       errorComponent = <Error error="Статистика пока недоступна." />;
     } else {
+      for (let i = 2019; i >= 1950; i--) {
+        let comp = (
+          <option key={i} value={i}>
+            {i}
+          </option>
+        );
+        years.push(comp);
+      }
       /* yearChange = (
         <Input
           type="select"
@@ -48,18 +59,20 @@ export class Statistics extends React.Component {
           id="selectYear"
           className="select-year"
           onChange={this.onYearSelectHandler}
-          value={stats.year}
+          value={this.state.year}
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          {years}
         </Input>
       ); */
 
       driversChampionship = stats.drivers
-        .sort((a, b) => b.season[0].points - a.season[0].points)
+        .sort(
+          (a, b) =>
+            b.season[b.season.findIndex(season => season.year === stats.year)]
+              .points -
+            a.season[a.season.findIndex(season => season.year === stats.year)]
+              .points
+        )
         .map(driver => {
           driverCounter++;
           return (
@@ -78,7 +91,13 @@ export class Statistics extends React.Component {
         });
 
       teamsChampionship = stats.teams
-        .sort((a, b) => b.season[0].points - a.season[0].points)
+        .sort(
+          (a, b) =>
+            b.season[b.season.findIndex(season => season.year === stats.year)]
+              .points -
+            a.season[a.season.findIndex(season => season.year === stats.year)]
+              .points
+        )
         .map(team => {
           teamCounter++;
           return (

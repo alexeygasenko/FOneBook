@@ -114,7 +114,11 @@ class CustomNavbar extends Component {
 
     if (active === 'Статистика') {
       activeNavBtn = (
-        <NavLink tag={Link} className="nav-section section-active" to="/stats">
+        <NavLink
+          tag={Link}
+          className="nav-section section-active"
+          to="/stats/2019"
+        >
           Статистика
         </NavLink>
       );
