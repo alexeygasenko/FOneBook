@@ -11,6 +11,8 @@ import { historyPageReducer } from './history/historyPageReducer';
 import { autoFeedReducer } from './auto/autoFeedReducer';
 import { autoPageReducer } from './auto/autoPageReducer';
 
+import { statsReducer } from './stats/statsReducer';
+
 import { bookingsListReducer } from './booking/bookingsListReducer';
 import { bookingInfoReducer } from './booking/bookingInfoReducer';
 import { bookTicketReducer } from './booking/bookTicketReducer';
@@ -29,6 +31,8 @@ export const rootReducer = combineReducers({
 
   autoFeedReducer: autoFeedReducer,
   autoPageReducer: autoPageReducer,
+
+  statsReducer: statsReducer,
 
   bookingsListReducer: bookingsListReducer,
   bookingInfoReducer: bookingInfoReducer,

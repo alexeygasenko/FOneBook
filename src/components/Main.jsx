@@ -69,7 +69,8 @@ let LoadableAutoPage = Loadable({
 // Statistics
 //================================================================================
 let LoadableStats = Loadable({
-  loader: () => delay(0).then(() => import('./Statistics/Statistics')),
+  loader: () =>
+    delay(0).then(() => import('../containers/stats/statsContainer')),
   loading: Loading,
 });
 
@@ -147,7 +148,7 @@ export default class Main extends React.Component {
             <Route path="/auto/:type" component={LoadableAutoFeed} />
             <Route path="/auto-article/:url" component={LoadableAutoPage} />
 
-            <Route exact path="/stats" component={LoadableStats} />
+            <Route path="/stats/:year" component={LoadableStats} />
 
             <Route exact path="/login" component={LoadableLogin} />
             <Route

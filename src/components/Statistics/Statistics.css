@@ -1,0 +1,93 @@
+.statistics {
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+.select-year {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.select-year-btn {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  border: 0;
+  border-radius: 0;
+}
+
+.select-year-btn:hover {
+  background-color: rgb(220, 42, 42);
+}
+
+.select-year-btn-prev {
+  margin-right: 1rem;
+}
+
+.select-year-btn-next {
+  margin-left: 1rem;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.stats-title {
+  text-align: center;
+  transition: 0.2s;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: black;
+  background-color: #ffffff;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  border: 1px solid #dedede;
+  margin-bottom: 1rem;
+}
+
+.table-title {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+}
+
+.stats-car {
+  width: 40%;
+  height: auto;
+}
+
+@media all and (max-width: 767px) {
+  .statistics {
+    width: 90%;
+  }
+
+  .stats-car {
+    display: none;
+  }
+
+  .stats-table {
+    padding: 0;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .statistics {
+    width: 95%;
+  }
+
+  .col-md-3 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media all and (min-width: 2200px) {
+  .statistics {
+    width: 60%;
+  }
+}
