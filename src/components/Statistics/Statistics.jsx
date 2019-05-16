@@ -1,21 +1,36 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Table } from 'reactstrap';
+import { /* Input, */ Table } from 'reactstrap';
 import CustomNavbar from '../Navbar/Navbar';
 import './Statistics.css';
 import Footer from '../Footer/Footer';
 import Error from '../Loading/Error/Error';
 
 export class Statistics extends React.Component {
+  /*  constructor(props) {
+    super(props);
+
+    this.state = {
+      year: 2019,
+    };
+  } */
+
   componentDidMount() {
     this.props.getStats(this.props.match.params.year);
   }
+
+  /*  onYearSelectHandler = e => {
+    this.setState({
+      year: e.currentTarget.value,
+    });
+  }; */
 
   render() {
     const { stats, isFetching, error } = this.props;
 
     let driversChampionship;
     let teamsChampionship;
+    /* let yearChange; */
 
     let errorComponent = null;
     let driverCounter = 0;
@@ -26,6 +41,23 @@ export class Statistics extends React.Component {
     } else if (error || !stats) {
       errorComponent = <Error error="Статистика пока недоступна." />;
     } else {
+      /* yearChange = (
+        <Input
+          type="select"
+          name="selectYear"
+          id="selectYear"
+          className="select-year"
+          onChange={this.onYearSelectHandler}
+          value={stats.year}
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </Input>
+      ); */
+
       driversChampionship = stats.drivers
         .sort((a, b) => b.season[0].points - a.season[0].points)
         .map(driver => {

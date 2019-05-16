@@ -4,6 +4,12 @@
   transition: 0.2s;
 }
 
+.select-year {
+  width: 10%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
 .stats-title {
   text-align: center;
   transition: 0.2s;
