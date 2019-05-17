@@ -5,8 +5,8 @@ import { getStats } from '../../actions/stats/statisticsActions';
 const mapStateToProps = store => {
   return {
     stats: store.statsReducer.stats,
-    isFetching: store.newsFeedReducer.isFetching,
-    error: store.newsFeedReducer.error,
+    isFetching: store.statsReducer.isFetching,
+    error: store.statsReducer.error,
   };
 };
 
