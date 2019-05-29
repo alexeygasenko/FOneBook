@@ -9,6 +9,9 @@ import Error from '../../Loading/Error/Error';
 import CommentSection from '../../CommentSection/CommentSection';
 import './CommunityPage.css';
 
+import up from '../../../data/img/btn-up.png';
+import down from '../../../data/img/btn-dwn.png';
+
 export class CommunityPage extends React.Component {
   convertDate = date => {
     const newDate = moment(date).format('DD.MM.YYYY HH:mm');
@@ -73,7 +76,7 @@ export class CommunityPage extends React.Component {
               <div className="community-page-author">
                 Автор:{' '}
                 <span data-tip data-for="article-author" className="author">
-                  {communityPage.author.name}
+                  {communityPage.author.name}{' '}
                 </span>
                 <ReactTooltip
                   id="article-author"
@@ -109,6 +112,15 @@ export class CommunityPage extends React.Component {
                 {communityPage.description}
               </div>
               {communityBlock}
+              <div className="community-rating display-inline">
+                <button className="community-btn" id="btnUp">
+                  <img src={up} id="votegUp" alt="Up" />
+                </button>
+                {communityPage.rating}
+                <button className="community-btn" id="btnDown">
+                  <img src={down} id="voteDown" alt="Down" />
+                </button>
+              </div>
             </div>
           </div>
         </React.Fragment>
