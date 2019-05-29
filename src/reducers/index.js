@@ -5,6 +5,9 @@ import authReducer from './authReducer';
 import { newsFeedReducer } from './news/newsFeedReducer';
 import { newsPageReducer } from './news/newsPageReducer';
 
+import { communityFeedReducer } from './community/communityFeedReducer';
+import { communityPageReducer } from './community/communityPageReducer';
+
 import { historyFeedReducer } from './history/historyFeedReducer';
 import { historyPageReducer } from './history/historyPageReducer';
 
@@ -25,6 +28,9 @@ export const rootReducer = combineReducers({
 
   newsFeedReducer: newsFeedReducer,
   newsPageReducer: newsPageReducer,
+
+  communityFeedReducer: communityFeedReducer,
+  communityPageReducer: communityPageReducer,
 
   historyFeedReducer: historyFeedReducer,
   historyPageReducer: historyPageReducer,

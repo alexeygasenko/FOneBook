@@ -14,7 +14,6 @@ export class AutoFeed extends React.Component {
 
   render() {
     const { autoFeed, isFetching, error } = this.props;
-    console.log(autoFeed);
 
     let autoComponent;
 
