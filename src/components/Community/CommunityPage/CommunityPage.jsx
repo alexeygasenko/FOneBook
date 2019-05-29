@@ -129,7 +129,7 @@ export class CommunityPage extends React.Component {
 
     return (
       <React.Fragment>
-        <CustomNavbar active="Новости" />
+        <CustomNavbar active="Сообщество" />
         <ScrollUpButton />
         {communityComponent}
         <CommentSection />
