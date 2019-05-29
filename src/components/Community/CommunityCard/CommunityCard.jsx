@@ -37,10 +37,9 @@ export default class CommunityCard extends React.Component {
               {this.convertDate(date)}
             </CardSubtitle>
             <CardText className="community-description">{description}</CardText>
-            <CardText className="community-rating">{rating}</CardText>
           </CardBody>
           <Button className="read-more" tag={Link} to={`/community/${url}`}>
-            Читать дальше
+            Читать дальше ({rating})
           </Button>
         </Card>
       </div>
