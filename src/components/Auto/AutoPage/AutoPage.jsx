@@ -8,7 +8,7 @@ import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
-import CommentSection from '../../CommentSection/CommentSection';
+import CommentSection from '../../../containers/commentSectionContainer';
 import './AutoPage.css';
 
 export class AutoPage extends React.Component {
@@ -47,11 +47,10 @@ export class AutoPage extends React.Component {
 
   componentDidMount() {
     this.props.getAutoPage(this.props.match.params.url);
-    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
-    const { autoPage, comments, isFetching, error } = this.props;
+    const { autoPage, isFetching, error } = this.props;
 
     let autoComponent;
 
@@ -163,7 +162,7 @@ export class AutoPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {autoComponent}
-        <CommentSection comments={comments} />
+        <CommentSection url={this.props.match.params.url} />
         <Footer />
       </React.Fragment>
     );

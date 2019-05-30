@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
-import CommentSection from '../../CommentSection/CommentSection';
+import CommentSection from '../../../containers/commentSectionContainer';
 import './CommunityPage.css';
 
 import up from '../../../data/img/btn-up.png';
@@ -28,12 +28,11 @@ export class CommunityPage extends React.Component {
 
   componentDidMount() {
     this.props.getCommunityPage(this.props.match.params.url);
-    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
     const { isAuthenticated } = this.props.auth;
-    const { communityPage, comments, isFetching, error } = this.props;
+    const { communityPage, isFetching, error } = this.props;
 
     let communityComponent;
 
@@ -155,7 +154,7 @@ export class CommunityPage extends React.Component {
         <CustomNavbar active="Сообщество" />
         <ScrollUpButton />
         {communityComponent}
-        <CommentSection comments={comments} />
+        <CommentSection url={this.props.match.params.url} />
         <Footer />
       </React.Fragment>
     );
