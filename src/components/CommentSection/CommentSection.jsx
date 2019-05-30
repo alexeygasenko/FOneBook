@@ -1,46 +1,31 @@
 import React from 'react';
+import Error from '../Loading/Error/Error';
 import Comment from './Comment/Comment';
 import './CommentSection.css';
 
 export default class CommentSection extends React.Component {
   render() {
-    /* const { comments } = this.props; */
-    const comments = [
-      {
-        user: {
-          name: 'alex59',
-          avatar:
-            'http://www.gravatar.com/avatar/324a730e1cec1f5c57628a990779d370?s=200&r=pg&d=mm',
-        },
-        text: 'Вот это да!',
-        rating: 59,
-        date: Date.now(),
-      },
-      {
-        user: {
-          name: 'alex59',
-          avatar:
-            'http://www.gravatar.com/avatar/324a730e1cec1f5c57628a990779d370?s=200&r=pg&d=mm',
-        },
-        text: 'Круто!',
-        rating: 40,
-        date: Date.now(),
-      },
-    ];
+    const { comments } = this.props;
 
-    let commentSection = comments
-      .sort((a, b) => b.rating - a.rating)
-      .map(comment => {
-        return (
-          <Comment
-            key={comment.date + comment.rating}
-            text={comment.text}
-            user={comment.user}
-            rating={comment.rating}
-            date={comment.date}
-          />
-        );
-      });
+    let commentSection;
+
+    if (comments.length === 0) {
+      commentSection = <Error error="Комментариев пока нет." />;
+    } else {
+      commentSection = comments
+        .sort((a, b) => b.rating - a.rating)
+        .map(comment => {
+          return (
+            <Comment
+              key={comment.date + comment.rating}
+              text={comment.text}
+              user={comment.author}
+              rating={comment.rating}
+              date={comment.date}
+            />
+          );
+        });
+    }
 
     return (
       <div className="comment-section">

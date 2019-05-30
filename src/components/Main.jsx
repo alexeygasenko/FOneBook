@@ -26,6 +26,25 @@ let LoadableNewsPage = Loadable({
 });
 
 //================================================================================
+// Community
+//================================================================================
+let LoadableCommunityFeed = Loadable({
+  loader: () =>
+    delay(0).then(() =>
+      import('../containers/community/communityFeedContainer')
+    ),
+  loading: Loading,
+});
+
+let LoadableCommunityPage = Loadable({
+  loader: () =>
+    delay(0).then(() =>
+      import('../containers/community/communityPageContainer')
+    ),
+  loading: Loading,
+});
+
+//================================================================================
 // History
 //================================================================================
 let LoadableHistory = Loadable({
@@ -136,6 +155,9 @@ export default class Main extends React.Component {
             <Route exact path="/" component={LoadableNews} />
 
             <Route path="/news/:url" component={LoadableNewsPage} />
+
+            <Route exact path="/community" component={LoadableCommunityFeed} />
+            <Route path="/community/:url" component={LoadableCommunityPage} />
 
             <Route exact path="/history" component={LoadableHistory} />
             <Route path="/history/:type" component={LoadableHistoryFeed} />
