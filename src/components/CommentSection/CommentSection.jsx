@@ -4,12 +4,16 @@ import Comment from './Comment/Comment';
 import './CommentSection.css';
 
 export default class CommentSection extends React.Component {
+  componentDidMount() {
+    this.props.getComments(this.props.url);
+  }
+
   render() {
     const { comments } = this.props;
 
     let commentSection;
 
-    if (comments.length === 0) {
+    if (!comments.length) {
       commentSection = <Error error="Комментариев пока нет." />;
     } else {
       commentSection = comments

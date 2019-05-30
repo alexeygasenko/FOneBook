@@ -8,7 +8,7 @@ import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
-import CommentSection from '../../CommentSection/CommentSection';
+import CommentSection from '../../../containers/commentSectionContainer';
 import './HistoryPage.css';
 
 export class HistoryPage extends React.Component {
@@ -38,11 +38,10 @@ export class HistoryPage extends React.Component {
 
   componentDidMount() {
     this.props.getHistoryPage(this.props.match.params.url);
-    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
-    const { historyPage, comments, isFetching, error } = this.props;
+    const { historyPage, isFetching, error } = this.props;
 
     let historyComponent;
 
@@ -154,7 +153,7 @@ export class HistoryPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {historyComponent}
-        <CommentSection comments={comments} />
+        <CommentSection url={this.props.match.params.url} />
         <Footer />
       </React.Fragment>
     );
