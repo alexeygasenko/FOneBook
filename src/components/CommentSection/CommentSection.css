@@ -18,6 +18,33 @@
   margin-bottom: 1rem;
 }
 
+.comment-submit-text {
+  border-radius: 0;
+}
+
+.comment-submit-text:focus {
+  border-color: rgb(255, 42, 42);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(255, 42, 42);
+}
+
+.comment-submit-btn {
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  background-color: rgb(255, 42, 42);
+  color: white;
+  border: 0;
+  border-radius: 0;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+.comment-submit-btn:hover {
+  background-color: rgb(220, 42, 42);
+}
+
 @media all and (max-width: 767px) {
   .comment-section {
     width: 95%;
