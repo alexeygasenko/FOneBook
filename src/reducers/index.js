@@ -22,6 +22,8 @@ import { bookTicketReducer } from './booking/bookTicketReducer';
 
 import { userProfileReducer } from './userProfileReducer';
 
+import { commentsReducer } from './commentsReducer';
+
 export const rootReducer = combineReducers({
   errors: errorReducer,
   auth: authReducer,
@@ -45,4 +47,6 @@ export const rootReducer = combineReducers({
   bookTicketReducer: bookTicketReducer,
 
   userProfileReducer: userProfileReducer,
+
+  commentsReducer: commentsReducer,
 });

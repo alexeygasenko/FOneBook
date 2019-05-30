@@ -47,10 +47,11 @@ export class AutoPage extends React.Component {
 
   componentDidMount() {
     this.props.getAutoPage(this.props.match.params.url);
+    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
-    const { autoPage, isFetching, error } = this.props;
+    const { autoPage, comments, isFetching, error } = this.props;
 
     let autoComponent;
 
@@ -162,7 +163,7 @@ export class AutoPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {autoComponent}
-        <CommentSection />
+        <CommentSection comments={comments} />
         <Footer />
       </React.Fragment>
     );

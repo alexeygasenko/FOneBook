@@ -28,6 +28,7 @@ export class NewsPage extends React.Component {
 
   componentDidMount() {
     this.props.getNewsPage(this.props.match.params.url);
+    this.props.getComments(this.props.match.params.url);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +38,7 @@ export class NewsPage extends React.Component {
   }
 
   render() {
-    const { newsPage, otherNews, isFetching, error } = this.props;
+    const { newsPage, otherNews, comments, isFetching, error } = this.props;
 
     let newsComponent;
 
@@ -184,7 +185,7 @@ export class NewsPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {newsComponent}
-        <CommentSection />
+        <CommentSection comments={comments} />
         <Footer />
       </React.Fragment>
     );

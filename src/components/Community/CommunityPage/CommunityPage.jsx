@@ -18,12 +18,22 @@ export class CommunityPage extends React.Component {
     return newDate;
   };
 
+  setRating = e => {
+    if (e.currentTarget.name === 'up') {
+      this.props.changeRating(this.props.match.params.url, 1);
+    } else if (e.currentTarget.name === 'down') {
+      this.props.changeRating(this.props.match.params.url, -1);
+    }
+  };
+
   componentDidMount() {
     this.props.getCommunityPage(this.props.match.params.url);
+    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
-    const { communityPage, isFetching, error } = this.props;
+    const { isAuthenticated } = this.props.auth;
+    const { communityPage, comments, isFetching, error } = this.props;
 
     let communityComponent;
 
@@ -113,13 +123,26 @@ export class CommunityPage extends React.Component {
               </div>
               {communityBlock}
               <div className="community-rating display-inline">
-                <button className="community-btn" id="btnUp">
-                  <img src={up} id="votegUp" alt="Up" />
-                </button>
+                Рейтинг:{' '}
+                {isAuthenticated ? (
+                  <button
+                    className="community-btn"
+                    name="up"
+                    onClick={this.setRating.bind(this)}
+                  >
+                    <img src={up} id="votegUp" alt="Up" />
+                  </button>
+                ) : null}
                 {communityPage.rating}
-                <button className="community-btn" id="btnDown">
-                  <img src={down} id="voteDown" alt="Down" />
-                </button>
+                {isAuthenticated ? (
+                  <button
+                    name="down"
+                    className="community-btn"
+                    onClick={this.setRating.bind(this)}
+                  >
+                    <img src={down} id="voteDown" alt="Down" />
+                  </button>
+                ) : null}
               </div>
             </div>
           </div>
@@ -132,7 +155,7 @@ export class CommunityPage extends React.Component {
         <CustomNavbar active="Сообщество" />
         <ScrollUpButton />
         {communityComponent}
-        <CommentSection />
+        <CommentSection comments={comments} />
         <Footer />
       </React.Fragment>
     );

@@ -38,10 +38,11 @@ export class HistoryPage extends React.Component {
 
   componentDidMount() {
     this.props.getHistoryPage(this.props.match.params.url);
+    this.props.getComments(this.props.match.params.url);
   }
 
   render() {
-    const { historyPage, isFetching, error } = this.props;
+    const { historyPage, comments, isFetching, error } = this.props;
 
     let historyComponent;
 
@@ -153,7 +154,7 @@ export class HistoryPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {historyComponent}
-        <CommentSection />
+        <CommentSection comments={comments} />
         <Footer />
       </React.Fragment>
     );
