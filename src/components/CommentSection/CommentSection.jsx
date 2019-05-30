@@ -9,11 +9,13 @@ export default class CommentSection extends React.Component {
   }
 
   render() {
-    const { comments } = this.props;
+    const { comments, isFetching, error } = this.props;
 
     let commentSection;
 
-    if (!comments.length) {
+    if (isFetching) {
+      commentSection = <Error error="Идёт загрузка..." />;
+    } else if (error || !comments.length) {
       commentSection = <Error error="Комментариев пока нет." />;
     } else {
       commentSection = comments

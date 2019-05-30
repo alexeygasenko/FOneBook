@@ -16,7 +16,7 @@ import ReactTooltip from 'react-tooltip';
 import CustomNavbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import Error from '../../Loading/Error/Error';
-import CommentSection from '../../CommentSection/CommentSection';
+import CommentSection from '../../../containers/commentSectionContainer';
 import './NewsPage.css';
 import './OtherNews.css';
 
@@ -28,7 +28,6 @@ export class NewsPage extends React.Component {
 
   componentDidMount() {
     this.props.getNewsPage(this.props.match.params.url);
-    this.props.getComments(this.props.match.params.url);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,7 +37,7 @@ export class NewsPage extends React.Component {
   }
 
   render() {
-    const { newsPage, otherNews, comments, isFetching, error } = this.props;
+    const { newsPage, otherNews, isFetching, error } = this.props;
 
     let newsComponent;
 
@@ -185,7 +184,7 @@ export class NewsPage extends React.Component {
         <CustomNavbar active="Новости" />
         <ScrollUpButton />
         {newsComponent}
-        <CommentSection comments={comments} />
+        <CommentSection url={this.props.match.params.url} />
         <Footer />
       </React.Fragment>
     );
